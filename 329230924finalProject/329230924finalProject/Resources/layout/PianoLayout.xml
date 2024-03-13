@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#414141"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/recbtn"
+            android:id="@+id/PianoRecordBTN"/>
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="40dp"
+            android:background="#33b5bc"
+            android:id="@+id/PianoPlayedNotesTV"
+            android:text="played notes here"
+            android:layout_marginRight="56.0dp" />
+
+    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#aaccaa"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="55dp"
+                android:id="@+id/PianoC1BTN"
+            android:text="  C"
+            android:gravity="bottom"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="55dp"
+                android:layout_marginLeft="45dp"
+                android:id="@+id/PianoD1BTN"
+                        android:text="  D"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="90dp"
+                android:id="@+id/PianoE1BTN"
+                        android:text="  E"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="135dp"
+                android:id="@+id/PianoF1BTN"
+                        android:text="  F"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="180dp"
+                android:id="@+id/PianoG1BTN"
+                        android:text="  G"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="225dp"
+                android:id="@+id/PianoA1BTN"
+                        android:text="  A"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="270dp"
+                android:id="@+id/PianoB1BTN"
+                        android:text="  B"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="315dp"
+                android:id="@+id/PianoC2BTN"
+                        android:text="  C"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="360dp"
+                android:id="@+id/PianoD2BTN"
+                        android:text="  D"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="2500dp"
+                android:layout_marginLeft="405dp"
+                android:id="@+id/PianoE2BTN"
+                        android:text="  E"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="450dp"
+                android:id="@+id/PianoF2BTN"
+                        android:text="  F"
+            android:gravity="bottom"/>
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="495dp"
+                android:id="@+id/PianoG2BTN"
+                        android:text="  G"
+            android:gravity="bottom"/>
+                    <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="540dp"
+                android:id="@+id/PianoA2BTN"
+                        android:text="  A"
+            android:gravity="bottom"/>
+                    <Button
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="585dp"
+                android:id="@+id/PianoB2BTN"
+                        android:text="  B"
+            android:gravity="bottom"/>
+                        <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="25dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoCshrp1BTN"
+                        android:text="  C#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+              <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="80dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoDshrp1BTN"
+                                   android:text="  D#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+                                    <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="165dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoFshrp1BTN"
+                                   android:text="  F#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+              <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="220dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoGshrp1BTN"
+                                   android:text="  G#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+                          <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="270dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoAshrpBTN"
+                                   android:text="   A#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+              <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="350dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoCshrp2BTN"
+                                   android:text="   C#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+                          <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="400dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoDshrp2BTN"
+                                   android:text="   D#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+                   <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="485dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoFshrp2BTN"
+                                   android:text="   f#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+                               <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="535dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoGshrp2BTN"
+                                   android:text="  G#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+                                       <Button
+                android:layout_width="35dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="585dp"
+                android:background="@android:color/black"
+                android:id="@+id/PianoAshrp2BTN"
+                                   android:text="  A#"
+            android:textColor="#b5b5b5"
+            android:gravity="bottom"/>
+
+        </RelativeLayout>
+    </LinearLayout>

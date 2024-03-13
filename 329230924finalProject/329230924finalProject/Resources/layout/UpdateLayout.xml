@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/choback">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="80dp"
+                android:text="Update"
+                android:textSize="30dp"
+                android:textColor="#cccc"
+                android:layout_gravity="center"/>
+
+             <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                    android:text="first name"
+                    android:textSize="27dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#6699ff"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="enter inforamtion"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColorHint="#9e9e9e"
+                     android:textColor="#e9e9e9"
+                     android:id="@+id/UpdateFNameContentET"/>
+            </LinearLayout>
+                       <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                    android:text="last name"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#6699ff"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="enter iformation"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColorHint="#9e9e9e"
+                    android:id="@+id/UpdateLNameContentET"
+                     android:textColor="#e9e9e9"/>
+ 
+            </LinearLayout>
+             <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                    android:text="username"
+                    android:textSize="27dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#6699ff"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="enter inforamtion"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColorHint="#9e9e9e"
+                     android:id="@+id/UpdateUNameContentTV" 
+                    android:textColor="#e9e9e9"/>
+
+            </LinearLayout>
+             <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                    android:text="email"
+                    android:textSize="27dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#6699ff"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="enter inforamtion"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColorHint="#9e9e9e"
+                     android:id="@+id/UpdateEmailContentET"
+                     android:textColor="#e9e9e9"/>
+
+            </LinearLayout>
+                       <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                    android:text="Age"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#6699ff"/>
+                <Button
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                    android:text="select Date"
+                    android:textSize="25dp"
+                    android:id="@+id/UpdateDateSelectionBTN"/>
+
+            </LinearLayout>
+               <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <ImageView
+                           android:layout_width="60dp"
+                           android:layout_height="60dp"
+                    android:background="@drawable/generic"
+                    android:textSize="30dp"
+                    android:id="@+id/UpdatepfpviewIV"
+                    android:layout_marginLeft="30dp"/>
+                <Button
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                    android:text="select pfp"
+                    android:textSize="25dp"
+                    android:id="@+id/UpdatepfpSelectionBTN"/>
+
+            </LinearLayout>
+              <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                    android:text="Phone:"
+                    android:textSize="27dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#6699ff"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="enter inforamtion"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColorHint="#9e9e9e"
+                     android:id="@+id/UpdatePhoneContentET"
+                     android:textColor="#e9e9e9"/>
+
+            </LinearLayout>
+             <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                android:orientation="horizontal">
+                <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                    android:text="password"
+                    android:textSize="27dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#6699ff"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="enter inforamtion"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColorHint="#9e9e9e"
+                     android:id="@+id/UpdatePassContentET"
+                     android:textColor="#e9e9e9"/>
+
+            </LinearLayout>
+		<LinearLayout
+						   android:layout_width="match_parent"
+						   android:layout_height="70dp"
+			   android:orientation="horizontal">
+			<TextView
+					   android:layout_width="140dp"
+					   android:layout_height="match_parent"
+				android:text="confirm password"
+				android:textSize="27dp"
+				android:layout_marginLeft="30dp"
+				android:textColor="#6699ff"/>
+			<EditText
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:hint="enter inforamtion"
+				android:textSize="25dp"
+				android:layout_marginLeft="20dp"
+				android:textColorHint="#9e9e9e"
+				 android:id="@+id/UpdateConPassContentET" 
+                    android:textColor="#e9e9e9"/>
+
+		</LinearLayout>
+            
+            <Button
+                     android:layout_width="160dp"
+                     android:layout_height="100dp"
+                android:text="Register"
+                android:layout_gravity="center"
+                android:id="@+id/updateUpdatingBTN"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

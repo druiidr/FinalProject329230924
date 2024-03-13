@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background= "@drawable/choback"
+    >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" android:layout_marginTop="70dp">
+          <ImageView
+		android:layout_height="150dp"
+		android:layout_width="200dp"
+		android:layout_gravity="center"
+                android:background="#000080"
+		android:id="@+id/thisImageView"
+		android:src="@drawable/generic"
+	/>
+	
+
+	<Button
+		android:id="@+id/PFPcaptureBTN"
+		android:layout_height="40dp"
+		android:layout_width="200dp"
+		android:layout_gravity="center_horizontal"
+		android:text="Capture Image"
+		android:layout_margin="10dp"
+	/>
+	
+	<Button
+		android:id="@+id/PFPuploadPhotoBTN"
+		android:layout_height="40dp"
+		android:layout_width="200dp"
+		android:layout_gravity="center_horizontal"
+		android:text="Upload Image"
+		android:layout_margin="10dp"
+	/>
+           
+                <Button
+                    android:layout_width="90dp"
+                    android:layout_height="60dp"
+                    android:text="CONFIRM"
+                    android:background="@color/material_blue_grey_800"
+                    android:textColor="@android:color/holo_green_light"
+                    android:layout_marginLeft="145dp"
+                    android:id="@+id/PFPConfrirmBTN"/>
+               
+        </LinearLayout>
+</LinearLayout>
