@@ -62,7 +62,8 @@ namespace _329230924finalProject
 
         private void PianoBTN_Click(object sender, EventArgs e)
         {
-            Toast.MakeText(this, "feature not implimented yet!", ToastLength.Long).Show();
+            Intent intent = new Intent(this, typeof(ActivityPiano));
+            StartActivity(intent);
         }
 
 

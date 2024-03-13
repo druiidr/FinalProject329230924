@@ -41,47 +41,52 @@ namespace _329230924finalProject
             notesAdapter = new NotesAdapter(this, notesList);
             lv.OnItemLongClickListener = this;
             lv.OnItemClickListener = this;
-            likeCB.CheckedChange += LikeCB_CheckedChange;
             lv.Adapter = notesAdapter;
-            try
+            if (!likeCB.Checked)
             {
-                Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                var alldata = Helper.dbCommand.Query<Notes>("");
-                    alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes");
-                foreach (var items in alldata)
+                try
                 {
-                    notesList.Add(items);
+                    Helper.dbCommand = new SQLiteConnection(Helper.Path());
+                    var alldata = Helper.dbCommand.Query<Notes>("");
+                    alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes");
+                    foreach (var items in alldata)
+                    {
+                        notesList.Add(items);
+                    }
+                    notesAdapter = new NotesAdapter(this, notesList);
+                    lv.Adapter = notesAdapter;
                 }
-                notesAdapter = new NotesAdapter(this, notesList);
-                lv.Adapter = notesAdapter;
+                catch
+                {
+                    Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
+                }
             }
-            catch
+            else
             {
-                Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
+                try
+                {
+                    Helper.dbCommand = new SQLiteConnection(Helper.Path());
+                    var alldata = Helper.dbCommand.Query<Notes>("");
+                    alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE IsLiked = TRUE");
+                    foreach (var items in alldata)
+                    {
+                        notesList.Add(items);
+                    }
+                    notesAdapter = new NotesAdapter(this, notesList);
+                    lv.Adapter = notesAdapter;
+                }
+                catch
+                {
+                    Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
+                }
             }
-            // Create your application here
         }
 
-        private void LikeCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        private void LikeCB_Click(object sender, EventArgs e)
         {
-            try
-            {
-                lv.Adapter = null;
-                Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                var alldata = Helper.dbCommand.Query<Notes>("");
-                alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE IsLiked = TRUE");
-                foreach (var items in alldata)
-                {
-                    notesList.Add(items);
-                }
-                notesAdapter = new NotesAdapter(this, notesList);
-                lv.Adapter = notesAdapter;
-            }
-            catch
-            {
-                Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
-            }
+            throw new NotImplementedException();
         }
+
 
         public void OnItemClick(AdapterView parent, View view, int position, long id)
         {
