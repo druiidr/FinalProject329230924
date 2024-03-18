@@ -5,6 +5,7 @@ using System.Text;
 using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Media;
 using Android.Runtime;
 using Android.Widget;
 using Android.Content;
@@ -15,7 +16,8 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityPiano")]
     public class ActivityPiano : AppCompatActivity, View.IOnClickListener
     {
-        Button recsiganlBTN,recBTN, C1BTN, Csh1BTN, C2BTN, Csh2BTN, D1BTN, Dsh1BTN, D2BTN, Dsh2BTN, E1BTN, E2BTN, F1BTN, Fsh1BTN, F2BTN, Fsh2BTN, G1BTN, Gsh1BTN, G2BTN, Gsh2BTN, A1BTN, Ash1BTN, A2BTN, Ash2BTN, B1BTN, B2BTN;
+        AudioManager am;
+        KeyboardKey C1KBK, Csh1KBK, C2KBK, Csh2KBK, D1KBK, Dsh1KBK, D2KBK, Dsh2KBK, E1KBK, E2KBK, F1KBK, Fsh1KBK, F2KBK, Fsh2KBK, G1KBK, Gsh1KBK, G2KBK, Gsh2KBK, A1KBK, Ash1KBK, A2KBK, Ash2KBK, B1KBK, B2KBK;
         TextView playedNotesTV;
         bool isRecording = false;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -23,83 +25,51 @@ namespace _329230924finalProject
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PianoLayout);
 
-            C1BTN=FindViewById<Button>(Resource.Id.PianoC1BTN);
-            Csh1BTN=FindViewById<Button>(Resource.Id.PianoCshrp1BTN);
-            D1BTN=FindViewById<Button>(Resource.Id.PianoD1BTN);
-            Dsh1BTN=FindViewById<Button>(Resource.Id.PianoDshrp1BTN);
-            E1BTN=FindViewById<Button>(Resource.Id.PianoE1BTN);
-            F1BTN=FindViewById<Button>(Resource.Id.PianoF1BTN);
-            Fsh1BTN=FindViewById<Button>(Resource.Id.PianoFshrp1BTN);
-            G1BTN=FindViewById<Button>(Resource.Id.PianoG1BTN);
-            Gsh1BTN=FindViewById<Button>(Resource.Id.PianoGshrp1BTN);
-            A1BTN=FindViewById<Button>(Resource.Id.PianoA1BTN);
-            Ash1BTN=FindViewById<Button>(Resource.Id.PianoAshrp1BTN);
-            B1BTN=FindViewById<Button>(Resource.Id.PianoB1BTN);
-            C2BTN = FindViewById<Button>(Resource.Id.PianoC2BTN);
-            Csh2BTN = FindViewById<Button>(Resource.Id.PianoCshrp2BTN);
-            D2BTN = FindViewById<Button>(Resource.Id.PianoD2BTN);
-            Dsh2BTN = FindViewById<Button>(Resource.Id.PianoDshrp2BTN);
-            E2BTN = FindViewById<Button>(Resource.Id.PianoE2BTN);
-            F2BTN = FindViewById<Button>(Resource.Id.PianoF2BTN);
-            Fsh2BTN = FindViewById<Button>(Resource.Id.PianoFshrp2BTN);
-            G2BTN = FindViewById<Button>(Resource.Id.PianoG2BTN);
-            Gsh2BTN = FindViewById<Button>(Resource.Id.PianoGshrp2BTN);
-            A2BTN = FindViewById<Button>(Resource.Id.PianoA2BTN);
-            Ash2BTN = FindViewById<Button>(Resource.Id.PianoAshrp2BTN);
-            B2BTN = FindViewById<Button>(Resource.Id.PianoB2BTN);
-            recsiganlBTN =FindViewById<Button>(Resource.Id.PianorecordingsignalBTN);
-            recBTN=FindViewById<Button>(Resource.Id.PianoRecordBTN);
-            playedNotesTV=FindViewById<TextView>(Resource.Id.PianoPlayedNotesTV);
-            C1BTN.SetOnClickListener(this);
-            Csh1BTN.SetOnClickListener(this);
-            D1BTN.SetOnClickListener(this);
-           Dsh1BTN.SetOnClickListener(this);
-            E1BTN.SetOnClickListener(this);
-            F1BTN.SetOnClickListener(this);
-            Fsh1BTN.SetOnClickListener(this);
-            G1BTN.SetOnClickListener(this);
-            Gsh1BTN.SetOnClickListener(this);
-           A1BTN.SetOnClickListener(this);
-            Ash1BTN.SetOnClickListener(this);
-            B1BTN.SetOnClickListener(this);
-            C2BTN.SetOnClickListener(this);
-            Csh2BTN.SetOnClickListener(this);
-            D2BTN.SetOnClickListener(this);
-            Dsh2BTN.SetOnClickListener(this);
-            E2BTN.SetOnClickListener(this);
-            F2BTN.SetOnClickListener(this);
-            Fsh2BTN.SetOnClickListener(this);
-            G2BTN.SetOnClickListener(this);
-            Gsh2BTN.SetOnClickListener(this);
-            A2BTN.SetOnClickListener(this);
-            Ash2BTN.SetOnClickListener(this);
-            B2BTN.SetOnClickListener(this);
-            recBTN.Click += RecBTN_Click;
-
+           C1KBK=new KeyboardKey(FindViewById<Button>(Resource.Id.PianoC1BTN), MediaPlayer.Create(this, Resource.Raw.pianoC));
+            D1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoD1BTN), MediaPlayer.Create(this, Resource.Raw.pianoD));
+            E1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoE1BTN), MediaPlayer.Create(this, Resource.Raw.pianoE));
+            F1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoF1BTN), MediaPlayer.Create(this, Resource.Raw.pianoF));
+            G1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoG1BTN), MediaPlayer.Create(this, Resource.Raw.pianoG));
+            A1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoA1BTN), MediaPlayer.Create(this, Resource.Raw.painoA));
+            B1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoB1BTN), MediaPlayer.Create(this, Resource.Raw.pianoB));
+            C2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoC2BTN), MediaPlayer.Create(this, Resource.Raw.pianoC));
+            D2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoD2BTN), MediaPlayer.Create(this, Resource.Raw.pianoD));
+           E2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoE2BTN), MediaPlayer.Create(this, Resource.Raw.pianoE));
+            F2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoF2BTN), MediaPlayer.Create(this, Resource.Raw.pianoF));
+           G2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoG2BTN), MediaPlayer.Create(this, Resource.Raw.pianoG));
+            A2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoA2BTN), MediaPlayer.Create(this, Resource.Raw.painoA));
+            B2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoG2BTN), MediaPlayer.Create(this, Resource.Raw.pianoB));
+            C1KBK.GetKey().SetOnClickListener(this);
         }
 
-        private void RecBTN_Click(object sender, EventArgs e)
-        {
+        //private void RecBTN_Click(object sender, EventArgs e)
+        //{
 
-            if (!isRecording)
-            {
-                recsiganlBTN.Visibility = Android.Views.ViewStates.Visible;
-                playedNotesTV.Text = "";
-                isRecording = !isRecording;
-            }
-            else
-            {
-                recsiganlBTN.Visibility = Android.Views.ViewStates.Invisible;
-                playedNotesTV.Text = "played notes here";
-                isRecording = !isRecording;
+        //    if (!isRecording)
+        //    {
+        //        מתחיל הקלטה
+        //        recsiganlBTN.Visibility = Android.Views.ViewStates.Visible;
+        //        playedNotesTV.Text = "";
+        //        isRecording = !isRecording;
+        //    }
+        //    else
+        //    {
+        //        מסיים הקלטה
+        //        recsiganlBTN.Visibility = Android.Views.ViewStates.Invisible;
+        //        playedNotesTV.Text = "played notes here";
+        //        if (playedNotesTV.Text.Length > 0)
+        //            if ()
+        //                isRecording = !isRecording;
 
-            }
-        }
+        //    }
+        //}
 
         public void OnClick(View v)
         {
-            Button button = (Button)v;
+            KeyboardKey key = (Keyboa)v;
             string buttonText = button.Text;
+            
+
             if (isRecording)
             {
                 playedNotesTV.Text += (buttonText + ",");

@@ -70,6 +70,7 @@
     <Compile Include="ActivityUpdate.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="KeyboardKey.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Notes.cs" />
     <Compile Include="NotesAdapter.cs" />
@@ -187,6 +188,27 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\greeen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\painoA.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\pianoF.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\pianoB.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\pianoE.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\pianoD.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\pianoC.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\pianoG.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -34,7 +34,7 @@
             android:text="played notes here"
             android:layout_marginLeft="140dp" ></TextView>
     </LinearLayout>
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#aaccaa"
@@ -229,5 +229,5 @@
             android:textColor="#b5b5b5"
             android:gravity="bottom"/>
 
-        </RelativeLayout>
+        </FrameLayout>
     </LinearLayout>
