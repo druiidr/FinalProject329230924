@@ -27,9 +27,9 @@ namespace _329230924finalProject
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.NotesShowLayout);
             Helper.Initialize();
-            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "g,e,e,f,d,d,c,d,e,f,g,g,g,g,e,e,f,d,d,c,e,g,g,c");
-            Notes defaultNote2 = new Notes(2, "ואיך שלא", "g,a,b,e,g,a,b,d,g,a,b,c,d,e,a,g");
-            Notes defaultNote3 = new Notes(3, "stairway to heaven", "a,c,e,a,b,e,c,b,c,e,c,c,f#,d,a,d,e,c,a,c,e,c,a");
+            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "g,e,e,f,d,d,c,d,e,f,g,g,g,g,e,e,f,d,d,c,e,g,g,c,.");
+            Notes defaultNote2 = new Notes(2, "ואיך שלא", "g,a,b,e,g,a,b,d,g,a,b,c,d,e,a,g,.");
+            Notes defaultNote3 = new Notes(3, "stairway to heaven", "a,c,e,a,b,e,c,b,c,e,c,c,f#,d,a,d,e,c,a,c,e,c,a,.");
             likeCB = FindViewById<CheckBox>(Resource.Id.NotesShowLikedCB);
             notesList = new System.Collections.Generic.List<Notes>();
 

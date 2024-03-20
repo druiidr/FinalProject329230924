@@ -17,29 +17,105 @@ namespace _329230924finalProject
     public class ActivityPiano : AppCompatActivity, View.IOnClickListener
     {
         AudioManager am;
-        KeyboardKey C1KBK, Csh1KBK, C2KBK, Csh2KBK, D1KBK, Dsh1KBK, D2KBK, Dsh2KBK, E1KBK, E2KBK, F1KBK, Fsh1KBK, F2KBK, Fsh2KBK, G1KBK, Gsh1KBK, G2KBK, Gsh2KBK, A1KBK, Ash1KBK, A2KBK, Ash2KBK, B1KBK, B2KBK;
+       Button C1BTN, Csh1BTN, C2BTN, Csh2BTN, D1BTN, Dsh1BTN, D2BTN, Dsh2BTN, E1BTN, E2BTN, F1BTN, Fsh1BTN, F2BTN, Fsh2BTN, G1BTN, Gsh1BTN, G2BTN, Gsh2BTN, A1BTN, Ash1BTN, A2BTN, Ash2BTN, B1BTN, B2BTN;
         TextView playedNotesTV;
-        bool isRecording = false;
+        Button playpauseBTN;
+        MediaPlayer playingSoundMP=new MediaPlayer();
+        bool isPlayinging = false;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PianoLayout);
+            playpauseBTN = FindViewById<Button>(Resource.Id.PianoPlayPauseBTN);
+           C1BTN=FindViewById<Button>(Resource.Id.PianoC1BTN);
+            D1BTN =FindViewById<Button>(Resource.Id.PianoD1BTN);
+            E1BTN = (FindViewById<Button>(Resource.Id.PianoE1BTN));
+            F1BTN = (FindViewById<Button>(Resource.Id.PianoF1BTN));
+            G1BTN = (FindViewById<Button>(Resource.Id.PianoG1BTN));
+            A1BTN = (FindViewById<Button>(Resource.Id.PianoA1BTN));
+            B1BTN = (FindViewById<Button>(Resource.Id.PianoB1BTN));
+            C2BTN = (FindViewById<Button>(Resource.Id.PianoC2BTN));
+            D2BTN = (FindViewById<Button>(Resource.Id.PianoD2BTN));
+           E2BTN = (FindViewById<Button>(Resource.Id.PianoE2BTN));
+            F2BTN = (FindViewById<Button>(Resource.Id.PianoF2BTN));
+           G2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
+            A2BTN = (FindViewById<Button>(Resource.Id.PianoA2BTN));
+            B2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
+            playedNotesTV = FindViewById<TextView>(Resource.Id.PianoPlayedNotesTV);
+            C1BTN.SetOnClickListener(this);
+            D1BTN.SetOnClickListener(this);
+           E1BTN.SetOnClickListener(this);
+            F1BTN.SetOnClickListener(this);
+            G1BTN.SetOnClickListener(this);
+            A1BTN.SetOnClickListener(this);
+            B1BTN.SetOnClickListener(this);
+            C2BTN.SetOnClickListener(this);
+            D2BTN.SetOnClickListener(this);
+            E2BTN.SetOnClickListener(this);
+            F2BTN.SetOnClickListener(this);
+            G2BTN.SetOnClickListener(this);
+            A2BTN.SetOnClickListener(this);
+            B2BTN.SetOnClickListener(this);
+            playpauseBTN.Click += PlaypauseBTN_Click;
+        }
 
-           C1KBK=new KeyboardKey(FindViewById<Button>(Resource.Id.PianoC1BTN), MediaPlayer.Create(this, Resource.Raw.pianoC));
-            D1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoD1BTN), MediaPlayer.Create(this, Resource.Raw.pianoD));
-            E1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoE1BTN), MediaPlayer.Create(this, Resource.Raw.pianoE));
-            F1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoF1BTN), MediaPlayer.Create(this, Resource.Raw.pianoF));
-            G1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoG1BTN), MediaPlayer.Create(this, Resource.Raw.pianoG));
-            A1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoA1BTN), MediaPlayer.Create(this, Resource.Raw.painoA));
-            B1KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoB1BTN), MediaPlayer.Create(this, Resource.Raw.pianoB));
-            C2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoC2BTN), MediaPlayer.Create(this, Resource.Raw.pianoC));
-            D2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoD2BTN), MediaPlayer.Create(this, Resource.Raw.pianoD));
-           E2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoE2BTN), MediaPlayer.Create(this, Resource.Raw.pianoE));
-            F2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoF2BTN), MediaPlayer.Create(this, Resource.Raw.pianoF));
-           G2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoG2BTN), MediaPlayer.Create(this, Resource.Raw.pianoG));
-            A2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoA2BTN), MediaPlayer.Create(this, Resource.Raw.painoA));
-            B2KBK = new KeyboardKey(FindViewById<Button>(Resource.Id.PianoG2BTN), MediaPlayer.Create(this, Resource.Raw.pianoB));
-            C1KBK.GetKey().SetOnClickListener(this);
+        private void PlaypauseBTN_Click(object sender, EventArgs e)
+        {
+
+            PlayMelody(playedNotesTV.Text);
+
+        }
+        public void PlayMelody(string str)
+        {
+            string ch="";
+            while(str[0]!='.')
+            {
+                while (str[0] != ',')
+                {
+                    ch = "" + str[0];
+                    str = str.Remove(0,1);
+                }
+                str.Remove(0,1);
+                Toast.MakeText(this, ch, ToastLength.Long).Show();
+                PlayNotes("  " + ch);
+            }
+        }
+        public void PlayNotes(string x)
+        {
+
+            //מנגן את התו המוזן
+
+            switch (x)
+            {
+                case ("  A"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoA1);
+                    break;
+                case ("  B"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoB1);
+                    playingSoundMP.Start();
+                    break;
+                case ("  C"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoC1);
+                    playingSoundMP.Start();
+                    break;
+                case ("  D"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoD1);
+                    playingSoundMP.Start();
+                    break;
+                case ("  E"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoE1);
+                    playingSoundMP.Start();
+                    break;
+                case ("  F"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoF1);
+                    playingSoundMP.Start();
+                    break;
+                case ("  G"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoG1);
+                    playingSoundMP.Start();
+                    break;
+            }
+
         }
 
         //private void RecBTN_Click(object sender, EventArgs e)
@@ -66,14 +142,13 @@ namespace _329230924finalProject
 
         public void OnClick(View v)
         {
-            KeyboardKey key = (Keyboa)v;
-            string buttonText = button.Text;
+            Button button = (Button)v;
             
+            string buttonText = button.Text;
+            //if (!button.Text.Contains("#"))
+               
 
-            if (isRecording)
-            {
-                playedNotesTV.Text += (buttonText + ",");
-            }
+            PlayNotes(buttonText);
         }
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)

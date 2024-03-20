@@ -190,25 +190,31 @@
     <AndroidResource Include="Resources\drawable\greeen.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\painoA.wav" />
+    <AndroidResource Include="Resources\raw\pianoC1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\pianoF.wav" />
+    <AndroidResource Include="Resources\raw\pianoA1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\pianoB.wav" />
+    <AndroidResource Include="Resources\raw\pianoD1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\pianoE.wav" />
+    <AndroidResource Include="Resources\raw\pianoG1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\pianoD.wav" />
+    <AndroidResource Include="Resources\raw\pianoF1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\pianoC.wav" />
+    <AndroidResource Include="Resources\raw\pianoE1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\pianoG.wav" />
+    <AndroidResource Include="Resources\raw\pianoB1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pausebtn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\playbtn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
