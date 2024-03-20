@@ -20,18 +20,18 @@ namespace _329230924finalProject
         public string PieceName { get; set; }
         [Column("NoteContent")]
         public string NoteContent { get; set; }
-        [Column("IsLiked")]
-        public bool IsLiked { get; set; }
+        [Column("Level")]
+        public int Level { get; set; }
         public Notes()
         {
 
         }
-        public Notes(int NoteCode, string piecename,string NoteContent)
+        public Notes(int NoteCode, string piecename,string NoteContent,int level)
         {
             this.NoteCode = NoteCode;
             this.NoteContent = NoteContent;
             this.PieceName = piecename;
-            this.IsLiked = false;
+            this.Level = level;
         }
         public int GetNoteCode()
         {
@@ -45,9 +45,9 @@ namespace _329230924finalProject
         {
             return this.PieceName;
         }
-        public bool GetIsLiked()
+        public int GetLevel()
         {
-            return this.IsLiked;
+            return this.Level;
         }
         public void Setcode(int x)
         {
@@ -61,17 +61,9 @@ namespace _329230924finalProject
         {
             this.PieceName = x;
         }
-        public void SetIsLiked(bool x)
+        public void SetIsLiked(int x)
         {
-            this.IsLiked = x;
-        }
-        public void Like()
-        {
-            this.IsLiked = true;
-        }
-        public void DisLike()
-        {
-            this.IsLiked = false;
+            this.Level = x;
         }
     }
 }

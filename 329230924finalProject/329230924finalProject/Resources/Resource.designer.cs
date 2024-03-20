@@ -3537,6 +3537,9 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0800A0
 			public const int left = 2131230880;
 			
+			// aapt resource value: 0x7F08000A
+			public const int LevelSelectionSP = 2131230730;
+			
 			// aapt resource value: 0x7F0800A1
 			public const int line1 = 2131230881;
 			
@@ -3546,47 +3549,47 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0800A3
 			public const int listMode = 2131230883;
 			
-			// aapt resource value: 0x7F08000C
-			public const int ListviewdislikedIB = 2131230732;
-			
 			// aapt resource value: 0x7F08000D
-			public const int ListviewlikedIV = 2131230733;
+			public const int ListviewdislikedIB = 2131230733;
 			
-			// aapt resource value: 0x7F08000A
-			public const int ListViewNameTV = 2131230730;
+			// aapt resource value: 0x7F08000E
+			public const int ListviewlikedIV = 2131230734;
 			
 			// aapt resource value: 0x7F08000B
-			public const int ListviewNotesTV = 2131230731;
+			public const int ListViewNameTV = 2131230731;
+			
+			// aapt resource value: 0x7F08000C
+			public const int ListviewNotesTV = 2131230732;
 			
 			// aapt resource value: 0x7F0800A4
 			public const int list_item = 2131230884;
 			
-			// aapt resource value: 0x7F08000E
-			public const int LoginIForgorBTN = 2131230734;
-			
 			// aapt resource value: 0x7F08000F
-			public const int LoginLogInBTN = 2131230735;
+			public const int LoginIForgorBTN = 2131230735;
 			
 			// aapt resource value: 0x7F080010
-			public const int LoginPasswordContentET = 2131230736;
+			public const int LoginLogInBTN = 2131230736;
 			
 			// aapt resource value: 0x7F080011
-			public const int LoginRememberMeCB = 2131230737;
+			public const int LoginPasswordContentET = 2131230737;
 			
 			// aapt resource value: 0x7F080012
-			public const int LoginShowPassCB = 2131230738;
+			public const int LoginRememberMeCB = 2131230738;
 			
 			// aapt resource value: 0x7F080013
-			public const int LoginUNameContentET = 2131230739;
+			public const int LoginShowPassCB = 2131230739;
 			
-			// aapt resource value: 0x7F080015
-			public const int MainCAGBTN = 2131230741;
+			// aapt resource value: 0x7F080014
+			public const int LoginUNameContentET = 2131230740;
 			
 			// aapt resource value: 0x7F080016
-			public const int MainLoginBTN = 2131230742;
+			public const int MainCAGBTN = 2131230742;
 			
 			// aapt resource value: 0x7F080017
-			public const int MainRegisterBTN = 2131230743;
+			public const int MainLoginBTN = 2131230743;
+			
+			// aapt resource value: 0x7F080018
+			public const int MainRegisterBTN = 2131230744;
 			
 			// aapt resource value: 0x7F0800A5
 			public const int masked = 2131230885;
@@ -3594,8 +3597,8 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0800A6
 			public const int message = 2131230886;
 			
-			// aapt resource value: 0x7F080014
-			public const int META = 2131230740;
+			// aapt resource value: 0x7F080015
+			public const int META = 2131230741;
 			
 			// aapt resource value: 0x7F0800A7
 			public const int middle = 2131230887;
@@ -3623,9 +3626,6 @@ namespace _329230924finalProject
 			
 			// aapt resource value: 0x7F0800AF
 			public const int normal = 2131230895;
-			
-			// aapt resource value: 0x7F080018
-			public const int NotesShowLikedCB = 2131230744;
 			
 			// aapt resource value: 0x7F080019
 			public const int NotesShowListviewlv = 2131230745;

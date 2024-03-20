@@ -28,13 +28,13 @@ namespace _329230924finalProject
             LinearLayout.LayoutParams layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, 180);
             pianoBTN = new Button(this);
             pianoBTN.LayoutParameters = layoutparams;
-            pianoBTN.Text = "start playing";
+            pianoBTN.Text = "free play";
             pianoBTN.SetBackgroundColor(Android.Graphics.Color.DarkViolet);
             pianoBTN.SetX(420);
             pianoBTN.SetY(1080);
             NotesBTN = new Button(this);
             NotesBTN.LayoutParameters = layoutparams;
-            NotesBTN.Text = "view notes";
+            NotesBTN.Text = "start practicing";
             NotesBTN.SetBackgroundColor(Android.Graphics.Color.LightSalmon);
             NotesBTN.SetX(420);
             NotesBTN.SetY(1080);

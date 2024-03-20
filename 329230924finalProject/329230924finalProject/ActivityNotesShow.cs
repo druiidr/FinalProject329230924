@@ -13,24 +13,21 @@ using Android.Views;
 namespace _329230924finalProject
 {
     [Activity(Label = "ActivityNotesFavourites")]
-    public class ActivityNotesShow :AppCompatActivity, ListView.IOnItemClickListener, ListView.IOnItemLongClickListener
+    public class ActivityNotesShow : AppCompatActivity, ListView.IOnItemClickListener
     {
         public static List<Notes> notesList { get; set; }
         NotesAdapter notesAdapter;
-        CheckBox likeCB;
-        ImageView heartiv;
         TextView contentTV;
         ListView lv;
-        Dialog d;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.NotesShowLayout);
             Helper.Initialize();
-            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "g,e,e,f,d,d,c,d,e,f,g,g,g,g,e,e,f,d,d,c,e,g,g,c,.");
-            Notes defaultNote2 = new Notes(2, "ואיך שלא", "g,a,b,e,g,a,b,d,g,a,b,c,d,e,a,g,.");
-            Notes defaultNote3 = new Notes(3, "stairway to heaven", "a,c,e,a,b,e,c,b,c,e,c,c,f#,d,a,d,e,c,a,c,e,c,a,.");
-            likeCB = FindViewById<CheckBox>(Resource.Id.NotesShowLikedCB);
+            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.",1);
+            Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.",1);
+            Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.",2);
+
             notesList = new System.Collections.Generic.List<Notes>();
 
             notesList.Add(defaultNote1);
@@ -39,46 +36,23 @@ namespace _329230924finalProject
 
             lv = FindViewById<ListView>(Resource.Id.NotesShowListviewlv);
             notesAdapter = new NotesAdapter(this, notesList);
-            lv.OnItemLongClickListener = this;
             lv.OnItemClickListener = this;
             lv.Adapter = notesAdapter;
-            if (!likeCB.Checked)
+            try
             {
-                try
+                Helper.dbCommand = new SQLiteConnection(Helper.Path());
+                var alldata = Helper.dbCommand.Query<Notes>("");
+                alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes");
+                foreach (var items in alldata)
                 {
-                    Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                    var alldata = Helper.dbCommand.Query<Notes>("");
-                    alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes");
-                    foreach (var items in alldata)
-                    {
-                        notesList.Add(items);
-                    }
-                    notesAdapter = new NotesAdapter(this, notesList);
-                    lv.Adapter = notesAdapter;
+                    notesList.Add(items);
                 }
-                catch
-                {
-                    Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
-                }
+                notesAdapter = new NotesAdapter(this, notesList);
+                lv.Adapter = notesAdapter;
             }
-            else
+            catch
             {
-                try
-                {
-                    Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                    var alldata = Helper.dbCommand.Query<Notes>("");
-                    alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE IsLiked = TRUE");
-                    foreach (var items in alldata)
-                    {
-                        notesList.Add(items);
-                    }
-                    notesAdapter = new NotesAdapter(this, notesList);
-                    lv.Adapter = notesAdapter;
-                }
-                catch
-                {
-                    Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
-                }
+                Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
             }
         }
 
@@ -93,18 +67,6 @@ namespace _329230924finalProject
 
 
 
-        }
-        public bool OnItemLongClick(AdapterView parent, View view,int position,long id )
-        {
-
-            d = new Dialog(this);
-            d.SetContentView(Resource.Layout.DialogLayout);
-            d.SetTitle("note Content");
-            d.SetCancelable(true);
-            contentTV = FindViewById<TextView>(Resource.Id.DialogContentTV);
-            contentTV.Text = notesAdapter[position].NoteContent;
-            d.Show();
-                        return true;
         }
 
 

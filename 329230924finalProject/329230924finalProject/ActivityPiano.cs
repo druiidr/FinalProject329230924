@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Widget;
 using Android.Content;
 using Android.Views;
+using System.Threading.Tasks;
 
 namespace _329230924finalProject
 {
@@ -65,21 +66,23 @@ namespace _329230924finalProject
             PlayMelody(playedNotesTV.Text);
 
         }
-        public void PlayMelody(string str)
+        async void PlayMelody(string str)
         {
             string ch="";
-            while(str[0]!='.')
+            while(str.Length>3)
             {
                 while (str[0] != ',')
                 {
                     ch = "" + str[0];
-                    str = str.Remove(0,1);
+                    str = str.Substring(1);
                 }
-                str.Remove(0,1);
+                str = str.Substring(1);
                 Toast.MakeText(this, ch, ToastLength.Long).Show();
                 PlayNotes("  " + ch);
+                await Task.Delay(400);
             }
         }
+     
         public void PlayNotes(string x)
         {
 
@@ -114,6 +117,9 @@ namespace _329230924finalProject
                     playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoG1);
                     playingSoundMP.Start();
                     break;
+                default:
+                    break;
+
             }
 
         }

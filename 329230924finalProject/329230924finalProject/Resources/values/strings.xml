@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">_329230924finalProject</string>
     <string name="action_settings">Settings</string>
+	<string name="NotesShowSpinner">choose a level</string>
+	<string-array  name="levelarray">
+		<item>noobie</item>
+		<item>beginner</item>
+	<item>intermediate</item>
+		<item>expert</item>
+		<item>master</item>
+	</string-array>
 </resources>
