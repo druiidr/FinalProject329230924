@@ -10,6 +10,7 @@ using Android.Widget;
 using Android.Content;
 using SQLite;
 using Android.Views;
+
 namespace _329230924finalProject
 {
     [Activity(Label = "ActivityNotesFavourites")]
@@ -18,42 +19,60 @@ namespace _329230924finalProject
         public static List<Notes> notesList { get; set; }
         NotesAdapter notesAdapter;
         TextView contentTV;
+        List<string> levelLsS = new List<string> { "1", "2", "3", "4", "5" };
         ListView lv;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.NotesShowLayout);
             Helper.Initialize();
-            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.",1);
-            Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.",1);
-            Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.",2);
+            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.", 1);
+            Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 1);
+            Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.", 2);
+            Notes defaultNote4 = new Notes(4, "יונתן הקטן auc", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.",5);
 
-            notesList = new System.Collections.Generic.List<Notes>();
+            ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, levelLsS);
+            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
-            notesList.Add(defaultNote1);
-            notesList.Add(defaultNote2);
-            notesList.Add(defaultNote3);
+            Spinner spinner = FindViewById<Spinner>(Resource.Id.NotewShowLevelSelectionSP);
+            spinner.Adapter = adapter;
+            notesList = new List<Notes>();
+            spinner.ItemSelected += Spinner_ItemSelected;
+
+            var unused = Helper.dbCommand.Insert(defaultNote1);
+            Helper.dbCommand.Insert(defaultNote2);
+            Helper.dbCommand.Insert(defaultNote3);
+            Helper.dbCommand.Insert(defaultNote4);
+
+
 
             lv = FindViewById<ListView>(Resource.Id.NotesShowListviewlv);
             notesAdapter = new NotesAdapter(this, notesList);
             lv.OnItemClickListener = this;
             lv.Adapter = notesAdapter;
+        }
+
+        private void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner s = (Spinner)sender;
+            string message = String.Format("Your chosen level is {0}.", levelLsS[e.Position]);
             try
             {
                 Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                var alldata = Helper.dbCommand.Query<Notes>("");
-                alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes");
-                foreach (var items in alldata)
+                var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level={0}", e.Position);
+                notesList.Clear(); // Clear existing list
+                foreach (var item in alldata)
                 {
-                    notesList.Add(items);
+                    notesList.Add(item);
                 }
-                notesAdapter = new NotesAdapter(this, notesList);
-                lv.Adapter = notesAdapter;
+                notesAdapter.NotifyDataSetChanged(); // Notify the adapter of data changes
             }
-            catch
+            catch (Exception ex)
             {
-                Toast.MakeText(this, "couldnt load notes", ToastLength.Long).Show();
+                Toast.MakeText(this, "Could not load notes: " + ex.Message, ToastLength.Long).Show();
             }
+            Toast.MakeText(this, message, ToastLength.Short).Show();
         }
 
         private void LikeCB_Click(object sender, EventArgs e)
@@ -61,40 +80,28 @@ namespace _329230924finalProject
             throw new NotImplementedException();
         }
 
-
         public void OnItemClick(AdapterView parent, View view, int position, long id)
         {
-
-
-
+            // Implement item click handling if needed
         }
-
-
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
-
-        {//מייצר מניו
-
+        {
             MenuInflater.Inflate(Resource.Menu.menuchophone, menu);
             return true;
-
         }
+
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
-
         {
-
             if (item.ItemId == Resource.Id.action_login)
-
             {
-                //מעבר לדף כניסת משתמש
+                // Start login activity
                 Intent intent = new Intent(this, typeof(ActivityLogin));
                 StartActivity(intent);
             }
-
             else if (item.ItemId == Resource.Id.action_log_out)
-
             {
-                //התנתקות
+                // Log out logic
                 var editor = Helper.SharePrefrence1(this).Edit();
                 editor.PutString("password", null);
                 editor.PutString("UName", null);
@@ -108,19 +115,14 @@ namespace _329230924finalProject
                 StartActivity(intent);
                 return true;
             }
-            if (item.ItemId == Resource.Id.action_update)
-
+            else if (item.ItemId == Resource.Id.action_update)
             {
-                //מעבר לדף עדכון פרטים
+                // Start activity for updating details
                 Intent intent = new Intent(this, typeof(ActivityUpdate));
                 StartActivity(intent);
             }
 
             return base.OnOptionsItemSelected(item);
-        }
-        public void menumaker()
-        {
-
         }
     }
 }

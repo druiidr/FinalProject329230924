@@ -43,8 +43,7 @@ namespace _329230924finalProject
             var view = layoutInflater.Inflate(Resource.Layout.Listviewlayout, parent, false);
             TextView PiecenameTV = view.FindViewById<TextView>(Resource.Id.ListViewNameTV);
             TextView ViewNotesTV = view.FindViewById<TextView>(Resource.Id.ListviewNotesTV);
-            ImageView IsLikedIV = view.FindViewById<ImageView>(Resource.Id.ListviewlikedIV);
-            ImageView IsUnLikedIB = view.FindViewById<ImageButton>(Resource.Id.ListviewdislikedIB);
+            
 
             Notes temp = objects[position];
 
@@ -53,20 +52,7 @@ namespace _329230924finalProject
                 PiecenameTV.Text = temp.PieceName;
                 ViewNotesTV.Text = "view notes";
 
-                // Add click event for IsLikedIV
-                IsUnLikedIB.Click += delegate
-                {
-                    if (temp.IsLiked)
-                    {
-                        IsLikedIV.Visibility = Android.Views.ViewStates.Invisible;
-                        temp.DisLike();
-                    }
-                    else
-                    {
-                        IsLikedIV.Visibility = Android.Views.ViewStates.Visible;
-                        temp.Like();
-                    }
-                };
+                
             }
 
             return view;

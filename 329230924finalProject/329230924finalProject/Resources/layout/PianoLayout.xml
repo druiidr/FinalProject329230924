@@ -22,7 +22,7 @@
             android:layout_marginTop="-40dp"
             android:background="#33b5bc"
             android:id="@+id/PianoPlayedNotesTV"
-            android:text="G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,."
+            android:text="G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,."
             android:layout_marginLeft="90dp"/>
     </LinearLayout>
         <FrameLayout

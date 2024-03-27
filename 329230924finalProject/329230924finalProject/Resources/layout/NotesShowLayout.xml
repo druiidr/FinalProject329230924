@@ -10,7 +10,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="2dp"
         android:background="#ffff"
-        android:id="@+id/LevelSelectionSP"/>
+        android:id="@+id/NotewShowLevelSelectionSP"/>
         <ListView
               android:layout_width="match_parent"
               android:layout_height="match_parent"
