@@ -7,12 +7,16 @@
       <Spinner
              android:layout_width="195dp"
              android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
+        
         android:layout_marginLeft="2dp"
-        android:background="#ffff"
+        android:background="#17e1e9"
         android:id="@+id/NotewShowLevelSelectionSP"/>
         <ListView
-              android:layout_width="match_parent"
+          android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+              android:layout_width="300dp"
               android:layout_height="match_parent"
 android:id="@+id/NotesShowListviewlv"/>
 

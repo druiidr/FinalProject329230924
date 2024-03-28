@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace _329230924finalProject
 {
-   public class Notes
+    public class Notes
     {
         [PrimaryKey, Column("NoteCode")]
         public int NoteCode { get; set; }
@@ -26,44 +26,12 @@ namespace _329230924finalProject
         {
 
         }
-        public Notes(int NoteCode, string piecename,string NoteContent,int level)
+        public Notes(int NoteCode, string piecename, string NoteContent, int level)
         {
             this.NoteCode = NoteCode;
             this.NoteContent = NoteContent;
             this.PieceName = piecename;
             this.Level = level;
-        }
-        public int GetNoteCode()
-        {
-            return this.NoteCode;
-        }
-        public string GetNoteContent()
-        {
-            return this.NoteContent;
-        }
-        public string GetPieceName()
-        {
-            return this.PieceName;
-        }
-        public int GetLevel()
-        {
-            return this.Level;
-        }
-        public void Setcode(int x)
-        {
-            this.NoteCode = x;
-        }
-        public void SetContent(string x)
-        {
-            this.NoteContent = x;
-        }
-        public void SetName(string x)
-        {
-            this.PieceName = x;
-        }
-        public void SetIsLiked(int x)
-        {
-            this.Level = x;
         }
     }
 }

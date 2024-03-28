@@ -19,9 +19,9 @@ namespace _329230924finalProject
         public static List<Notes> notesList { get; set; }
         NotesAdapter notesAdapter;
         TextView contentTV;
-        List<string> levelLsS = new List<string> { "1", "2", "3", "4", "5" };
+        List<string> levelLsS = new List<string> { "select level", "1", "2", "3", "4", "5" };
         ListView lv;
-
+      
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -31,7 +31,7 @@ namespace _329230924finalProject
             Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 1);
             Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.", 2);
             Notes defaultNote4 = new Notes(4, "יונתן הקטן auc", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.",5);
-
+            Helper.Initialize();
             ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, levelLsS);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
@@ -40,39 +40,49 @@ namespace _329230924finalProject
             notesList = new List<Notes>();
             spinner.ItemSelected += Spinner_ItemSelected;
 
-            var unused = Helper.dbCommand.Insert(defaultNote1);
-            Helper.dbCommand.Insert(defaultNote2);
-            Helper.dbCommand.Insert(defaultNote3);
-            Helper.dbCommand.Insert(defaultNote4);
+            //try
+            //{
+            //    Helper.dbCommand.Insert(defaultNote1);
+            //    Helper.dbCommand.Insert(defaultNote2);
+            //    Helper.dbCommand.Insert(defaultNote3);
+            //    Helper.dbCommand.Insert(defaultNote4);
+            //}
+            //catch(Exception ex)
+            //{
+
+            //}
 
 
 
+
+         
             lv = FindViewById<ListView>(Resource.Id.NotesShowListviewlv);
-            notesAdapter = new NotesAdapter(this, notesList);
-            lv.OnItemClickListener = this;
-            lv.Adapter = notesAdapter;
+          
         }
 
         private void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
+            notesList.Clear(); // Clear existing list
             Spinner s = (Spinner)sender;
-            string message = String.Format("Your chosen level is {0}.", levelLsS[e.Position]);
-            try
+            if (e.Position > 1)
             {
-                Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level={0}", e.Position);
-                notesList.Clear(); // Clear existing list
-                foreach (var item in alldata)
+                string message = String.Format("Your chosen level is {0}.", levelLsS[e.Position]);
+                try
                 {
-                    notesList.Add(item);
+                    Helper.dbCommand = new SQLiteConnection(Helper.Path());
+                    var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level={0}", e.Position);
+                    notesAdapter = new NotesAdapter(this, alldata);
+                    lv.OnItemClickListener = this;
+                    lv.Adapter = notesAdapter;
+                  s
+                    notesAdapter.NotifyDataSetChanged(); // Notify the adapter of data changes
                 }
-                notesAdapter.NotifyDataSetChanged(); // Notify the adapter of data changes
+                catch (Exception ex)
+                {
+                    Toast.MakeText(this, "Could not load notes: " + ex.Message, ToastLength.Long).Show();
+                }
+                Toast.MakeText(this, message, ToastLength.Short).Show();
             }
-            catch (Exception ex)
-            {
-                Toast.MakeText(this, "Could not load notes: " + ex.Message, ToastLength.Long).Show();
-            }
-            Toast.MakeText(this, message, ToastLength.Short).Show();
         }
 
         private void LikeCB_Click(object sender, EventArgs e)

@@ -49,7 +49,7 @@ namespace _329230924finalProject
 
                 dbCommand = new SQLiteConnection(Path());
 
-            dbCommand = new SQLiteConnection(Path());
+           // dbCommand = new SQLiteConnection(Path());
             try
             {
                 dbCommand.CreateTable<Customer>();
