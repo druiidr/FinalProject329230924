@@ -40,59 +40,84 @@ namespace _329230924finalProject
             notesList = new List<Notes>();
             spinner.ItemSelected += Spinner_ItemSelected;
 
-            //try
-            //{
-            //    Helper.dbCommand.Insert(defaultNote1);
-            //    Helper.dbCommand.Insert(defaultNote2);
-            //    Helper.dbCommand.Insert(defaultNote3);
-            //    Helper.dbCommand.Insert(defaultNote4);
-            //}
-            //catch(Exception ex)
-            //{
+            try
+            {
+                var Note = Helper.dbCommand.Get<Notes>(1);
+              
+            }
+            catch (Exception ex)
+            {
+                Helper.dbCommand.Insert(defaultNote1);
+                Helper.dbCommand.Insert(defaultNote2);
+                Helper.dbCommand.Insert(defaultNote3);
+                Helper.dbCommand.Insert(defaultNote4);
+            }
 
-            //}
 
 
 
 
-         
             lv = FindViewById<ListView>(Resource.Id.NotesShowListviewlv);
-          
+            lv.OnItemClickListener = this;
         }
 
         private void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
-            notesList.Clear(); // Clear existing list
             Spinner s = (Spinner)sender;
-            if (e.Position > 1)
+            if (e.Position > 0) // Make sure a valid level is selected (excluding "select level" option)
             {
-                string message = String.Format("Your chosen level is {0}.", levelLsS[e.Position]);
                 try
                 {
+                    // Query the SQLite database to fetch notes based on the selected level
                     Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                    var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level={0}", e.Position);
+                    var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level=?", e.Position.ToString());
+
+                    // Create a new adapter with the fetched notes data
                     notesAdapter = new NotesAdapter(this, alldata);
-                    lv.OnItemClickListener = this;
+
+                    // Set the adapter to the ListView
                     lv.Adapter = notesAdapter;
-                  s
-                    notesAdapter.NotifyDataSetChanged(); // Notify the adapter of data changes
                 }
                 catch (Exception ex)
                 {
                     Toast.MakeText(this, "Could not load notes: " + ex.Message, ToastLength.Long).Show();
                 }
-                Toast.MakeText(this, message, ToastLength.Short).Show();
             }
         }
 
-        private void LikeCB_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void OnItemClick(AdapterView parent, View view, int position, long id)
         {
-            // Implement item click handling if needed
+            // Get the NoteCode of the clicked item from the ListView position
+            int noteCode = position + 1; // Assuming NoteCode starts from 1 and increments by 1
+
+            // Query the database for the note based on its NoteCode
+            var thisNote = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE NoteCode=?", noteCode);
+
+            // Check if the query returned any notes
+            if (thisNote != null && thisNote.Count > 0)
+            {
+                // Retrieve the first note from the query result
+                Notes selectedNote = thisNote[0];
+
+                // Access the NoteContent property of the selected note
+                string noteContent = selectedNote.NoteContent;
+
+                // Store the NoteContent in SharedPreferences
+                var composition = Helper.SharePrefrence1(this).Edit();
+                composition.PutString("NoteContent", noteContent);
+                composition.Commit();
+
+                // Start the ActivityPiano activity
+                Intent intent = new Intent(this, typeof(ActivityPiano));
+                StartActivity(intent);
+            }
+            else
+            {
+                // Handle the case where the note with the specified NoteCode was not found
+                Toast.MakeText(this, "Note not found", ToastLength.Short).Show();
+            }
         }
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)

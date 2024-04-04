@@ -43,6 +43,8 @@ namespace _329230924finalProject
             A2BTN = (FindViewById<Button>(Resource.Id.PianoA2BTN));
             B2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
             playedNotesTV = FindViewById<TextView>(Resource.Id.PianoPlayedNotesTV);
+            SetComposition();
+            
             C1BTN.SetOnClickListener(this);
             D1BTN.SetOnClickListener(this);
            E1BTN.SetOnClickListener(this);
@@ -59,7 +61,15 @@ namespace _329230924finalProject
             B2BTN.SetOnClickListener(this);
             playpauseBTN.Click += PlaypauseBTN_Click;
         }
+        public void SetComposition()
+        {//מוצא את השם משתמש במידה ונשמר
+            try
+            {
+                playedNotesTV.Text = Helper.SharePrefrence1(this).GetString("NoteContent", null);
+            }
+            catch { }
 
+        }
         private void PlaypauseBTN_Click(object sender, EventArgs e)
         {
 
