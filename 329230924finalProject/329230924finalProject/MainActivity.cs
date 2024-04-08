@@ -71,7 +71,20 @@ namespace _329230924finalProject
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
 
         {
+            if (item.ItemId == Resource.Id.action_back_home)
 
+            {
+                //מעבר לדף כניסת משתמש
+                Intent intent = new Intent(this, typeof(ActivityHome));
+                StartActivity(intent);
+            }
+            if (item.ItemId == Resource.Id.action_back_home)
+
+            {
+                //מעבר לדף כניסת משתמש
+                Intent intent = new Intent(this, typeof(ActivityHome));
+                StartActivity(intent);
+            }
             if (item.ItemId == Resource.Id.action_login)
 
             {

@@ -21,6 +21,9 @@ namespace _329230924finalProject
        Button C1BTN, Csh1BTN, C2BTN, Csh2BTN, D1BTN, Dsh1BTN, D2BTN, Dsh2BTN, E1BTN, E2BTN, F1BTN, Fsh1BTN, F2BTN, Fsh2BTN, G1BTN, Gsh1BTN, G2BTN, Gsh2BTN, A1BTN, Ash1BTN, A2BTN, Ash2BTN, B1BTN, B2BTN;
         TextView playedNotesTV;
         Button playpauseBTN;
+        string composition;
+        string xxx = "";
+        int mistakes = 0;
         MediaPlayer playingSoundMP=new MediaPlayer();
         bool isPlayinging = false;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -62,18 +65,25 @@ namespace _329230924finalProject
             playpauseBTN.Click += PlaypauseBTN_Click;
         }
         public void SetComposition()
-        {//מוצא את השם משתמש במידה ונשמר
+        {
             try
             {
-                playedNotesTV.Text = Helper.SharePrefrence1(this).GetString("NoteContent", null);
+                if (Helper.SharePrefrence1(this).GetString("NoteContent", null) != null)
+                {
+                    playedNotesTV.Text = Helper.SharePrefrence1(this).GetString("NoteContent", null);
+                    isPlayinging = true;
+                    composition = playedNotesTV.Text;
+                }
             }
             catch { }
 
         }
         private void PlaypauseBTN_Click(object sender, EventArgs e)
         {
-
-            PlayMelody(playedNotesTV.Text);
+            if(isPlayinging)
+                PlayMelody(playedNotesTV.Text);
+            else
+                Toast.MakeText(this, "autoplay only available in lessons!", ToastLength.Long).Show();
 
         }
         async void PlayMelody(string str)
@@ -161,12 +171,30 @@ namespace _329230924finalProject
             Button button = (Button)v;
             
             string buttonText = button.Text;
-            //if (!button.Text.Contains("#"))
-               
-
             PlayNotes(buttonText);
+            mistakes += GradeLesson(buttonText);
+            if (mistakes > 3)
+                Boot();
         }
+        public int GradeLesson(string key)
+        {
+            char note = composition.First();
+            composition =composition.Substring(2);
+            if (composition.First()=='.')
+                
+            if (key.Contains(note))
+                return 0;                
+            Toast.MakeText(this, xxx+"X", ToastLength.Long).Show();
+            return 1;
 
+
+        }
+        public void Boot()
+        {
+            Toast.MakeText(this, "you failed this exercize!!!", ToastLength.Long).Show();
+            Intent intent = new Intent(this, typeof(ActivityNotesShow));
+            StartActivity(intent);
+        }
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
 
         {//מייצר מניו
@@ -178,6 +206,13 @@ namespace _329230924finalProject
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
 
         {
+            if (item.ItemId == Resource.Id.action_back_home)
+
+            {
+                //מעבר לדף כניסת משתמש
+                Intent intent = new Intent(this, typeof(ActivityHome));
+                StartActivity(intent);
+            }
 
             if (item.ItemId == Resource.Id.action_login)
 
