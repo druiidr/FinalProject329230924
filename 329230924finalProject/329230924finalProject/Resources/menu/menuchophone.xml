@@ -24,7 +24,7 @@
 
        />
 	<item
-	android:id="@+id/action_back_home"
+	android:id="@+id/action_profile"
 	android:title="homepage"
 	android:orderInCategory="200"
 	android:showAsAction="never"

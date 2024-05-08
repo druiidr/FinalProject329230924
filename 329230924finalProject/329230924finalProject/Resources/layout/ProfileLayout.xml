@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/choback"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@drawable/generic"
+        android:layout_marginTop="20dp"
+         android:id="@+id/ProfilePFPIV"/>
+    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:text="first name"
+            android:textSize="25dp"
+            android:textColor="#00aaaa"
+             android:id="@+id/ProfileFnameTV"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:text="last name"
+            android:textSize="25dp"
+            android:textColor="#aa00aa"
+             android:id="@+id/ProfileLnameTV"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:text="user name"
+            android:textSize="25dp"
+            android:textColor="#aaaa00"
+             android:id="@+id/ProfileUnameTV"/>
+        </LinearLayout>
+    <TextView
+            android:layout_width="230dp"
+            android:layout_height="70dp"
+            android:text="october 35 2023"
+        android:layout_gravity="center"
+            android:textSize="27dp"
+            android:textColor="#00a5a5"
+        android:background="#565757"
+         android:id="@+id/ProfileBirthdayTV"/>
+        <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="lessons:999"
+            android:textSize="25dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#00aaaa"
+             android:id="@+id/ProfileLessonTV"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:text="win rate:100%"
+            android:textSize="25dp"
+            android:textColor="#aa00aa"
+             android:id="@+id/ProfileWinRateTV"/>
+        </LinearLayout>
+     <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <Button
+             android:layout_marginLeft="20dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#008980"
+            android:text="log out"
+             android:id="@+id/ProfileLogoutBTN"/>
+          <Button
+             android:layout_marginLeft="20dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#008980"
+            android:text="practice"
+             android:id="@+id/ProfilePracticeBTN"/>
+          <Button
+            android:layout_marginLeft="20dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#008980"
+            android:text="update"
+            android:id="@+id/ProfileUpdateBTN"/>
+</LinearLayout>
+</LinearLayout>

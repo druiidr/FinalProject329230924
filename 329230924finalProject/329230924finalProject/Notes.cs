@@ -22,6 +22,7 @@ namespace _329230924finalProject
         public string NoteContent { get; set; }
         [Column("Level")]
         public int Level { get; set; }
+      
         public Notes()
         {
 

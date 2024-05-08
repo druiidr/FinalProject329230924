@@ -87,10 +87,10 @@ namespace _329230924finalProject
                 Intent intent = new Intent(this, typeof(ActivityLogin));
                 StartActivity(intent);
             }
-            if (item.ItemId == Resource.Id.action_back_home)
+            if (item.ItemId == Resource.Id.action_profile)
 
             {
-                //מעבר לדף כניסת משתמש
+                //מעבר לדף פרופיל
                 Intent intent = new Intent(this, typeof(ActivityHome));
                 StartActivity(intent);
             }

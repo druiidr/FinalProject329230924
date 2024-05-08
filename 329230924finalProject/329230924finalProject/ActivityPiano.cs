@@ -178,20 +178,34 @@ namespace _329230924finalProject
         }
         public int GradeLesson(string key)
         {
-            char note = composition.First();
-            composition =composition.Substring(2);
-            if (composition.First()=='.')
-                
-            if (key.Contains(note))
-                return 0;                
-            Toast.MakeText(this, xxx+"X", ToastLength.Long).Show();
-            return 1;
+            if (playedNotesTV.Text != null)
+            {
+                char note = composition.First();
+                composition = composition.Substring(2);
+                playedNotesTV.Text = composition;
+                if (composition.First() == '.')
+                { 
+                    Toast.MakeText(this, xxx + "good job", ToastLength.Long).Show();
+                Intent intent = new Intent(this, typeof(ActivityNotesShow));
+                StartActivity(intent);
+            }
+                if (key.Contains(note))
+                    return 0;
+                else
+                {
+                    xxx += "X";
+                    Toast.MakeText(this, xxx, ToastLength.Short).Show();
+                    return 1;
+                }
+            }
+            return 0;
+            
 
 
         }
         public void Boot()
         {
-            Toast.MakeText(this, "you failed this exercize!!!", ToastLength.Long).Show();
+            Toast.MakeText(this, "you failed this exercise!!!", ToastLength.Long).Show();
             Intent intent = new Intent(this, typeof(ActivityNotesShow));
             StartActivity(intent);
         }
