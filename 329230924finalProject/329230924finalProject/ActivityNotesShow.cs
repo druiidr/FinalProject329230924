@@ -111,6 +111,7 @@ namespace _329230924finalProject
 
                 // Start the ActivityPiano activity
                 Intent intent = new Intent(this, typeof(ActivityPiano));
+                
                 StartActivity(intent);
             }
             else
@@ -142,9 +143,11 @@ namespace _329230924finalProject
                 editor.PutString("UName", null);
                 editor.PutString("FName", null);
                 editor.PutString("LName", null);
-                editor.PutString("Date", null);
+                editor.PutString("DOB", null);
                 editor.PutString("email", null);
                 editor.PutInt("phone", 0);
+                editor.PutInt("winRate", 0);
+                editor.PutInt("lessonsCompleted", 0);
                 editor.Commit();
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);

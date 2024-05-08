@@ -73,7 +73,7 @@ namespace _329230924finalProject
                         editor.PutString("UName", UnameET.Text);
                         editor.PutString("FName", allData[0].Fname);
                         editor.PutString("LName", allData[0].Lname);
-                        editor.PutString("Date", allData[0].DOB);
+                        editor.PutString("DOB", allData[0].DOB);
                         editor.PutString("email", allData[0].email);
                         editor.PutInt("phone", allData[0].phone);
                         editor.Commit();
@@ -85,7 +85,7 @@ namespace _329230924finalProject
                         editor.PutString("UName", null);
                         editor.PutString("FName", null);
                         editor.PutString("LName", null);
-                        editor.PutString("Date", null);
+                        editor.PutString("DOB", null);
                         editor.PutString("email", null);
                         editor.PutInt("phone", 0);
                         editor.Commit();

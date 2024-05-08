@@ -30,6 +30,10 @@ namespace _329230924finalProject
         public string password { get; set; }
         [Column("photo")]
         public string photo { get; set; }
+        [Column("winRate")]
+        public int winRate { get; set; }
+        [Column("lessonsCompleted")]
+        public int lessonsCompleted { get; set; }
         public Customer()
         {
 
@@ -44,6 +48,8 @@ namespace _329230924finalProject
             this.DOB = Date;
             this.password = password;
             this.photo = photo;
+            this.lessonsCompleted = 0;
+            this.winRate = 0;
 
         }
         public string GetUname()
@@ -78,6 +84,7 @@ namespace _329230924finalProject
         {
             return this.photo;
         }
+
         public void SetUname(string x)
         {
             this.Uname=x;

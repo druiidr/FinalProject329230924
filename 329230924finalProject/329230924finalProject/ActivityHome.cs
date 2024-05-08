@@ -91,7 +91,7 @@ namespace _329230924finalProject
 
             {
                 //מעבר לדף פרופיל
-                Intent intent = new Intent(this, typeof(ActivityHome));
+                Intent intent = new Intent(this, typeof(ActivityProfile));
                 StartActivity(intent);
             }
 
@@ -104,9 +104,11 @@ namespace _329230924finalProject
                 editor.PutString("UName", null);
                 editor.PutString("FName", null);
                 editor.PutString("LName", null);
-                editor.PutString("Date", null);
+                editor.PutString("DOB", null);
                 editor.PutString("email", null);
                 editor.PutInt("phone", 0);
+                editor.PutInt("winRate", 0);
+                editor.PutInt("lessonsCompleted", 0);
                 editor.Commit();
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);

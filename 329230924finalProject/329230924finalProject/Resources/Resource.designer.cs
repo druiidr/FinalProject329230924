@@ -3749,16 +3749,16 @@ namespace _329230924finalProject
 			public const int ProfileBirthdayTV = 2131296306;
 			
 			// aapt resource value: 0x7F090033
-			public const int ProfileFnameTV = 2131296307;
+			public const int ProfileDeleteBTN = 2131296307;
 			
 			// aapt resource value: 0x7F090034
-			public const int ProfileLessonTV = 2131296308;
+			public const int ProfileFnameTV = 2131296308;
 			
 			// aapt resource value: 0x7F090035
-			public const int ProfileLnameTV = 2131296309;
+			public const int ProfileLessonTV = 2131296309;
 			
 			// aapt resource value: 0x7F090036
-			public const int ProfileLogoutBTN = 2131296310;
+			public const int ProfileLnameTV = 2131296310;
 			
 			// aapt resource value: 0x7F090037
 			public const int ProfilePFPIV = 2131296311;

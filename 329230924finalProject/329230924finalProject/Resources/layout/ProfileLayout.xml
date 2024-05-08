@@ -78,9 +78,10 @@
              android:layout_marginLeft="20dp"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#008980"
-            android:text="log out"
-             android:id="@+id/ProfileLogoutBTN"/>
+            android:background="#750000"
+            android:text="Delete account"
+            android:textColor="#ffffff"
+             android:id="@+id/ProfileDeleteBTN"/>
           <Button
              android:layout_marginLeft="20dp"
             android:layout_width="100dp"
