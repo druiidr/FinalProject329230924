@@ -57,17 +57,9 @@
             android:layout_height="match_parent"
             android:text="lessons:999"
             android:textSize="25dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="#00aaaa"
+            android:layout_marginLeft="100dp"
+            android:textColor="#00aa00"
              android:id="@+id/ProfileLessonTV"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:text="win rate:100%"
-            android:textSize="25dp"
-            android:textColor="#aa00aa"
-             android:id="@+id/ProfileWinRateTV"/>
         </LinearLayout>
      <LinearLayout
                     android:layout_width="match_parent"

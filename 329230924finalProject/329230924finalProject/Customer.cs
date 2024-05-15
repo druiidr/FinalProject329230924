@@ -30,8 +30,6 @@ namespace _329230924finalProject
         public string password { get; set; }
         [Column("photo")]
         public string photo { get; set; }
-        [Column("winRate")]
-        public int winRate { get; set; }
         [Column("lessonsCompleted")]
         public int lessonsCompleted { get; set; }
         public Customer()
@@ -49,74 +47,6 @@ namespace _329230924finalProject
             this.password = password;
             this.photo = photo;
             this.lessonsCompleted = 0;
-            this.winRate = 0;
 
-        }
-        public string GetUname()
-        {
-            return this.Uname;
-        }
-        public string GetFname()
-        {
-            return this.Fname;
-        }
-        public string GetLname()
-        {
-            return this.Lname;
-        }
-        public string GetEmail()
-        {
-            return this.email;
-        }
-        public int GetPhone()
-        {
-            return this.phone;
-        }
-        public string GetDate()
-        {
-            return this.DOB;
-        }
-        public string GetPass()
-        {
-            return this.password;
-        }
-        public string GetPhoto()
-        {
-            return this.photo;
-        }
-
-        public void SetUname(string x)
-        {
-            this.Uname=x;
-        }
-        public void SetFname(string x)
-        {
-            this.Fname = x;
-        }
-        public void SetLname(string x)
-        {
-            this.Lname = x;
-        }
-        public void SetEmail(string x)
-        {
-            this.email = x;
-        }
-        public void SetDate(string x)
-        {
-            this.DOB = x;
-        }
-        public void SetPhone(int x)
-        {
-            this.phone = x;
-        }
-        public void SetPass(string x)
-        {
-            this.password = x;
-        }
-        public void SetPhoto(string x)
-        {
-            this.photo = x;
-        }
-
-    }
+}
 }

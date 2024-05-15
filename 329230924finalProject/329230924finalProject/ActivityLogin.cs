@@ -63,36 +63,42 @@ namespace _329230924finalProject
             Helper.dbCommand = new SQLiteConnection(Helper.Path());
             try
             {
-                var allData = Helper.dbCommand.Query<Customer>("SELECT*FROM Customer WHERE password='" + passET.Text + "'AND UName='" + UnameET.Text + "'");
+                var allData = Helper.dbCommand.Query<Customer>("SELECT*FROM Customer WHERE UName='" + UnameET.Text + "'");
                 if (allData.Count != 0)
                 {
-                    if (memberberriesCB.Checked)
+                    if (passET.Text == allData[0].password)
                     {
-                        var editor = Helper.SharePrefrence1(this).Edit();
-                        editor.PutString("password", passET.Text);
-                        editor.PutString("UName", UnameET.Text);
-                        editor.PutString("FName", allData[0].Fname);
-                        editor.PutString("LName", allData[0].Lname);
-                        editor.PutString("DOB", allData[0].DOB);
-                        editor.PutString("email", allData[0].email);
-                        editor.PutInt("phone", allData[0].phone);
-                        editor.Commit();
+                        if (memberberriesCB.Checked)
+                        {
+                            var editor = Helper.SharePrefrence1(this).Edit();
+                            editor.PutString("password", passET.Text);
+                            editor.PutString("UName", UnameET.Text);
+                            editor.PutString("FName", allData[0].Fname);
+                            editor.PutString("LName", allData[0].Lname);
+                            editor.PutString("DOB", allData[0].DOB);
+                            editor.PutString("email", allData[0].email);
+                            editor.PutInt("phone", allData[0].phone);
+                            editor.Commit();
+                        }
+                        else
+                        {
+                            var editor = Helper.SharePrefrence1(this).Edit();
+                            editor.PutString("password", null);
+                            editor.PutString("UName", null);
+                            editor.PutString("FName", null);
+                            editor.PutString("LName", null);
+                            editor.PutString("DOB", null);
+                            editor.PutString("email", null);
+                            editor.PutInt("phone", 0);
+                            editor.Commit();
+                        }
+
+
+                        Intent intent = new Intent(this, typeof(ActivityHome));
+                        StartActivity(intent);
                     }
                     else
-                    {
-                        var editor = Helper.SharePrefrence1(this).Edit();
-                        editor.PutString("password", null);
-                        editor.PutString("UName", null);
-                        editor.PutString("FName", null);
-                        editor.PutString("LName", null);
-                        editor.PutString("DOB", null);
-                        editor.PutString("email", null);
-                        editor.PutInt("phone", 0);
-                        editor.Commit();
-                    }
-
-                    Intent intent = new Intent(this, typeof(ActivityHome));
-                    StartActivity(intent);
+                        Toast.MakeText(this, "wrong password", ToastLength.Long).Show();
                 }
                 else
                     Toast.MakeText(this, "user not found", ToastLength.Long).Show();

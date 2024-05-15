@@ -32,7 +32,6 @@ namespace _329230924finalProject
             lnameTV = FindViewById<TextView>(Resource.Id.ProfileLnameTV);
             fnameTV = FindViewById<TextView>(Resource.Id.ProfileFnameTV);
             bdayTV = FindViewById<TextView>(Resource.Id.ProfileBirthdayTV);
-            winRateTV = FindViewById<TextView>(Resource.Id.ProfileWinRateTV);
             lessoncountTV = FindViewById<TextView>(Resource.Id.ProfileLessonTV);
             DeleteBTN = FindViewById<Button>(Resource.Id.ProfileDeleteBTN);
             UpdateBTN = FindViewById<Button>(Resource.Id.ProfileUpdateBTN);
@@ -41,9 +40,8 @@ namespace _329230924finalProject
             lnameTV.Text = Helper.SharePrefrence1(this).GetString("LName", null);
             unameTV.Text = Helper.SharePrefrence1(this).GetString("UName", null);
             bdayTV.Text = Helper.SharePrefrence1(this).GetString("DOB", null);
-            winRateTV.Text = ("win rate"+ Helper.SharePrefrence1(this).GetInt("winRate",0)+"%");
             //pfpIV = Helper.Base64ToBitmap(Helper.SharePrefrence1(this).GetString("photo", null));
-            lessoncountTV.Text= ("lessons:" + Helper.SharePrefrence1(this).GetInt("winRate", 0));
+            lessoncountTV.Text= ("lessons:" + Helper.SharePrefrence1(this).GetInt("lessonsCompleted", 0));
             DeleteBTN.Click += DeleteBTN_Click;
             UpdateBTN.Click += UpdateBTN_Click;
             PracticeBTN.Click += PracticeBTN_Click;

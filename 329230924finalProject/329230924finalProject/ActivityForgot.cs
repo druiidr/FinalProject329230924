@@ -46,7 +46,7 @@ namespace _329230924finalProject
                         Toast.MakeText(this, "new password cant be the old password", ToastLength.Short).Show();
                     else
                     {
-                        allData[0].SetPass(PassET.Text);
+                        allData[0].password=(PassET.Text);
                         Intent intent = new Intent(this, typeof(ActivityLogin));
                         Toast.MakeText(this, "password updated", ToastLength.Short).Show();
                         StartActivity(intent);

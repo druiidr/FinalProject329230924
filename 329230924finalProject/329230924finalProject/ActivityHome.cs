@@ -91,8 +91,12 @@ namespace _329230924finalProject
 
             {
                 //מעבר לדף פרופיל
-                Intent intent = new Intent(this, typeof(ActivityProfile));
-                StartActivity(intent);
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
             }
 
             else if (item.ItemId == Resource.Id.action_log_out)

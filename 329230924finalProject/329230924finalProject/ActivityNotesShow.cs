@@ -31,6 +31,7 @@ namespace _329230924finalProject
             Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 1);
             Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.", 2);
             Notes defaultNote4 = new Notes(4, "יונתן הקטן auc", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.",5);
+            Notes defaultNote5 = new Notes(5, "test", "A,B,C,D.",3);
             Helper.Initialize();
             ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, levelLsS);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
@@ -51,6 +52,7 @@ namespace _329230924finalProject
                 Helper.dbCommand.Insert(defaultNote2);
                 Helper.dbCommand.Insert(defaultNote3);
                 Helper.dbCommand.Insert(defaultNote4);
+                Helper.dbCommand.Insert(defaultNote5);
             }
 
 
@@ -159,7 +161,17 @@ namespace _329230924finalProject
                 Intent intent = new Intent(this, typeof(ActivityUpdate));
                 StartActivity(intent);
             }
+            if (item.ItemId == Resource.Id.action_profile)
 
+            {
+                //מעבר לדף פרופיל
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
+            }
             return base.OnOptionsItemSelected(item);
         }
     }

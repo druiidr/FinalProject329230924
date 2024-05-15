@@ -11,6 +11,7 @@ using Android.Widget;
 using Android.Content;
 using Android.Views;
 using System.Threading.Tasks;
+using SQLite;
 
 namespace _329230924finalProject
 {
@@ -22,6 +23,7 @@ namespace _329230924finalProject
         TextView playedNotesTV;
         Button playpauseBTN;
         string composition;
+        SQLiteConnection dbcommand = new SQLiteConnection(Helper.Path());
         string xxx = "";
         int mistakes = 0;
         MediaPlayer playingSoundMP=new MediaPlayer();
@@ -184,8 +186,9 @@ namespace _329230924finalProject
                 composition = composition.Substring(2);
                 playedNotesTV.Text = composition;
                 if (composition.First() == '.')
-                { 
-                    Toast.MakeText(this, xxx + "good job", ToastLength.Long).Show();
+                {
+                    SetLessonResult();
+                    Toast.MakeText(this, "good job", ToastLength.Long).Show();
                 Intent intent = new Intent(this, typeof(ActivityNotesShow));
                 StartActivity(intent);
             }
@@ -205,10 +208,30 @@ namespace _329230924finalProject
         }
         public void Boot()
         {
+          
             Toast.MakeText(this, "you failed this exercise!!!", ToastLength.Long).Show();
             Intent intent = new Intent(this, typeof(ActivityNotesShow));
             StartActivity(intent);
         }
+
+        public void SetLessonResult()
+        {
+            try
+            {
+                var editor = Helper.SharePrefrence1(this).Edit();
+                editor.PutInt("lessonsCompleted", Helper.SharePrefrence1(this).GetInt("lessonsCompleted", 0) + 1);
+                editor.Commit();
+            }
+            catch
+            {
+                Toast.MakeText(this, "sql issue", ToastLength.Short).Show();
+            }
+        }
+
+
+
+
+
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
 
         {//מייצר מניו
@@ -220,14 +243,21 @@ namespace _329230924finalProject
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
 
         {
-            if (item.ItemId == Resource.Id.action_profile)
+           
 
-            {
-                //מעבר לדף פרופיל
 
-                Intent intent = new Intent(this, typeof(ActivityProfile));
-                StartActivity(intent);
-            }
+
+
+
+
+
+
+
+
+
+
+
+
 
             if (item.ItemId == Resource.Id.action_login)
 
@@ -260,8 +290,12 @@ namespace _329230924finalProject
 
             {
                 //מעבר לדף עדכון פרטים
-                Intent intent = new Intent(this, typeof(ActivityUpdate));
-                StartActivity(intent);
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
             }
 
             return base.OnOptionsItemSelected(item);
