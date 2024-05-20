@@ -49,17 +49,20 @@
          android:id="@+id/ProfileBirthdayTV"/>
         <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
         android:layout_marginTop="30dp"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="lessons:999"
-            android:textSize="25dp"
-            android:layout_marginLeft="100dp"
-            android:textColor="#00aa00"
-             android:id="@+id/ProfileLessonTV"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:id="@+id/ProfileLessonSV">
+            
+              <ListView
+          android:layout_gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+android:id="@+id/ProfileListviewlv"/>
+        </ScrollView>
         </LinearLayout>
      <LinearLayout
                     android:layout_width="match_parent"
@@ -78,8 +81,8 @@
              android:layout_marginLeft="20dp"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#008980"
-            android:text="practice"
+            android:background="#22ff22"
+            android:text="Become Pro member"
              android:id="@+id/ProfilePracticeBTN"/>
           <Button
             android:layout_marginLeft="20dp"

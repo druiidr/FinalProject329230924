@@ -70,8 +70,8 @@
     <Compile Include="ActivityRegister.cs" />
     <Compile Include="ActivityUpdate.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Excercise.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="KeyboardKey.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Notes.cs" />
     <Compile Include="NotesAdapter.cs" />
@@ -177,11 +177,6 @@
     <AndroidResource Include="Resources\drawable\hearted.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\DialogLayout.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\NoteBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +217,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ProfileLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\RecordListviewLayout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

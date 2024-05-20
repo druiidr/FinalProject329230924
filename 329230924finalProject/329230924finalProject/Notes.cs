@@ -20,6 +20,10 @@ namespace _329230924finalProject
         public string PieceName { get; set; }
         [Column("NoteContent")]
         public string NoteContent { get; set; }
+        [Column("Genre")]
+        public string Genre { get; set; }
+        [Column("IsPro")]
+        public bool IsPro  { get; set; }
         [Column("Level")]
         public int Level { get; set; }
       
@@ -27,12 +31,14 @@ namespace _329230924finalProject
         {
 
         }
-        public Notes(int NoteCode, string piecename, string NoteContent, int level)
+        public Notes(int NoteCode, string piecename, string NoteContent, int level, string genre,bool IsPro)
         {
             this.NoteCode = NoteCode;
             this.NoteContent = NoteContent;
             this.PieceName = piecename;
             this.Level = level;
+            this.Genre = genre;
+            this.IsPro = IsPro;
         }
     }
 }

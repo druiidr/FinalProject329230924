@@ -54,6 +54,7 @@ namespace _329230924finalProject
             {
                 dbCommand.CreateTable<Customer>();
                 dbCommand.CreateTable<Notes>();
+                dbCommand.CreateTable<Excercise>();
             }
             catch (Exception ex)
             {

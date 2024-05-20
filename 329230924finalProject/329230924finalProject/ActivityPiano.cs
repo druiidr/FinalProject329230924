@@ -44,6 +44,7 @@ namespace _329230924finalProject
             D2BTN = (FindViewById<Button>(Resource.Id.PianoD2BTN));
            E2BTN = (FindViewById<Button>(Resource.Id.PianoE2BTN));
             F2BTN = (FindViewById<Button>(Resource.Id.PianoF2BTN));
+            Helper.Initialize();
            G2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
             A2BTN = (FindViewById<Button>(Resource.Id.PianoA2BTN));
             B2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
@@ -180,7 +181,7 @@ namespace _329230924finalProject
         }
         public int GradeLesson(string key)
         {
-            if (playedNotesTV.Text != null)
+            if (playedNotesTV.Text != "free play mode")
             {
                 char note = composition.First();
                 composition = composition.Substring(2);
@@ -218,13 +219,40 @@ namespace _329230924finalProject
         {
             try
             {
-                var editor = Helper.SharePrefrence1(this).Edit();
-                editor.PutInt("lessonsCompleted", Helper.SharePrefrence1(this).GetInt("lessonsCompleted", 0) + 1);
-                editor.Commit();
+                string uName = Helper.SharePrefrence1(this).GetString("UName", null);
+                string noteCode = Helper.SharePrefrence1(this).GetString("NoteCode", null);
+
+                // Using parameterized query to prevent SQL injection
+                var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
+
+                if (allData.Count != 0)
+                {
+                    // Inserting new record into Excercise table
+                    Excercise exercise = new Excercise(uName, noteCode, DateTime.Now, xxx.Length);
+                    // Saving changes to the database
+                    Helper.dbCommand.Insert(exercise);
+                    // Displaying a message
+                    Toast.MakeText(this, "Excercise logged", ToastLength.Short).Show();
+                }
+                else if (allData[0].MistakesMade < xxx.Length)
+                {
+                    // Updating existing record if mistakes made is less than current mistakes
+                    Helper.dbCommand.Execute("UPDATE Excercise SET MistakesMade = ?, DatePlayed = ? WHERE UName = ? AND NoteCode = ?", xxx.Length, DateTime.Now, uName, noteCode);
+                    // Displaying a message
+                    Toast.MakeText(this, "you outdid yourself!!", ToastLength.Short).Show();
+                }
+                else
+                {
+                    // Displaying a message
+                    Toast.MakeText(this, "oh come on, you can do better!", ToastLength.Short).Show();
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                Toast.MakeText(this, "sql issue", ToastLength.Short).Show();
+                // Logging the exception
+                Console.WriteLine("An error occurred: " + ex.Message);
+                // Displaying a generic error message
+                Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
             }
         }
 

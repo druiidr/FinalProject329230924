@@ -3448,9 +3448,6 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F09008C
 			public const int design_navigation_view = 2131296396;
 			
-			// aapt resource value: 0x7F090002
-			public const int DialogContentTV = 2131296258;
-			
 			// aapt resource value: 0x7F09008D
 			public const int disableHome = 2131296397;
 			
@@ -3493,23 +3490,23 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F09009A
 			public const int forever = 2131296410;
 			
-			// aapt resource value: 0x7F090008
-			public const int ForgotconfirmPasswordContentET = 2131296264;
-			
-			// aapt resource value: 0x7F090004
-			public const int ForgotEMailContentET = 2131296260;
-			
-			// aapt resource value: 0x7F090005
-			public const int ForgotPassContentET = 2131296261;
-			
-			// aapt resource value: 0x7F090006
-			public const int ForgotResetBTN = 2131296262;
-			
 			// aapt resource value: 0x7F090007
-			public const int ForgotUNameContentET = 2131296263;
+			public const int ForgotconfirmPasswordContentET = 2131296263;
 			
 			// aapt resource value: 0x7F090003
-			public const int FUNCTION = 2131296259;
+			public const int ForgotEMailContentET = 2131296259;
+			
+			// aapt resource value: 0x7F090004
+			public const int ForgotPassContentET = 2131296260;
+			
+			// aapt resource value: 0x7F090005
+			public const int ForgotResetBTN = 2131296261;
+			
+			// aapt resource value: 0x7F090006
+			public const int ForgotUNameContentET = 2131296262;
+			
+			// aapt resource value: 0x7F090002
+			public const int FUNCTION = 2131296258;
 			
 			// aapt resource value: 0x7F09009B
 			public const int ghost_view = 2131296411;
@@ -3523,8 +3520,8 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F09009E
 			public const int homeAsUp = 2131296414;
 			
-			// aapt resource value: 0x7F090009
-			public const int HomeLO = 2131296265;
+			// aapt resource value: 0x7F090008
+			public const int HomeLO = 2131296264;
 			
 			// aapt resource value: 0x7F09009F
 			public const int icon = 2131296415;
@@ -3565,41 +3562,41 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900AB
 			public const int listMode = 2131296427;
 			
-			// aapt resource value: 0x7F09000A
-			public const int ListViewNameTV = 2131296266;
+			// aapt resource value: 0x7F090009
+			public const int ListViewNameTV = 2131296265;
 			
-			// aapt resource value: 0x7F09000B
-			public const int ListviewNotesTV = 2131296267;
+			// aapt resource value: 0x7F09000A
+			public const int ListviewNotesTV = 2131296266;
 			
 			// aapt resource value: 0x7F0900AC
 			public const int list_item = 2131296428;
 			
+			// aapt resource value: 0x7F09000B
+			public const int LoginIForgorBTN = 2131296267;
+			
 			// aapt resource value: 0x7F09000C
-			public const int LoginIForgorBTN = 2131296268;
+			public const int LoginLogInBTN = 2131296268;
 			
 			// aapt resource value: 0x7F09000D
-			public const int LoginLogInBTN = 2131296269;
+			public const int LoginPasswordContentET = 2131296269;
 			
 			// aapt resource value: 0x7F09000E
-			public const int LoginPasswordContentET = 2131296270;
+			public const int LoginRememberMeCB = 2131296270;
 			
 			// aapt resource value: 0x7F09000F
-			public const int LoginRememberMeCB = 2131296271;
+			public const int LoginShowPassCB = 2131296271;
 			
 			// aapt resource value: 0x7F090010
-			public const int LoginShowPassCB = 2131296272;
+			public const int LoginUNameContentET = 2131296272;
 			
-			// aapt resource value: 0x7F090011
-			public const int LoginUNameContentET = 2131296273;
+			// aapt resource value: 0x7F090012
+			public const int MainCAGBTN = 2131296274;
 			
 			// aapt resource value: 0x7F090013
-			public const int MainCAGBTN = 2131296275;
+			public const int MainLoginBTN = 2131296275;
 			
 			// aapt resource value: 0x7F090014
-			public const int MainLoginBTN = 2131296276;
-			
-			// aapt resource value: 0x7F090015
-			public const int MainRegisterBTN = 2131296277;
+			public const int MainRegisterBTN = 2131296276;
 			
 			// aapt resource value: 0x7F0900AD
 			public const int masked = 2131296429;
@@ -3607,8 +3604,8 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900AE
 			public const int message = 2131296430;
 			
-			// aapt resource value: 0x7F090012
-			public const int META = 2131296274;
+			// aapt resource value: 0x7F090011
+			public const int META = 2131296273;
 			
 			// aapt resource value: 0x7F0900AF
 			public const int middle = 2131296431;
@@ -3637,11 +3634,11 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900B7
 			public const int normal = 2131296439;
 			
-			// aapt resource value: 0x7F090016
-			public const int NotesShowListviewlv = 2131296278;
+			// aapt resource value: 0x7F090015
+			public const int NotesShowListviewlv = 2131296277;
 			
-			// aapt resource value: 0x7F090017
-			public const int NotewShowLevelSelectionSP = 2131296279;
+			// aapt resource value: 0x7F090016
+			public const int NotewShowLevelSelectionSP = 2131296278;
 			
 			// aapt resource value: 0x7F0900B8
 			public const int notification_background = 2131296440;
@@ -3664,98 +3661,101 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900BE
 			public const int parent_matrix = 2131296446;
 			
+			// aapt resource value: 0x7F090017
+			public const int PianoA1BTN = 2131296279;
+			
 			// aapt resource value: 0x7F090018
-			public const int PianoA1BTN = 2131296280;
+			public const int PianoA2BTN = 2131296280;
 			
 			// aapt resource value: 0x7F090019
-			public const int PianoA2BTN = 2131296281;
+			public const int PianoAshrp1BTN = 2131296281;
 			
 			// aapt resource value: 0x7F09001A
-			public const int PianoAshrp1BTN = 2131296282;
+			public const int PianoAshrp2BTN = 2131296282;
 			
 			// aapt resource value: 0x7F09001B
-			public const int PianoAshrp2BTN = 2131296283;
+			public const int PianoB1BTN = 2131296283;
 			
 			// aapt resource value: 0x7F09001C
-			public const int PianoB1BTN = 2131296284;
+			public const int PianoB2BTN = 2131296284;
 			
 			// aapt resource value: 0x7F09001D
-			public const int PianoB2BTN = 2131296285;
+			public const int PianoC1BTN = 2131296285;
 			
 			// aapt resource value: 0x7F09001E
-			public const int PianoC1BTN = 2131296286;
+			public const int PianoC2BTN = 2131296286;
 			
 			// aapt resource value: 0x7F09001F
-			public const int PianoC2BTN = 2131296287;
+			public const int PianoCshrp1BTN = 2131296287;
 			
 			// aapt resource value: 0x7F090020
-			public const int PianoCshrp1BTN = 2131296288;
+			public const int PianoCshrp2BTN = 2131296288;
 			
 			// aapt resource value: 0x7F090021
-			public const int PianoCshrp2BTN = 2131296289;
+			public const int PianoD1BTN = 2131296289;
 			
 			// aapt resource value: 0x7F090022
-			public const int PianoD1BTN = 2131296290;
+			public const int PianoD2BTN = 2131296290;
 			
 			// aapt resource value: 0x7F090023
-			public const int PianoD2BTN = 2131296291;
+			public const int PianoDshrp1BTN = 2131296291;
 			
 			// aapt resource value: 0x7F090024
-			public const int PianoDshrp1BTN = 2131296292;
+			public const int PianoDshrp2BTN = 2131296292;
 			
 			// aapt resource value: 0x7F090025
-			public const int PianoDshrp2BTN = 2131296293;
+			public const int PianoE1BTN = 2131296293;
 			
 			// aapt resource value: 0x7F090026
-			public const int PianoE1BTN = 2131296294;
+			public const int PianoE2BTN = 2131296294;
 			
 			// aapt resource value: 0x7F090027
-			public const int PianoE2BTN = 2131296295;
+			public const int PianoF1BTN = 2131296295;
 			
 			// aapt resource value: 0x7F090028
-			public const int PianoF1BTN = 2131296296;
+			public const int PianoF2BTN = 2131296296;
 			
 			// aapt resource value: 0x7F090029
-			public const int PianoF2BTN = 2131296297;
+			public const int PianoFshrp1BTN = 2131296297;
 			
 			// aapt resource value: 0x7F09002A
-			public const int PianoFshrp1BTN = 2131296298;
+			public const int PianoFshrp2BTN = 2131296298;
 			
 			// aapt resource value: 0x7F09002B
-			public const int PianoFshrp2BTN = 2131296299;
+			public const int PianoG1BTN = 2131296299;
 			
 			// aapt resource value: 0x7F09002C
-			public const int PianoG1BTN = 2131296300;
+			public const int PianoG2BTN = 2131296300;
 			
 			// aapt resource value: 0x7F09002D
-			public const int PianoG2BTN = 2131296301;
+			public const int PianoGshrp1BTN = 2131296301;
 			
 			// aapt resource value: 0x7F09002E
-			public const int PianoGshrp1BTN = 2131296302;
-			
-			// aapt resource value: 0x7F09002F
-			public const int PianoGshrp2BTN = 2131296303;
-			
-			// aapt resource value: 0x7F090031
-			public const int PianoPlayedNotesTV = 2131296305;
+			public const int PianoGshrp2BTN = 2131296302;
 			
 			// aapt resource value: 0x7F090030
-			public const int PianoPlayPauseBTN = 2131296304;
+			public const int PianoPlayedNotesTV = 2131296304;
+			
+			// aapt resource value: 0x7F09002F
+			public const int PianoPlayPauseBTN = 2131296303;
 			
 			// aapt resource value: 0x7F0900BF
 			public const int pin = 2131296447;
 			
+			// aapt resource value: 0x7F090031
+			public const int ProfileBirthdayTV = 2131296305;
+			
 			// aapt resource value: 0x7F090032
-			public const int ProfileBirthdayTV = 2131296306;
+			public const int ProfileDeleteBTN = 2131296306;
 			
 			// aapt resource value: 0x7F090033
-			public const int ProfileDeleteBTN = 2131296307;
+			public const int ProfileFnameTV = 2131296307;
 			
 			// aapt resource value: 0x7F090034
-			public const int ProfileFnameTV = 2131296308;
+			public const int ProfileLessonSV = 2131296308;
 			
 			// aapt resource value: 0x7F090035
-			public const int ProfileLessonTV = 2131296309;
+			public const int ProfileListviewlv = 2131296309;
 			
 			// aapt resource value: 0x7F090036
 			public const int ProfileLnameTV = 2131296310;
@@ -4310,52 +4310,52 @@ namespace _329230924finalProject
 			public const int design_text_input_password_icon = 2131492908;
 			
 			// aapt resource value: 0x7F0C002D
-			public const int DialogLayout = 2131492909;
+			public const int ForgotLayout = 2131492909;
 			
 			// aapt resource value: 0x7F0C002E
-			public const int ForgotLayout = 2131492910;
+			public const int HomeLayout = 2131492910;
 			
 			// aapt resource value: 0x7F0C002F
-			public const int HomeLayout = 2131492911;
+			public const int Listviewlayout = 2131492911;
 			
 			// aapt resource value: 0x7F0C0030
-			public const int Listviewlayout = 2131492912;
+			public const int LoginLayout = 2131492912;
 			
 			// aapt resource value: 0x7F0C0031
-			public const int LoginLayout = 2131492913;
+			public const int mtrl_layout_snackbar = 2131492913;
 			
 			// aapt resource value: 0x7F0C0032
-			public const int mtrl_layout_snackbar = 2131492914;
+			public const int mtrl_layout_snackbar_include = 2131492914;
 			
 			// aapt resource value: 0x7F0C0033
-			public const int mtrl_layout_snackbar_include = 2131492915;
+			public const int NotesShowLayout = 2131492915;
 			
 			// aapt resource value: 0x7F0C0034
-			public const int NotesShowLayout = 2131492916;
+			public const int notification_action = 2131492916;
 			
 			// aapt resource value: 0x7F0C0035
-			public const int notification_action = 2131492917;
+			public const int notification_action_tombstone = 2131492917;
 			
 			// aapt resource value: 0x7F0C0036
-			public const int notification_action_tombstone = 2131492918;
+			public const int notification_template_custom_big = 2131492918;
 			
 			// aapt resource value: 0x7F0C0037
-			public const int notification_template_custom_big = 2131492919;
+			public const int notification_template_icon_group = 2131492919;
 			
 			// aapt resource value: 0x7F0C0038
-			public const int notification_template_icon_group = 2131492920;
+			public const int notification_template_part_chronometer = 2131492920;
 			
 			// aapt resource value: 0x7F0C0039
-			public const int notification_template_part_chronometer = 2131492921;
+			public const int notification_template_part_time = 2131492921;
 			
 			// aapt resource value: 0x7F0C003A
-			public const int notification_template_part_time = 2131492922;
+			public const int PianoLayout = 2131492922;
 			
 			// aapt resource value: 0x7F0C003B
-			public const int PianoLayout = 2131492923;
+			public const int ProfileLayout = 2131492923;
 			
 			// aapt resource value: 0x7F0C003C
-			public const int ProfileLayout = 2131492924;
+			public const int RecordListviewLayout = 2131492924;
 			
 			// aapt resource value: 0x7F0C003D
 			public const int RegisterLayout = 2131492925;

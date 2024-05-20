@@ -32,7 +32,6 @@ namespace _329230924finalProject
             lnameTV = FindViewById<TextView>(Resource.Id.ProfileLnameTV);
             fnameTV = FindViewById<TextView>(Resource.Id.ProfileFnameTV);
             bdayTV = FindViewById<TextView>(Resource.Id.ProfileBirthdayTV);
-            lessoncountTV = FindViewById<TextView>(Resource.Id.ProfileLessonTV);
             DeleteBTN = FindViewById<Button>(Resource.Id.ProfileDeleteBTN);
             UpdateBTN = FindViewById<Button>(Resource.Id.ProfileUpdateBTN);
             PracticeBTN = FindViewById<Button>(Resource.Id.ProfilePracticeBTN);

@@ -24,6 +24,8 @@ namespace _329230924finalProject
             SetContentView(Resource.Layout.HomeLayout);
             HomeLinLay = FindViewById<LinearLayout>(Resource.Id.HomeLO);
             welcomeTV = new TextView(this);
+            welcomeTV.TextSize=25;
+            welcomeTV.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
             HeyYou();
             LinearLayout.LayoutParams layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WrapContent, 180);
             pianoBTN = new Button(this);

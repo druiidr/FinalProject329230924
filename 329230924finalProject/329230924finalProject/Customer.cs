@@ -12,7 +12,7 @@ using SQLite;
 
 namespace _329230924finalProject
 {
-   public class Customer
+    public class Customer
     {
         [PrimaryKey, Column("UName")]
         public string Uname { get; set; }
@@ -24,19 +24,19 @@ namespace _329230924finalProject
         public string email { get; set; }
         [Column("phone")]
         public int phone { get; set; }
-        [Column ("DOB")]
+        [Column("DOB")]
         public string DOB { get; set; }
         [Column("password")]
         public string password { get; set; }
         [Column("photo")]
         public string photo { get; set; }
-        [Column("lessonsCompleted")]
-        public int lessonsCompleted { get; set; }
+        [Column("doesPay")]
+        public bool doesPAy { get; set; }
         public Customer()
         {
 
         }
-        public Customer(string Uname,string Fname,string Lname,string email,int phone,string Date,string password,string photo)
+        public Customer(string Uname, string Fname, string Lname, string email, int phone, string Date, string password, string photo)
         {
             this.Uname = Uname;
             this.Fname = Fname;
@@ -46,7 +46,8 @@ namespace _329230924finalProject
             this.DOB = Date;
             this.password = password;
             this.photo = photo;
-            this.lessonsCompleted = 0;
+            this.doesPAy = false;
 
-}
+        }
+    }
 }
