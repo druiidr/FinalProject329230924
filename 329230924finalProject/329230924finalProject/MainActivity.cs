@@ -26,6 +26,7 @@ namespace _329230924finalProject
             //הגדרת כפתורים
             BTNLogin = FindViewById<Button>(Resource.Id.MainLoginBTN);
             BTNRegister = FindViewById<Button>(Resource.Id.MainRegisterBTN);
+            Helper.Initialize();
             BTNContinue = FindViewById<Button>(Resource.Id.MainCAGBTN);
             BTNContinue.Click += BTNContinue_Click;
             BTNLogin.Click += BTNLogin_Click;

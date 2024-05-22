@@ -21,9 +21,10 @@ namespace _329230924finalProject
         AudioManager am;
        Button C1BTN, Csh1BTN, C2BTN, Csh2BTN, D1BTN, Dsh1BTN, D2BTN, Dsh2BTN, E1BTN, E2BTN, F1BTN, Fsh1BTN, F2BTN, Fsh2BTN, G1BTN, Gsh1BTN, G2BTN, Gsh2BTN, A1BTN, Ash1BTN, A2BTN, Ash2BTN, B1BTN, B2BTN;
         TextView playedNotesTV;
+        SeekBar volSliderSB;
         Button playpauseBTN;
         string composition;
-        SQLiteConnection dbcommand = new SQLiteConnection(Helper.Path());
+       
         string xxx = "";
         int mistakes = 0;
         MediaPlayer playingSoundMP=new MediaPlayer();
@@ -44,7 +45,7 @@ namespace _329230924finalProject
             D2BTN = (FindViewById<Button>(Resource.Id.PianoD2BTN));
            E2BTN = (FindViewById<Button>(Resource.Id.PianoE2BTN));
             F2BTN = (FindViewById<Button>(Resource.Id.PianoF2BTN));
-            Helper.Initialize();
+       
            G2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
             A2BTN = (FindViewById<Button>(Resource.Id.PianoA2BTN));
             B2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
@@ -80,6 +81,12 @@ namespace _329230924finalProject
             }
             catch { }
 
+        }
+        public void ClearComposition()
+        {
+            var editor = Helper.SharePrefrence1(this).Edit();
+            editor.PutString("NoteContent", null);
+            editor.Commit();
         }
         private void PlaypauseBTN_Click(object sender, EventArgs e)
         {
@@ -147,28 +154,7 @@ namespace _329230924finalProject
 
         }
 
-        //private void RecBTN_Click(object sender, EventArgs e)
-        //{
-
-        //    if (!isRecording)
-        //    {
-        //        מתחיל הקלטה
-        //        recsiganlBTN.Visibility = Android.Views.ViewStates.Visible;
-        //        playedNotesTV.Text = "";
-        //        isRecording = !isRecording;
-        //    }
-        //    else
-        //    {
-        //        מסיים הקלטה
-        //        recsiganlBTN.Visibility = Android.Views.ViewStates.Invisible;
-        //        playedNotesTV.Text = "played notes here";
-        //        if (playedNotesTV.Text.Length > 0)
-        //            if ()
-        //                isRecording = !isRecording;
-
-        //    }
-        //}
-
+ 
         public void OnClick(View v)
         {
             Button button = (Button)v;
@@ -189,7 +175,6 @@ namespace _329230924finalProject
                 if (composition.First() == '.')
                 {
                     SetLessonResult();
-                    Toast.MakeText(this, "good job", ToastLength.Long).Show();
                 Intent intent = new Intent(this, typeof(ActivityNotesShow));
                 StartActivity(intent);
             }
@@ -209,52 +194,62 @@ namespace _329230924finalProject
         }
         public void Boot()
         {
-          
+            ClearComposition();
             Toast.MakeText(this, "you failed this exercise!!!", ToastLength.Long).Show();
             Intent intent = new Intent(this, typeof(ActivityNotesShow));
             StartActivity(intent);
         }
-
-        public void SetLessonResult()
-        {
-            try
+            public void SetLessonResult()
             {
+            ClearComposition();
+                //try
+                {
+                SQLiteConnection dbcommand = new SQLiteConnection(Helper.Path());
                 string uName = Helper.SharePrefrence1(this).GetString("UName", null);
-                string noteCode = Helper.SharePrefrence1(this).GetString("NoteCode", null);
+                    string noteCode = Helper.SharePrefrence1(this).GetString("NoteCode", null);
 
-                // Using parameterized query to prevent SQL injection
-                var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
+                    var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise");
+              //  var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
 
                 if (allData.Count != 0)
-                {
-                    // Inserting new record into Excercise table
-                    Excercise exercise = new Excercise(uName, noteCode, DateTime.Now, xxx.Length);
-                    // Saving changes to the database
-                    Helper.dbCommand.Insert(exercise);
-                    // Displaying a message
-                    Toast.MakeText(this, "Excercise logged", ToastLength.Short).Show();
+                    {
+                        var exercise = allData[0];
+                        if (exercise != null)
+                        {
+                            if (exercise.MistakesMade < xxx.Length)
+                            {
+                                // Updating existing record if mistakes made is less than current mistakes
+                                Helper.dbCommand.Execute("UPDATE Excercise SET MistakesMade = ?, DatePlayed = ? WHERE UName = ? AND NoteCode = ?", xxx.Length, DateTime.Now, uName, noteCode);
+                                // Displaying a message
+                                Toast.MakeText(this, "You outdid yourself!!", ToastLength.Short).Show();
+                            }
+                            else
+                            {
+                                // Displaying a message
+                                Toast.MakeText(this, "Oh come on, you can do better!", ToastLength.Short).Show();
+                            }
+                        }
+                        else
+                        {
+                            // Handle null reference
+                        }
+                    }
+                    else
+                    {
+                        // Inserting new record into Excercise table
+                        Excercise exercise = new Excercise(uName, noteCode, DateTime.Now, xxx.Length);
+                        // Saving changes to the database
+                        Helper.dbCommand.Insert(exercise);
+                        // Displaying a message
+                        Toast.MakeText(this, "Exercise logged", ToastLength.Short).Show();
+                    }
                 }
-                else if (allData[0].MistakesMade < xxx.Length)
-                {
-                    // Updating existing record if mistakes made is less than current mistakes
-                    Helper.dbCommand.Execute("UPDATE Excercise SET MistakesMade = ?, DatePlayed = ? WHERE UName = ? AND NoteCode = ?", xxx.Length, DateTime.Now, uName, noteCode);
-                    // Displaying a message
-                    Toast.MakeText(this, "you outdid yourself!!", ToastLength.Short).Show();
-                }
-                else
-                {
-                    // Displaying a message
-                    Toast.MakeText(this, "oh come on, you can do better!", ToastLength.Short).Show();
-                }
+                //catch (Exception ex)
+                //{
+                //    // Displaying a generic error message
+                //    Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
+                //}
             }
-            catch (Exception ex)
-            {
-                // Logging the exception
-                Console.WriteLine("An error occurred: " + ex.Message);
-                // Displaying a generic error message
-                Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
-            }
-        }
 
 
 

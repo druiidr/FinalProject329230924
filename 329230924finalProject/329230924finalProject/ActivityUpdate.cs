@@ -37,7 +37,6 @@ namespace _329230924finalProject
         UnameInptTV = FindViewById<TextView>(Resource.Id.UpdateUNameContentTV);
         AgeInptBTN = FindViewById<Button>(Resource.Id.UpdateDateSelectionBTN);
         passInptET = FindViewById<EditText>(Resource.Id.UpdatePassContentET);
-        Helper.Initialize();
         emailInptET = FindViewById<EditText>(Resource.Id.UpdateEmailContentET);
         phoneInptET = FindViewById<EditText>(Resource.Id.UpdatePhoneContentET);
         pfpIV = FindViewById<ImageView>(Resource.Id.UpdatepfpviewIV);

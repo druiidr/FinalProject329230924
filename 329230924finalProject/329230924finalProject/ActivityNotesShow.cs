@@ -18,24 +18,29 @@ namespace _329230924finalProject
     {
         public static List<Notes> notesList { get; set; }
         NotesAdapter notesAdapter;
+        CheckBox genreCB, levelCB;
         TextView contentTV;
         List<string> levelLsS = new List<string> { "select level", "1", "2", "3", "4", "5" };
+        List<string> genreLsS = new List<string> { "select genre", "rock", "pop", "classical", "kids", "misc" };
+
         ListView lv;
       
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.NotesShowLayout);
-            Helper.Initialize();
-            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.", 1,"kids",false);
+   
+            Notes defaultNote1 = new Notes(1, "יונתן הקטן", "C,C,C,C,.", 1,"kids",false);
             Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 1,"pop",false);
             Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.", 2,"rock",false);
-            Notes defaultNote4 = new Notes(4, "יונתן הקטן auc", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.",5,"kid",false);
-            Notes defaultNote5 = new Notes(5, "test", "A,B,C,D.",3,"kid",false);
-            Helper.Initialize();
-            ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, levelLsS);
+            Notes defaultNote4 = new Notes(4, "יונתן הקטן auc", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.",5,"kids",false);
+            Notes defaultNote5 = new Notes(5, "test", "A,B,C,D,.",3,"kids",false);
+            ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, genreLsS);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-
+            genreCB = FindViewById<CheckBox>(Resource.Id.NotesShowGenreCB);
+            levelCB = FindViewById<CheckBox>(Resource.Id.NotesShowDiffficultyCB);
+            genreCB.CheckedChange += GenreCB_CheckedChange;
+            levelCB.CheckedChange += LevelCB_CheckedChange;
             Spinner spinner = FindViewById<Spinner>(Resource.Id.NotewShowLevelSelectionSP);
             spinner.Adapter = adapter;
             notesList = new List<Notes>();
@@ -63,6 +68,19 @@ namespace _329230924finalProject
             lv.OnItemClickListener = this;
         }
 
+        private void LevelCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+            if(e.IsChecked)
+            genreCB.Checked = false;
+        }
+
+        private void GenreCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+            if (e.IsChecked)
+
+                levelCB.Checked = false;
+        }
+
         private void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner s = (Spinner)sender;
@@ -70,12 +88,24 @@ namespace _329230924finalProject
             {
                 try
                 {
+          
                     // Query the SQLite database to fetch notes based on the selected level
                     Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                    var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level=?", e.Position.ToString());
+                    if (levelCB.Checked)
+                    {
+                        var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level=?", e.Position.ToString());
+                        notesAdapter = new NotesAdapter(this, alldata);
+                    }
+                    else
+                    {
+
+                        string selectedGenre = s.GetItemAtPosition(e.Position).ToString();
+                        var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Genre=?", selectedGenre);
+                    notesAdapter = new NotesAdapter(this, alldata);
+                    }
 
                     // Create a new adapter with the fetched notes data
-                    notesAdapter = new NotesAdapter(this, alldata);
+                    
 
                     // Set the adapter to the ListView
                     lv.Adapter = notesAdapter;
