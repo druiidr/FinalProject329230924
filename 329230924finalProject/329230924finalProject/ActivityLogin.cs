@@ -28,7 +28,7 @@ namespace _329230924finalProject
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.LoginLayout);
             // Create your application here
-            passET.TransformationMethod = Android.Text.Method.PasswordTransformationMethod.Instance;
+            
             LogBTN = FindViewById<Button>(Resource.Id.LoginLogInBTN);
             ForgetBTN = FindViewById<Button>(Resource.Id.LoginIForgorBTN);
             ForgetBTN.Click += ForgetBTN_Click;
@@ -37,6 +37,7 @@ namespace _329230924finalProject
             showCB.Checked = false;
             passET = FindViewById<EditText>(Resource.Id.LoginPasswordContentET);
             UnameET = FindViewById<EditText>(Resource.Id.LoginUNameContentET);
+            passET.TransformationMethod = Android.Text.Method.PasswordTransformationMethod.Instance;
             memberberriesCB = FindViewById<CheckBox>(Resource.Id.LoginRememberMeCB);
             showCB.CheckedChange += ShowCB_CheckedChange;
 

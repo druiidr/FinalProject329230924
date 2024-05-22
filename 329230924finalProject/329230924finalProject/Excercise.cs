@@ -12,18 +12,23 @@ using Android.Widget;
 
 namespace _329230924finalProject
 {
-    class Excercise
+    [Table("Excercise")]
+    public  class Excercise
     {
-        [PrimaryKey, Column("UName")]
+        [PrimaryKey, AutoIncrement, Column("Id")]
+        public int id { get; set; }
+        [Column("UName")]
         public string Uname { get; set; }
-        [PrimaryKey, Column("NoteCode")]
+        [Column("NoteCode")]
         public string NoteCode { get; set; }
         [Column("DatePlayed")]
         public DateTime DatePlayed { get; set; }
         [Column("MisitakesMade")]
         public int MistakesMade { get; set; }
         public Excercise()
-            {}
+
+        {
+        }
         public Excercise(string UName,string NoteContent, DateTime DatePlayed, int MistakesMade)
         {
             this.Uname = UName;

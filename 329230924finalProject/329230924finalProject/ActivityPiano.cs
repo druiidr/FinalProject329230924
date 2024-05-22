@@ -204,12 +204,11 @@ namespace _329230924finalProject
             ClearComposition();
                 //try
                 {
-                SQLiteConnection dbcommand = new SQLiteConnection(Helper.Path());
+                Helper.dbCommand = new SQLiteConnection(Helper.Path());
                 string uName = Helper.SharePrefrence1(this).GetString("UName", null);
                     string noteCode = Helper.SharePrefrence1(this).GetString("NoteCode", null);
 
-                    var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise");
-              //  var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
+             var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
 
                 if (allData.Count != 0)
                     {

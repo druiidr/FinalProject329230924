@@ -19,8 +19,8 @@ namespace _329230924finalProject
 {
  public class Helper
         {
-            public static Android.Content.ISharedPreferences sp;
-            public static string dbname = "dbChophone";
+            private static Android.Content.ISharedPreferences sp;
+            private static string dbname = "dbChophone1";
             public Helper()
             {
 
@@ -43,7 +43,7 @@ namespace _329230924finalProject
                 }
                 return str;
             }
-            public static void Initialize()
+            public static void Initialize(Activity context)
             {
             //מבצע את הפעולה initialize
 
@@ -58,7 +58,7 @@ namespace _329230924finalProject
             }
             catch (Exception ex)
             {
-
+                Toast.MakeText(context, ex.Message, ToastLength.Long).Show();
             }
         }
             public static ISharedPreferences SharePrefrence1(Context context)

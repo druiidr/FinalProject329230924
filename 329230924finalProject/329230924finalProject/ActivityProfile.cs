@@ -40,7 +40,6 @@ namespace _329230924finalProject
             unameTV.Text = Helper.SharePrefrence1(this).GetString("UName", null);
             bdayTV.Text = Helper.SharePrefrence1(this).GetString("DOB", null);
             //pfpIV = Helper.Base64ToBitmap(Helper.SharePrefrence1(this).GetString("photo", null));
-            lessoncountTV.Text= ("lessons:" + Helper.SharePrefrence1(this).GetInt("lessonsCompleted", 0));
             DeleteBTN.Click += DeleteBTN_Click;
             UpdateBTN.Click += UpdateBTN_Click;
             PracticeBTN.Click += PracticeBTN_Click;
