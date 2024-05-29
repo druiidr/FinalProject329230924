@@ -10,15 +10,15 @@
         android:layout_marginLeft="20dp"
         android:textSize="20dp"
         android:text="name"
-        android:id="@+id/ListViewNameTV"/>
+        android:id="@+id/RecordListViewNameTV"/>
     <TextView
              android:layout_width="100dp"
              android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="F"
+        android:text="mistakes made: 100"
         android:layout_marginLeft="30dp"
         android:textColor="#119999"
-        android:id="@+id/ListviewNotesTV"/>
+        android:id="@+id/RecordListviewMistakesTV"/>
 
 </LinearLayout>
 

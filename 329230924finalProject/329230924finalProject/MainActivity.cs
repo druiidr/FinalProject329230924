@@ -23,12 +23,12 @@ namespace _329230924finalProject
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+            Quicklogin();
             //הגדרת כפתורים
             BTNLogin = FindViewById<Button>(Resource.Id.MainLoginBTN);
             BTNRegister = FindViewById<Button>(Resource.Id.MainRegisterBTN);
             Helper.Initialize(this);
             SQLiteConnection dbCommand = new SQLiteConnection(Helper.Path());
-            var allData = dbCommand.Query<Excercise>("SELECT * FROM Excercise");
             BTNContinue = FindViewById<Button>(Resource.Id.MainCAGBTN);
             BTNContinue.Click += BTNContinue_Click;
             BTNLogin.Click += BTNLogin_Click;
@@ -70,6 +70,15 @@ namespace _329230924finalProject
             this.MenuInflater.Inflate(Resource.Menu.menuchophone, menu);
             return true;
 
+        }
+        public void Quicklogin()
+        {
+            if(Helper.SharePrefrence1(this).GetString("FName", null)!=null)
+            {
+                Toast.MakeText(this, "Account found. hello "+ Helper.SharePrefrence1(this).GetString("FName", null), ToastLength.Long).Show();
+                Intent intent = new Intent(this, typeof(ActivityHome));
+                StartActivity(intent);
+            }
         }
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
 

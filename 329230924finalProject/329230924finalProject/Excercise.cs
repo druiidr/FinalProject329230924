@@ -20,7 +20,7 @@ namespace _329230924finalProject
         [Column("UName")]
         public string Uname { get; set; }
         [Column("NoteCode")]
-        public string NoteCode { get; set; }
+        public int NoteCode { get; set; }
         [Column("DatePlayed")]
         public DateTime DatePlayed { get; set; }
         [Column("MisitakesMade")]
@@ -29,7 +29,7 @@ namespace _329230924finalProject
 
         {
         }
-        public Excercise(string UName,string NoteContent, DateTime DatePlayed, int MistakesMade)
+        public Excercise(string UName,int NoteCode, DateTime DatePlayed, int MistakesMade)
         {
             this.Uname = UName;
             this.NoteCode = NoteCode;

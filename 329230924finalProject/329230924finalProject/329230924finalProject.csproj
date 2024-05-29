@@ -65,12 +65,14 @@
     <Compile Include="ActivityHome.cs" />
     <Compile Include="ActivityLogin.cs" />
     <Compile Include="ActivityNotesShow.cs" />
+    <Compile Include="ActivityPayment.cs" />
     <Compile Include="ActivityPiano.cs" />
     <Compile Include="ActivityProfile.cs" />
     <Compile Include="ActivityRegister.cs" />
     <Compile Include="ActivityUpdate.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Excercise.cs" />
+    <Compile Include="ExcerciseAdapter.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Notes.cs" />
@@ -222,6 +224,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\RecordListviewLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\PaymentLayout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

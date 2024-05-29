@@ -83,7 +83,7 @@ android:id="@+id/ProfileListviewlv"/>
             android:layout_height="match_parent"
             android:background="#22ff22"
             android:text="Become Pro member"
-             android:id="@+id/ProfilePracticeBTN"/>
+             android:id="@+id/ProfilePurchaseBTN"/>
           <Button
             android:layout_marginLeft="20dp"
             android:layout_width="100dp"

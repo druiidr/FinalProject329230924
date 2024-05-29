@@ -22,6 +22,7 @@ namespace _329230924finalProject
         TextView contentTV;
         List<string> levelLsS = new List<string> { "select level", "1", "2", "3", "4", "5" };
         List<string> genreLsS = new List<string> { "select genre", "rock", "pop", "classical", "kids", "misc" };
+    
 
         ListView lv;
       
@@ -93,15 +94,15 @@ namespace _329230924finalProject
                     Helper.dbCommand = new SQLiteConnection(Helper.Path());
                     if (levelCB.Checked)
                     {
-                        var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level=?", e.Position.ToString());
-                        notesAdapter = new NotesAdapter(this, alldata);
+                        notesList = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Level=?", e.Position.ToString());
+                        notesAdapter = new NotesAdapter(this, notesList);
                     }
                     else
                     {
 
                         string selectedGenre = s.GetItemAtPosition(e.Position).ToString();
-                        var alldata = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Genre=?", selectedGenre);
-                    notesAdapter = new NotesAdapter(this, alldata);
+                        notesList = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE Genre=?", selectedGenre);
+                    notesAdapter = new NotesAdapter(this, notesList);
                     }
 
                     // Create a new adapter with the fetched notes data
@@ -122,7 +123,7 @@ namespace _329230924finalProject
         public void OnItemClick(AdapterView parent, View view, int position, long id)
         {
             // Get the NoteCode of the clicked item from the ListView position
-            int noteCode = position + 1; // Assuming NoteCode starts from 1 and increments by 1
+            int noteCode = notesList[position].NoteCode; // Assuming NoteCode starts from 1 and increments by 1
 
             // Query the database for the note based on its NoteCode
             var thisNote = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE NoteCode=?", noteCode);

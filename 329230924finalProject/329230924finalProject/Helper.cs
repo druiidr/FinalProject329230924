@@ -20,7 +20,7 @@ namespace _329230924finalProject
  public class Helper
         {
             private static Android.Content.ISharedPreferences sp;
-            private static string dbname = "dbChophone1";
+            private static string dbname = "dbChophone2";
             public Helper()
             {
 

@@ -199,26 +199,26 @@ namespace _329230924finalProject
             Intent intent = new Intent(this, typeof(ActivityNotesShow));
             StartActivity(intent);
         }
-            public void SetLessonResult()
-            {
+        public void SetLessonResult()
+        {
             ClearComposition();
-                //try
-                {
+            //try
+            {
                 Helper.dbCommand = new SQLiteConnection(Helper.Path());
                 string uName = Helper.SharePrefrence1(this).GetString("UName", null);
-                    string noteCode = Helper.SharePrefrence1(this).GetString("NoteCode", null);
+                int noteCode = Helper.SharePrefrence1(this).GetInt("NoteCode", 0);
 
-             var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
+                var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
 
                 if (allData.Count != 0)
-                    {
+                {
                         var exercise = allData[0];
                         if (exercise != null)
                         {
-                            if (exercise.MistakesMade < xxx.Length)
+                            if (exercise.MistakesMade > xxx.Length)
                             {
                                 // Updating existing record if mistakes made is less than current mistakes
-                                Helper.dbCommand.Execute("UPDATE Excercise SET MistakesMade = ?, DatePlayed = ? WHERE UName = ? AND NoteCode = ?", xxx.Length, DateTime.Now, uName, noteCode);
+                                Helper.dbCommand.Execute("UPDATE Excercise SET MisitakesMade = ?, DatePlayed = ? WHERE UName = ? AND NoteCode = ?", xxx.Length, DateTime.Now, uName, noteCode);
                                 // Displaying a message
                                 Toast.MakeText(this, "You outdid yourself!!", ToastLength.Short).Show();
                             }
@@ -243,12 +243,12 @@ namespace _329230924finalProject
                         Toast.MakeText(this, "Exercise logged", ToastLength.Short).Show();
                     }
                 }
-                //catch (Exception ex)
-                //{
-                //    // Displaying a generic error message
-                //    Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
-                //}
-            }
+            //catch (Exception ex)
+            //{
+            //    // Displaying a generic error message
+            //    Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
+            //}
+        }
 
 
 
@@ -266,21 +266,6 @@ namespace _329230924finalProject
 
         {
            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             if (item.ItemId == Resource.Id.action_login)
 
             {
