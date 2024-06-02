@@ -21,6 +21,7 @@ namespace _329230924finalProject
         TextView unameTV, fnameTV, lnameTV, bdayTV, winRateTV, lessoncountTV;
         Button DeleteBTN, UpdateBTN, PurchaseBTN;
         ListView lv;
+        TextView premiumTV;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             SetContentView(Resource.Layout.ProfileLayout);
@@ -36,10 +37,15 @@ namespace _329230924finalProject
             DeleteBTN = FindViewById<Button>(Resource.Id.ProfileDeleteBTN);
             UpdateBTN = FindViewById<Button>(Resource.Id.ProfileUpdateBTN);
             PurchaseBTN = FindViewById<Button>(Resource.Id.ProfilePurchaseBTN);
+            premiumTV = FindViewById<TextView>(Resource.Id.ProfilePurchaseTV);
             fnameTV.Text= Helper.SharePrefrence1(this).GetString("FName", null);
             lnameTV.Text = Helper.SharePrefrence1(this).GetString("LName", null);
             unameTV.Text = Helper.SharePrefrence1(this).GetString("UName", null);
             bdayTV.Text = Helper.SharePrefrence1(this).GetString("DOB", null);
+            if(!Helper.SharePrefrence1(this).GetBoolean("doesPay",default))
+            {
+                premiumTV.Visibility = ViewStates.Invisible;
+            }
             //pfpIV = Helper.Base64ToBitmap(Helper.SharePrefrence1(this).GetString("photo", null));
             DeleteBTN.Click += DeleteBTN_Click;
             UpdateBTN.Click += UpdateBTN_Click;
@@ -63,7 +69,7 @@ namespace _329230924finalProject
 
         private void PurchaseBTN_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(ActivityNotesShow));
+            Intent intent = new Intent(this, typeof(ActivityPayment));
             StartActivity(intent);
         }
 

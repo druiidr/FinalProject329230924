@@ -162,7 +162,7 @@ namespace _329230924finalProject
             string buttonText = button.Text;
             PlayNotes(buttonText);
             mistakes += GradeLesson(buttonText);
-            if (mistakes > 3)
+            if (mistakes > 3 &&! Helper.SharePrefrence1(this).GetBoolean("doesPay",true))
                 Boot();
         }
         public int GradeLesson(string key)

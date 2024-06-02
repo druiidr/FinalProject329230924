@@ -16,13 +16,7 @@
                             android:layout_height="70dp"
         android:layout_marginTop="30dp"
                 android:orientation="horizontal">
-         <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="match_parent"
-                    android:text="1$"
-                    android:textSize="27dp"
-                    android:layout_marginLeft="30dp"
-                    android:textColor="#669922"/>
+       
     <SeekBar
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -32,7 +26,8 @@
                            android:layout_height="match_parent"
                     android:text="1000$"
                     android:textSize="27dp"
-                    android:textColor="#669922"/>
+                    android:textColor="#669922"
+            android:id="@+id/PaymentSumTV"/>
         </LinearLayout>
     <LinearLayout
                             android:layout_width="match_parent"

@@ -140,6 +140,7 @@ namespace _329230924finalProject
                 // Store the NoteContent in SharedPreferences
                 var composition = Helper.SharePrefrence1(this).Edit();
                 composition.PutString("NoteContent", noteContent);
+                composition.PutInt("NoteContent", noteCode);
                 composition.Commit();
 
                 // Start the ActivityPiano activity
