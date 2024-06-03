@@ -39,7 +39,7 @@ namespace _329230924finalProject
 
         private void PayBTN_Click(object sender, EventArgs e)
         {
-            if(cvvET==null||numET==null||expMET==null||expYET==null)
+            if(cvvET.Text!=""&&Validate.ContainLet(cvvET.Text)|| numET.Text != "" && Validate.ContainLet(numET.Text)|| expMET.Text != "" && Validate.ContainLet(expMET.Text)|| expYET.Text != "" && Validate.ContainLet(expYET.Text))
             { 
                    Toast.MakeText(this, "please fill in your payment details properly!", ToastLength.Short).Show();
             }
