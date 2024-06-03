@@ -13,28 +13,28 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="50dp"
             android:background="@drawable/playbtn"
             android:id="@+id/PianoPlayPauseBTN"/>
         <TextView
-            android:layout_width="250dp"
+            android:layout_width="320dp"
             android:layout_height="120dp"
             android:layout_marginTop="-40dp"
             android:background="#33b5bc"
             android:id="@+id/PianoPlayedNotesTV"
             android:text="free play mode"
-            android:layout_marginLeft="70dp"/>
-        <SeekBar
-            android:layout_width="170dp"
-            android:layout_height="100dp"
-            android:id="@+id/PianoVolumeSB"/>
+            android:layout_marginLeft="60dp"/>
+        
     </LinearLayout>
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#aaccaa"
+            android:background="#773300"
             android:orientation="horizontal">
-
+         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
             <Button
                 android:layout_height="match_parent"
@@ -48,15 +48,15 @@
             <Button
                 android:layout_height="match_parent"
                 android:layout_width="55dp"
-                android:layout_marginLeft="45dp"
                 android:id="@+id/PianoD1BTN"
                         android:text="  D"
+                android:layout_marginLeft="-10dp"
                android:layout_below="@id/PianoCshrp1BTN"
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="90dp"
                 android:id="@+id/PianoE1BTN"
                android:layout_below="@id/PianoDshrp1BTN"
 
@@ -64,32 +64,32 @@
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                android:layout_below="@id/PianoFshrp1BTN"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="135dp"
                 android:id="@+id/PianoF1BTN"
                         android:text="  F"
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="180dp"
                  android:layout_below="@id/PianoGshrp1BTN"
                 android:id="@+id/PianoG1BTN"
                         android:text="  G"
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="225dp"
                  android:layout_below="@id/PianoAshrp1BTN"
                 android:id="@+id/PianoA1BTN"
                         android:text="  A"
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="270dp"
                  android:layout_below="@id/PianoAshrp1BTN"
                 android:id="@+id/PianoB1BTN"
                         android:text="  B"
@@ -97,61 +97,65 @@
             <Button
                 android:layout_width="55dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="315dp"
-            
+                            android:layout_marginLeft="-10dp"
                 android:id="@+id/PianoC2BTN"
                         android:text="  C"
                  android:layout_below="@id/PianoC1BTN"
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="360dp"
                  android:layout_below="@id/PianoC1BTN"
                 android:id="@+id/PianoD2BTN"
                         android:text="  D"
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="405dp"
                  android:layout_below="@id/PianoC1BTN"
                 android:id="@+id/PianoE2BTN"
                         android:text="  E"
             android:gravity="bottom"/>
             <Button
+                                android:layout_marginLeft="-10dp"
                 android:layout_width="55dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="450dp"
                  android:layout_below="@id/PianoC1BTN"
                 android:id="@+id/PianoF2BTN"
                         android:text="  F"
             android:gravity="bottom"/>
             <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                 android:layout_height="match_parent"
                  android:layout_below="@id/PianoC1BTN"
-                android:layout_marginLeft="495dp"
                 android:id="@+id/PianoG2BTN"
                         android:text="  G"
             android:gravity="bottom"/>
                     <Button
                 android:layout_width="55dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="540dp"
+                android:layout_marginLeft="-10dp"
                  android:layout_below="@id/PianoC1BTN"
                 android:id="@+id/PianoA2BTN"
                         android:text="  A"
             android:gravity="bottom"/>
                     <Button
                 android:layout_width="55dp"
+                                android:layout_marginLeft="-10dp"
                  android:layout_below="@id/PianoC1BTN"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="585dp"
                 android:id="@+id/PianoB2BTN"
                         android:text="  B"
             android:gravity="bottom"/>
-                       
+            </LinearLayout>
+
+          <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+            android:layout_marginLeft="2dp">               
                  <Button
                 android:layout_width="35dp"
                 android:layout_height="100dp"
@@ -188,7 +192,7 @@
                 android:layout_width="35dp"
              android:layout_above="@id/PianoC1BTN"
                 android:layout_height="100dp"
-                android:layout_marginLeft="220dp"                  
+                android:layout_marginLeft="210dp"                  
                 android:background="@android:color/black"
                 android:id="@+id/PianoGshrp1BTN"
                                    android:text="  G#"
@@ -197,7 +201,7 @@
                           <Button
                 android:layout_width="35dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="270dp"
+                android:layout_marginLeft="260dp"
                 android:background="@android:color/black"
                 android:id="@+id/PianoAshrp1BTN"
              android:layout_above="@id/PianoC1BTN"
@@ -259,5 +263,6 @@
                                    android:text="  A#"
             android:textColor="#b5b5b5"
             android:gravity="bottom"/>
-        </FrameLayout>
+       </RelativeLayout>
+       </RelativeLayout>
     </LinearLayout>

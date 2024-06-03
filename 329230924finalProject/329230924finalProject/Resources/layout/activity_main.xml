@@ -25,7 +25,7 @@
             android:layout_marginLeft="20dp"
             android:text="log in"
             android:textSize="20dp"
-            android:background="#11bb99"
+            android:background="#55bcba"
             android:id="@+id/MainLoginBTN"/>
          <Button
                   android:layout_width="150dp"
@@ -33,7 +33,7 @@
             android:layout_marginLeft="40dp"
                         android:text=" register"
             android:textSize="20dp"
-             android:background="#aa11cc"
+             android:background="#55cdba"
              android:id="@+id/MainRegisterBTN"/>
     </LinearLayout>
     <Button
@@ -43,6 +43,6 @@
         android:layout_marginTop="70dp"
         android:text="continue as guest"
         android:textSize="20dp"
-        android:background="#cc3311"
+        android:background="#5abbaa"
          android:id="@+id/MainCAGBTN"/>
 </LinearLayout>

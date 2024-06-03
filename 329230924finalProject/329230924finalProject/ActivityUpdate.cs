@@ -64,7 +64,6 @@ namespace _329230924finalProject
 
     private void UpldBTN_Click(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
     }
 
     private void AgeInptBTN_Click(object sender, EventArgs e)

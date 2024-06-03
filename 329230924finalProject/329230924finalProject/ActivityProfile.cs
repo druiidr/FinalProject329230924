@@ -81,7 +81,20 @@ namespace _329230924finalProject
 
         private void DeleteBTN_Click(object sender, EventArgs e)
         {
-            var allData = Helper.dbCommand.Query<Notes>("DELETE FROM Customer WHERE Uname='"+ unameTV.Text+"'");
+            //delete account and log out
+            var allData = Helper.dbCommand.Query<Customer>("DELETE FROM Customer WHERE Uname=?", unameTV.Text);
+            var allData1 = Helper.dbCommand.Query<Excercise>("DELETE FROM Excercise WHERE  Uname=?", unameTV.Text);
+            var editor = Helper.SharePrefrence1(this).Edit();
+            editor.PutString("password", null);
+            editor.PutString("UName", null);
+            editor.PutString("FName", null);
+            editor.PutString("LName", null);
+            editor.PutString("DOB", null);
+            editor.PutString("email", null);
+            editor.PutInt("phone", 0);
+            editor.PutInt("winRate", 0);
+            editor.PutInt("lessonsCompleted", 0);
+            editor.Commit();
             Intent intent = new Intent(this, typeof(MainActivity));
             StartActivity(intent);
         }

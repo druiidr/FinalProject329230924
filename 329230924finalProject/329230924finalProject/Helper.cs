@@ -15,6 +15,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Xamarin.Essentials;
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.OS;
+using Android.Runtime;
+using Android.Support.V7.App;
+using Android.Views;
+using Android.Widget;
+using Android;
+using Plugin.Media;
+using Android.Graphics;
+using SQLite;
 namespace _329230924finalProject
 {
  public class Helper
@@ -73,6 +90,7 @@ namespace _329230924finalProject
                 byte[] imageAsBytes = Base64.Decode(base64String, Base64Flags.Default);
                 return BitmapFactory.DecodeByteArray(imageAsBytes, 0, imageAsBytes.Length);
             }
+      
 
 
 
