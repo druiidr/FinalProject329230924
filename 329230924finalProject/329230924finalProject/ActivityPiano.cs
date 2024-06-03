@@ -202,7 +202,7 @@ namespace _329230924finalProject
         public void SetLessonResult()
         {
             ClearComposition();
-            //try
+            try
             {
                 Helper.dbCommand = new SQLiteConnection(Helper.Path());
                 string uName = Helper.SharePrefrence1(this).GetString("UName", null);
@@ -242,12 +242,12 @@ namespace _329230924finalProject
                         // Displaying a message
                         Toast.MakeText(this, "Exercise logged", ToastLength.Short).Show();
                     }
-                }
-            //catch (Exception ex)
-            //{
-            //    // Displaying a generic error message
-            //    Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
-            //}
+            }
+            catch (Exception ex)
+            {
+                // Displaying a generic error message
+                Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
+            }
         }
 
 
@@ -286,8 +286,7 @@ namespace _329230924finalProject
                 editor.PutString("DOB", null);
                 editor.PutString("email", null);
                 editor.PutInt("phone", 0);
-                editor.PutInt("winRate", 0);
-                editor.PutInt("lessonsCompleted", 0);
+                editor.PutBoolean("doesPay", false);
                 editor.Commit();
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);

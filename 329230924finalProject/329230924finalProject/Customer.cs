@@ -31,7 +31,7 @@ namespace _329230924finalProject
         [Column("photo")]
         public string photo { get; set; }
         [Column("doesPay")]
-        public bool doesPAy { get; set; }
+        public bool doesPay { get; set; }
         public Customer()
         {
 
@@ -46,7 +46,7 @@ namespace _329230924finalProject
             this.DOB = Date;
             this.password = password;
             this.photo = photo;
-            this.doesPAy = false;
+            this.doesPay = false;
 
         }
     }

@@ -124,35 +124,39 @@ namespace _329230924finalProject
         {
             // Get the NoteCode of the clicked item from the ListView position
             int noteCode = notesList[position].NoteCode; // Assuming NoteCode starts from 1 and increments by 1
-
-            // Query the database for the note based on its NoteCode
-            var thisNote = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE NoteCode=?", noteCode);
-
-            // Check if the query returned any notes
-            if (thisNote != null && thisNote.Count > 0)
+            try
             {
-                // Retrieve the first note from the query result
-                Notes selectedNote = thisNote[0];
+                // Query the database for the note based on its NoteCode
+                var thisNote = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE NoteCode=?", noteCode);
 
-                // Access the NoteContent property of the selected note
-                string noteContent = selectedNote.NoteContent;
+                // Check if the query returned any notes
+                if (thisNote != null && thisNote.Count > 0)
+                {
+                    // Retrieve the first note from the query result
+                    Notes selectedNote = thisNote[0];
 
-                // Store the NoteContent in SharedPreferences
-                var composition = Helper.SharePrefrence1(this).Edit();
-                composition.PutInt("NoteCode", noteCode);
-                composition.PutString("NoteContent", noteContent);
-                composition.Commit();
+                    // Access the NoteContent property of the selected note
+                    string noteContent = selectedNote.NoteContent;
 
-                // Start the ActivityPiano activity
-                Intent intent = new Intent(this, typeof(ActivityPiano));
-                
-                StartActivity(intent);
+                    // Store the NoteContent in SharedPreferences
+                    var composition = Helper.SharePrefrence1(this).Edit();
+                    composition.PutInt("NoteCode", noteCode);
+                    composition.PutString("NoteContent", noteContent);
+                    composition.Commit();
+
+                    // Start the ActivityPiano activity
+                    Intent intent = new Intent(this, typeof(ActivityPiano));
+
+                    StartActivity(intent);
+                }
+                else
+                {
+                    // Handle the case where the note with the specified NoteCode was not found
+                    Toast.MakeText(this, "Note not found", ToastLength.Short).Show();
+                }
             }
-            else
-            {
-                // Handle the case where the note with the specified NoteCode was not found
-                Toast.MakeText(this, "Note not found", ToastLength.Short).Show();
-            }
+            catch
+            { }
         }
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
@@ -180,8 +184,7 @@ namespace _329230924finalProject
                 editor.PutString("DOB", null);
                 editor.PutString("email", null);
                 editor.PutInt("phone", 0);
-                editor.PutInt("winRate", 0);
-                editor.PutInt("lessonsCompleted", 0);
+                editor.PutBoolean("doesPay", false);
                 editor.Commit();
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);

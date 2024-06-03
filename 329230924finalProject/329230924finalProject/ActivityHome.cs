@@ -113,8 +113,7 @@ namespace _329230924finalProject
                 editor.PutString("DOB", null);
                 editor.PutString("email", null);
                 editor.PutInt("phone", 0);
-                editor.PutInt("winRate", 0);
-                editor.PutInt("lessonsCompleted", 0);
+                editor.PutBoolean("doesPay", false);
                 editor.Commit();
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);

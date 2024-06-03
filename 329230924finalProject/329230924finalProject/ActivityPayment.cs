@@ -46,27 +46,27 @@ namespace _329230924finalProject
             else
             {
                 Toast.MakeText(this, "thank you for believing chophone pro is worth "+ sumTV.Text + "$! we hope you'll enjoy it", ToastLength.Long).Show();
-                //try
-                //{
-                var allData = Helper.dbCommand.Execute("UPDATE Customer SET doesPay = ? WHERE UName = ?", true, Helper.SharePrefrence1(this).GetString("UName", null));
-                var editor = Helper.SharePrefrence1(this).Edit();
-                editor.PutBoolean("doesPay", true);
-                editor.Commit();
-                Intent intent = new Intent(this, typeof(ActivityProfile));
-                StartActivity(intent);
-                //}
-                //catch
+                try
+                {
+                    var allData = Helper.dbCommand.Execute("UPDATE Customer SET doesPay = ? WHERE UName = ?", true, Helper.SharePrefrence1(this).GetString("UName", null));
+                    var editor = Helper.SharePrefrence1(this).Edit();
+                    editor.PutBoolean("doesPay", true);
+                    editor.Commit();
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
+                catch
 
-                //{
+                {
 
-                //}
+                }
             }
-        
+
         }
 
         private void Sb_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
         {
-            sumTV.Text = e.Progress.ToString();
+            sumTV.Text ="$"+ e.Progress.ToString();
         }
     }
 }

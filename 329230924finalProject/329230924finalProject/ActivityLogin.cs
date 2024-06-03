@@ -79,6 +79,7 @@ namespace _329230924finalProject
                             editor.PutString("DOB", allData[0].DOB);
                             editor.PutString("email", allData[0].email);
                             editor.PutInt("phone", allData[0].phone);
+                            editor.PutBoolean("doesPay",allData[0].doesPay);
                             editor.Commit();
                         }
                         else
@@ -89,6 +90,7 @@ namespace _329230924finalProject
                             editor.PutString("FName", null);
                             editor.PutString("LName", null);
                             editor.PutString("DOB", null);
+                            editor.PutBoolean("doesPay",false);
                             editor.PutString("email", null);
                             editor.PutInt("phone", 0);
                             editor.Commit();

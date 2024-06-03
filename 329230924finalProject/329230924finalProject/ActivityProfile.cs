@@ -82,8 +82,9 @@ namespace _329230924finalProject
         private void DeleteBTN_Click(object sender, EventArgs e)
         {
             //delete account and log out
-            var allData = Helper.dbCommand.Query<Customer>("DELETE FROM Customer WHERE Uname=?", unameTV.Text);
-            var allData1 = Helper.dbCommand.Query<Excercise>("DELETE FROM Excercise WHERE  Uname=?", unameTV.Text);
+            var allData1 = Helper.dbCommand.Execute("DELETE * FROM Excercise WHERE  Uname=?", unameTV.Text);
+            var allData = Helper.dbCommand.Execute("DELETE FROM Customer WHERE Uname=?", unameTV.Text);
+
             var editor = Helper.SharePrefrence1(this).Edit();
             editor.PutString("password", null);
             editor.PutString("UName", null);
@@ -102,34 +103,37 @@ namespace _329230924finalProject
         {
             // Get the NoteCode of the clicked item from the ListView position
             int noteCode = excerciseList[position].NoteCode; // Assuming NoteCode starts from 1 and increments by 1
-
-            // Query the database for the note based on its NoteCode
-            var thisNote = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE NoteCode=?", noteCode);
-
-            // Check if the query returned any notes
-            if (thisNote != null && thisNote.Count > 0)
+            try
             {
-                // Retrieve the first note from the query result
-                Notes selectedNote = thisNote[0];
+                // Query the database for the note based on its NoteCode
+                var thisNote = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE NoteCode=?", noteCode);
 
-                // Access the NoteContent property of the selected note
-                string noteContent = selectedNote.NoteContent;
+                // Check if the query returned any notes
+                if (thisNote != null && thisNote.Count > 0)
+                {
+                    // Retrieve the first note from the query result
+                    Notes selectedNote = thisNote[0];
 
-                // Store the NoteContent in SharedPreferences
-                var composition = Helper.SharePrefrence1(this).Edit();
-                composition.PutString("NoteContent", noteContent);
-                composition.Commit();
+                    // Access the NoteContent property of the selected note
+                    string noteContent = selectedNote.NoteContent;
 
-                // Start the ActivityPiano activity
-                Intent intent = new Intent(this, typeof(ActivityPiano));
+                    // Store the NoteContent in SharedPreferences
+                    var composition = Helper.SharePrefrence1(this).Edit();
+                    composition.PutString("NoteContent", noteContent);
+                    composition.Commit();
 
-                StartActivity(intent);
+                    // Start the ActivityPiano activity
+                    Intent intent = new Intent(this, typeof(ActivityPiano));
+
+                    StartActivity(intent);
+                }
+                else
+                {
+                    // Handle the case where the note with the specified NoteCode was not found
+                    Toast.MakeText(this, "Note not found", ToastLength.Short).Show();
+                }
             }
-            else
-            {
-                // Handle the case where the note with the specified NoteCode was not found
-                Toast.MakeText(this, "Note not found", ToastLength.Short).Show();
-            }
+            catch { }
         }
     }
 }
