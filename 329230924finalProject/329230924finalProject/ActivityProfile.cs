@@ -15,6 +15,7 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityProfile")]
     public class ActivityProfile : AppCompatActivity, ListView.IOnItemClickListener
     {
+        //הצהרה על משתנים
         ImageView pfpIV;
         ExcerciseAdapter excerciseAdapter;
         public static List<Excercise> excerciseList { get; set; }
@@ -24,6 +25,8 @@ namespace _329230924finalProject
         TextView premiumTV;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Idמאתחל אובייקטים, משייך ל
+
             SetContentView(Resource.Layout.ProfileLayout);
             base.OnCreate(savedInstanceState);
 
@@ -69,12 +72,14 @@ namespace _329230924finalProject
 
         private void PurchaseBTN_Click(object sender, EventArgs e)
         {
+            //מעבר לדף תשלום
             Intent intent = new Intent(this, typeof(ActivityPayment));
             StartActivity(intent);
         }
 
         private void UpdateBTN_Click(object sender, EventArgs e)
         {
+            //מעבר לדף עדכון פרטים
             Intent intent = new Intent(this, typeof(ActivityUpdate));
             StartActivity(intent);
         }

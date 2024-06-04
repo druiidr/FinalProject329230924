@@ -38,6 +38,7 @@ namespace _329230924finalProject
         }
         public Customer(string Uname, string Fname, string Lname, string email, int phone, string Date, string password, string photo)
         {
+            //פעולה בונה
             this.Uname = Uname;
             this.Fname = Fname;
             this.Lname = Lname;

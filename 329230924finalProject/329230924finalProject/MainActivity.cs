@@ -16,6 +16,7 @@ namespace _329230924finalProject
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        //הצהרה על משתנים
         Button BTNLogin,BTNRegister,BTNContinue;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -73,6 +74,7 @@ namespace _329230924finalProject
         }
         public void Quicklogin()
         {
+            //כניסת משתמש אוטומטית במידה שהוא מחובר מראש
             if(Helper.SharePrefrence1(this).GetString("FName", null)!=null)
             {
                 Toast.MakeText(this, "Account found. hello "+ Helper.SharePrefrence1(this).GetString("FName", null), ToastLength.Long).Show();

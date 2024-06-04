@@ -14,11 +14,13 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityHome")]
     public class ActivityHome : AppCompatActivity
     {
+        //הצהרה על משתנים
         TextView welcomeTV;
         LinearLayout HomeLinLay;
         Button pianoBTN, NotesBTN;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Idמאתחל אובייקטים, משייך ל
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.HomeLayout);
@@ -48,7 +50,7 @@ namespace _329230924finalProject
 
         }
         public void HeyYou()
-        {//מוצא את השם משתמש במידה ונשמר
+        {//מוצא ומציג את השם הפרטי של המשתמש במידה ונשמר
             try
             {
                 welcomeTV.Text = "hello " + Helper.SharePrefrence1(this).GetString("FName", null);
@@ -58,12 +60,14 @@ namespace _329230924finalProject
         }
         private void NotesBTN_Click(object sender, EventArgs e)
         {
+            //מעבר לדף שיעורים
             Intent intent = new Intent(this, typeof(ActivityNotesShow));
             StartActivity(intent);
         }
 
         private void PianoBTN_Click(object sender, EventArgs e)
         {
+            //מעבר לנגינה חופשית
             Intent intent = new Intent(this, typeof(ActivityPiano));
             StartActivity(intent);
         }

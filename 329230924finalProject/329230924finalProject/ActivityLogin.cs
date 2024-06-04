@@ -16,6 +16,7 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityLogin")]
     public class ActivityLogin : Activity, Android.Views.View.IOnClickListener
     {
+        //הצהרה על משתנים
         Button LogBTN,ForgetBTN;
         EditText passET, UnameET;
         CheckBox memberberriesCB,showCB;
@@ -25,6 +26,8 @@ namespace _329230924finalProject
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Idמאתחל אובייקטים, משייך ל
+
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.LoginLayout);
             // Create your application here
@@ -45,6 +48,7 @@ namespace _329230924finalProject
 
         private void ShowCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
+            //הצגת ויסתרת סיסמא 
             if (showCB.Checked)
                 passET.TransformationMethod = null;
             else

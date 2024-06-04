@@ -20,8 +20,9 @@ namespace _329230924finalProject
 {
     [Activity(Label = "ActivityUpdate")]
     public class ActivityUpdate : Activity
-    { 
-   Random rng = new Random();
+    {
+        //הצהרה על משתנים
+        Random rng = new Random();
     Button regBTN, AgeInptBTN, upldBTN;
     ImageView pfpIV;
     TextView UnameInptTV;
@@ -29,7 +30,8 @@ namespace _329230924finalProject
     int rowcount;
     protected override void OnCreate(Bundle savedInstanceState)
     {
-        base.OnCreate(savedInstanceState);
+            //Idמאתחל אובייקטים, משייך ל
+            base.OnCreate(savedInstanceState);
         SetContentView(Resource.Layout.UpdateLayout);
         regBTN = FindViewById<Button>(Resource.Id.updateUpdatingBTN);
         FnameInptET = FindViewById<EditText>(Resource.Id.UpdateFNameContentET);
@@ -83,7 +85,7 @@ namespace _329230924finalProject
 
     private void RegBTN_Click(object sender, EventArgs e)
     {
-        //לחיצה על כפתור רג'יסטר, ולידציה, הכנסת משתמש תקין לבסיס נתונים, מעבר לדף תוכן
+        //לחיצה על כפתור עדכון פרטים, ולידציה, הכנסת משתמש תקין לבסיס נתונים, מעבר לדף תוכן
         bool flag = true;
         if (!Validate.ValidName(FnameInptET.Text))
         {

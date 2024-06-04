@@ -31,6 +31,7 @@ namespace _329230924finalProject
         }
         public Excercise(string UName,int NoteCode, DateTime DatePlayed, int MistakesMade)
         {
+            //פעולה בונה
             this.Uname = UName;
             this.NoteCode = NoteCode;
             this.MistakesMade = MistakesMade;

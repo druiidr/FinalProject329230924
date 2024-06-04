@@ -4394,31 +4394,34 @@ namespace _329230924finalProject
 			public const int PaymentLayout = 2131492922;
 			
 			// aapt resource value: 0x7F0C003B
-			public const int PianoLayout = 2131492923;
+			public const int PhonecnfrmLayout = 2131492923;
 			
 			// aapt resource value: 0x7F0C003C
-			public const int ProfileLayout = 2131492924;
+			public const int PianoLayout = 2131492924;
 			
 			// aapt resource value: 0x7F0C003D
-			public const int RecordListviewLayout = 2131492925;
+			public const int ProfileLayout = 2131492925;
 			
 			// aapt resource value: 0x7F0C003E
-			public const int RegisterLayout = 2131492926;
+			public const int RecordListviewLayout = 2131492926;
 			
 			// aapt resource value: 0x7F0C003F
-			public const int select_dialog_item_material = 2131492927;
+			public const int RegisterLayout = 2131492927;
 			
 			// aapt resource value: 0x7F0C0040
-			public const int select_dialog_multichoice_material = 2131492928;
+			public const int select_dialog_item_material = 2131492928;
 			
 			// aapt resource value: 0x7F0C0041
-			public const int select_dialog_singlechoice_material = 2131492929;
+			public const int select_dialog_multichoice_material = 2131492929;
 			
 			// aapt resource value: 0x7F0C0042
-			public const int support_simple_spinner_dropdown_item = 2131492930;
+			public const int select_dialog_singlechoice_material = 2131492930;
 			
 			// aapt resource value: 0x7F0C0043
-			public const int UpdateLayout = 2131492931;
+			public const int support_simple_spinner_dropdown_item = 2131492931;
+			
+			// aapt resource value: 0x7F0C0044
+			public const int UpdateLayout = 2131492932;
 			
 			static Layout()
 			{

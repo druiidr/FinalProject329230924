@@ -33,6 +33,7 @@ namespace _329230924finalProject
         }
         public Notes(int NoteCode, string piecename, string NoteContent, int level, string genre,bool IsPro)
         {
+            //פעולה בונה
             this.NoteCode = NoteCode;
             this.NoteContent = NoteContent;
             this.PieceName = piecename;

@@ -16,12 +16,14 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityPayment")]
     public class ActivityPayment : Activity 
     {
+        //הצהרה על משתנים
         Button payBTN;
         EditText cvvET, numET, expMET, expYET;
         TextView sumTV;
         SeekBar sb;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PaymentLayout);
             payBTN=FindViewById<Button>(Resource.Id.PaymentSubscriptionBTN);
@@ -39,12 +41,15 @@ namespace _329230924finalProject
 
         private void PayBTN_Click(object sender, EventArgs e)
         {
+            //מבצע את הליך התשלום 
             if(cvvET.Text!=""&&Validate.ContainLet(cvvET.Text)|| numET.Text != "" && Validate.ContainLet(numET.Text)|| expMET.Text != "" && Validate.ContainLet(expMET.Text)|| expYET.Text != "" && Validate.ContainLet(expYET.Text))
             { 
+                //מטפל בשגיאות בהזנת פרטי תשלום
                    Toast.MakeText(this, "please fill in your payment details properly!", ToastLength.Short).Show();
             }
             else
             {
+                //"רושם את הלקוח לפרו ומבצע "תשלום
                 Toast.MakeText(this, "thank you for believing chophone pro is worth "+ sumTV.Text + "$! we hope you'll enjoy it", ToastLength.Long).Show();
                 try
                 {
@@ -66,6 +71,7 @@ namespace _329230924finalProject
 
         private void Sb_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
         {
+            //בחירת סכום לתשלום
             sumTV.Text ="$"+ e.Progress.ToString();
         }
     }

@@ -16,6 +16,7 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityNotesFavourites")]
     public class ActivityNotesShow : AppCompatActivity, ListView.IOnItemClickListener
     {
+        //הצהרה על משתנים
         public static List<Notes> notesList { get; set; }
         NotesAdapter notesAdapter;
         CheckBox genreCB, levelCB;
@@ -28,6 +29,7 @@ namespace _329230924finalProject
       
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.NotesShowLayout);
    
@@ -49,11 +51,13 @@ namespace _329230924finalProject
 
             try
             {
+                //בדיקת תוכן רשימת השיעורים
                 var Note = Helper.dbCommand.Get<Notes>(1);
               
             }
             catch (Exception ex)
             {
+                //הוספת שיעורים במידה ואינם כבר כלולים
                 Helper.dbCommand.Insert(defaultNote1);
                 Helper.dbCommand.Insert(defaultNote2);
                 Helper.dbCommand.Insert(defaultNote3);
@@ -71,12 +75,14 @@ namespace _329230924finalProject
 
         private void LevelCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
+            //חלוקת רשימה על פי רמת רושי
             if(e.IsChecked)
             genreCB.Checked = false;
         }
 
         private void GenreCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
+            //חלוקת רשימה על פי זאנר
             if (e.IsChecked)
 
                 levelCB.Checked = false;
@@ -161,6 +167,7 @@ namespace _329230924finalProject
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
         {
+            //יצירת מניו
             MenuInflater.Inflate(Resource.Menu.menuchophone, menu);
             return true;
         }

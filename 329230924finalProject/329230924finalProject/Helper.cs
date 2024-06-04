@@ -46,11 +46,13 @@ namespace _329230924finalProject
             public static SQLiteConnection dbCommand;
             public static string Path()
             {
+            //יצירת PATH
                 path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), Helper.dbname);
                 return path;
             }
             public static string BitmapToBase64(Bitmap bitmap)
             {
+            //מעבר מביטמפ לטקסט
                 string str = "";
                 using (var stream = new MemoryStream())
                 {
@@ -87,6 +89,7 @@ namespace _329230924finalProject
 
             public static Bitmap Base64ToBitmap(String base64String)
             {
+            //מעבר מטקסט לביטמפ
                 byte[] imageAsBytes = Base64.Decode(base64String, Base64Flags.Default);
                 return BitmapFactory.DecodeByteArray(imageAsBytes, 0, imageAsBytes.Length);
             }

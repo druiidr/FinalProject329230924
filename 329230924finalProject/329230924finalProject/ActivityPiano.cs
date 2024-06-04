@@ -18,6 +18,7 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityPiano")]
     public class ActivityPiano : AppCompatActivity, View.IOnClickListener
     {
+        //הצהרה על משתנים
         AudioManager am;
        Button C1BTN, Csh1BTN, C2BTN, Csh2BTN, D1BTN, Dsh1BTN, D2BTN, Dsh2BTN, E1BTN, E2BTN, F1BTN, Fsh1BTN, F2BTN, Fsh2BTN, G1BTN, Gsh1BTN, G2BTN, Gsh2BTN, A1BTN, Ash1BTN, A2BTN, Ash2BTN, B1BTN, B2BTN;
         TextView playedNotesTV;
@@ -31,6 +32,7 @@ namespace _329230924finalProject
         bool isPlayinging = false;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Idמאתחל אובייקטים, משייך 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PianoLayout);
             playpauseBTN = FindViewById<Button>(Resource.Id.PianoPlayPauseBTN);
@@ -70,6 +72,7 @@ namespace _329230924finalProject
         }
         public void SetComposition()
         {
+            //הצבת תוכן השיעור בהצגת התווים
             try
             {
                 if (Helper.SharePrefrence1(this).GetString("NoteContent", null) != null)
@@ -84,12 +87,14 @@ namespace _329230924finalProject
         }
         public void ClearComposition()
         {
+            //ניקוי לוח התווים של השיעור
             var editor = Helper.SharePrefrence1(this).Edit();
             editor.PutString("NoteContent", null);
             editor.Commit();
         }
         private void PlaypauseBTN_Click(object sender, EventArgs e)
         {
+            //טיפול בתחילת הנגינה האוטומטית במידה והמשתמש בתוך שיעור
             if(isPlayinging)
                 PlayMelody(playedNotesTV.Text);
             else
@@ -98,6 +103,7 @@ namespace _329230924finalProject
         }
         async void PlayMelody(string str)
         {
+            //נגינה אוטומטית של השיר הנתון בשיעור
             string ch="";
             while(str.Length>3)
             {
@@ -157,6 +163,7 @@ namespace _329230924finalProject
  
         public void OnClick(View v)
         {
+            //לחיצה על קליד
             Button button = (Button)v;
             
             string buttonText = button.Text;
@@ -167,6 +174,7 @@ namespace _329230924finalProject
         }
         public int GradeLesson(string key)
         {
+            //בדיקת דיוק הקליד המנוגן וחלוקת ניקוד בהתאם
             if (playedNotesTV.Text != "free play mode")
             {
                 char note = composition.First();
@@ -194,6 +202,7 @@ namespace _329230924finalProject
         }
         public void Boot()
         {
+            //סיום שיעור לאחר מספיק טעויות
             ClearComposition();
             Toast.MakeText(this, "you failed this exercise!!!", ToastLength.Long).Show();
             Intent intent = new Intent(this, typeof(ActivityNotesShow));
@@ -201,6 +210,7 @@ namespace _329230924finalProject
         }
         public void SetLessonResult()
         {
+            //קביעת תוצאות השיעור
             ClearComposition();
             try
             {
@@ -224,7 +234,7 @@ namespace _329230924finalProject
                             }
                             else
                             {
-                                // Displaying a message
+                                // Displaying a message if mistakes are less than 
                                 Toast.MakeText(this, "Oh come on, you can do better!", ToastLength.Short).Show();
                             }
                         }

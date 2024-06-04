@@ -39,7 +39,7 @@ namespace _329230924finalProject
 
 
         public override View GetView(int position, View convertView, ViewGroup parent)
-        {
+        { //יצירת תצוגת אובייקט בADAPTER
             LayoutInflater layoutInflater = ((ActivityProfile)context).LayoutInflater;
             var view = layoutInflater.Inflate(Resource.Layout.RecordListviewLayout, parent, false);
             TextView PiecenameTV = view.FindViewById<TextView>(Resource.Id.RecordListViewNameTV);

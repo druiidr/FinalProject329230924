@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using SQLite;
 using Android.App;
+using Android.Telephony;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
@@ -19,9 +20,14 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityRegister")]
     public class ActivityRegister : Activity
     {
+        //הצהרה על משתנים
         Random rng = new Random();
-        Button regBTN ,AgeInptBTN,upldBTN;
+        Dialog d;
+        EditText dlgCodeET;
+        int verificationCode;
+        Button regBTN ,AgeInptBTN,upldBTN,dlgConfirmBTN;
         ImageView pfpIV;
+        bool flag = true;
         EditText FnameInptET, LnameInptET, UnameInptET, passInptET, emailInptET, phoneInptET, confirmInptET;
         int rowcount;
         readonly string[] permissionGroup =
@@ -32,6 +38,8 @@ namespace _329230924finalProject
         };
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Idמאתחל אובייקטים, משייך ל
+
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.RegisterLayout);
             regBTN = FindViewById<Button>(Resource.Id.RegisterRegistrationBTN);
@@ -40,19 +48,19 @@ namespace _329230924finalProject
             UnameInptET = FindViewById<EditText>(Resource.Id.RegisterUNameContentET);
             AgeInptBTN = FindViewById<Button>(Resource.Id.RegisterDateSelectionBTN);
             passInptET = FindViewById<EditText>(Resource.Id.RegisterPassContentET);
-   
             emailInptET = FindViewById<EditText>(Resource.Id.RegisterEmailContentET);
             phoneInptET = FindViewById<EditText>(Resource.Id.RegisterPhoneContentET);
             pfpIV = FindViewById<ImageView>(Resource.Id.RegisterpfpviewIV);
             upldBTN = FindViewById<Button>(Resource.Id.RegisterpfpSelectionBTN);
             confirmInptET = FindViewById<EditText>(Resource.Id.RegisterConPassContentET);
-
+            verificationCode = rng.Next(1000, 9999);
             regBTN.Click += RegBTN_Click;
             AgeInptBTN.Click += AgeInptBTN_Click;
             upldBTN.Click += UpldBTN_Click;
         }
         async void UploadPhoto()
         {
+            //העלאת תמונה מהמכשיר
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsPickPhotoSupported)
@@ -75,9 +83,42 @@ namespace _329230924finalProject
             pfpIV.SetImageBitmap(bitmap);
 
         }
-
-    private void UpldBTN_Click(object sender, EventArgs e)
+        public void ConfirmPhone(string phone )
         {
+         //שליחת סמס לאימות טלפון   s
+            var SmSer = SmsManager.Default;
+            SmSer.SendTextMessage(phone, null, $"try:{verificationCode}", null, null);
+            createLoginDialog();
+           
+        }
+        public void createLoginDialog()
+        {
+            //יצירת דיאלוג לאימות טלפון
+            d = new Dialog(this);
+            d.SetContentView(Resource.Layout.PhonecnfrmLayout);
+            d.SetTitle("cnfrm");
+            d.SetCancelable(true);
+            dlgCodeET = d.FindViewById<EditText>(Resource.Id.phoneDialogBTN);
+            dlgConfirmBTN = d.FindViewById<Button>(Resource.Id.phoneDialogBTN);
+            dlgConfirmBTN.Click += DlgConfirmBTN_Click;
+            d.Show();
+        }
+
+        private void DlgConfirmBTN_Click(object sender, EventArgs e)
+        {
+            //אימות טלפון בתוך הדיאלוג
+            if (dlgCodeET.Text == rng.ToString())
+            {
+                Toast.MakeText(this, "phone confirmed", ToastLength.Long).Show();
+                d.Dismiss();
+            }
+            else
+                Toast.MakeText(this, "try again", ToastLength.Long).Show();
+        }
+
+        private void UpldBTN_Click(object sender, EventArgs e)
+        {
+            // טיפול בדף תמונה
             UploadPhoto();
 
         }
@@ -91,6 +132,7 @@ namespace _329230924finalProject
         }
         void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
         {
+            //פתיחת דיאלוג בחרירת תאריך לידה
 
             String str = e.Date.ToLongDateString();
         Toast.MakeText(this, str, ToastLength.Long).Show();
@@ -100,7 +142,7 @@ namespace _329230924finalProject
         private void RegBTN_Click(object sender, EventArgs e)
         {
             //לחיצה על כפתור רג'יסטר, ולידציה, הכנסת משתמש תקין לבסיס נתונים, מעבר לדף תוכן
-            bool flag = true;
+
            if(!Validate.ValidName(FnameInptET.Text))
             {
                     flag = false;
@@ -121,6 +163,10 @@ namespace _329230924finalProject
                     flag = false;
                 Toast.MakeText(this, "phone number invalid", ToastLength.Long).Show();
             }
+            else
+            {
+                ConfirmPhone(phoneInptET.Text);
+            }
             if (!Validate.ValidMail(emailInptET.Text))
             {
                     flag = false;
@@ -140,7 +186,6 @@ namespace _329230924finalProject
 
             if (flag)
             {
-
                 try
                 {
                     var Costumer =  Helper.dbCommand.Get<Customer>(UnameInptET.Text);
