@@ -75,7 +75,7 @@ namespace _329230924finalProject
 
         private void LevelCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
-            //חלוקת רשימה על פי רמת רושי
+            //חלוקת רשימה על פי רמת קושי
             if(e.IsChecked)
             genreCB.Checked = false;
         }
@@ -90,6 +90,7 @@ namespace _329230924finalProject
 
         private void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
+            //סידור רשימה על פי העדפות וסינון ספינר
             Spinner s = (Spinner)sender;
             if (e.Position > 0) // Make sure a valid level is selected (excluding "select level" option)
             {
@@ -130,8 +131,10 @@ namespace _329230924finalProject
         {
             // Get the NoteCode of the clicked item from the ListView position
             int noteCode = notesList[position].NoteCode; // Assuming NoteCode starts from 1 and increments by 1
+
             try
             {
+                
                 // Query the database for the note based on its NoteCode
                 var thisNote = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE NoteCode=?", noteCode);
 
@@ -140,25 +143,33 @@ namespace _329230924finalProject
                 {
                     // Retrieve the first note from the query result
                     Notes selectedNote = thisNote[0];
+                    if (!selectedNote.IsPro || selectedNote.IsPro == Helper.SharePrefrence1(this).GetBoolean("doesPay", true))
 
-                    // Access the NoteContent property of the selected note
-                    string noteContent = selectedNote.NoteContent;
+                    {
+                        // Access the NoteContent property of the selected note
+                        string noteContent = selectedNote.NoteContent;
 
-                    // Store the NoteContent in SharedPreferences
-                    var composition = Helper.SharePrefrence1(this).Edit();
-                    composition.PutInt("NoteCode", noteCode);
-                    composition.PutString("NoteContent", noteContent);
-                    composition.Commit();
+                        // Store the NoteContent in SharedPreferences
+                        var composition = Helper.SharePrefrence1(this).Edit();
+                        composition.PutInt("NoteCode", noteCode);
+                        composition.PutString("NoteContent", noteContent);
+                        composition.Commit();
 
-                    // Start the ActivityPiano activity
-                    Intent intent = new Intent(this, typeof(ActivityPiano));
+                        // Start the ActivityPiano activity
+                        Intent intent = new Intent(this, typeof(ActivityPiano));
 
-                    StartActivity(intent);
+                        StartActivity(intent);
+                    }
+                    else
+                    {
+                        // Handle the case where the note with the specified NoteCode was not found
+                        Toast.MakeText(this, "Note not found", ToastLength.Short).Show();
+                    }
                 }
                 else
                 {
                     // Handle the case where the note with the specified NoteCode was not found
-                    Toast.MakeText(this, "Note not found", ToastLength.Short).Show();
+                    Toast.MakeText(this, "Thats a premium song. please upgrade to a pro account to play it!", ToastLength.Long).Show();
                 }
             }
             catch

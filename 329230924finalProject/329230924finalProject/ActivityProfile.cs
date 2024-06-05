@@ -87,8 +87,8 @@ namespace _329230924finalProject
         private void DeleteBTN_Click(object sender, EventArgs e)
         {
             //delete account and log out
-            var allData1 = Helper.dbCommand.Execute("DELETE * FROM Excercise WHERE  Uname=?", unameTV.Text);
-            var allData = Helper.dbCommand.Execute("DELETE FROM Customer WHERE Uname=?", unameTV.Text);
+            var allData1 = Helper.dbCommand.Execute("DELETE FROM Excercise WHERE  UName=?", unameTV.Text);
+            var allData = Helper.dbCommand.Execute("DELETE FROM Customer WHERE UName=?", unameTV.Text);
 
             var editor = Helper.SharePrefrence1(this).Edit();
             editor.PutString("password", null);
@@ -107,7 +107,7 @@ namespace _329230924finalProject
         public void OnItemClick(AdapterView parent, View view, int position, long id)
         {
             // Get the NoteCode of the clicked item from the ListView position
-            int noteCode = excerciseList[position].NoteCode; // Assuming NoteCode starts from 1 and increments by 1
+            int noteCode = excerciseList[position].NoteCode; 
             try
             {
                 // Query the database for the note based on its NoteCode

@@ -67,8 +67,6 @@ namespace _329230924finalProject
             //מבצע את הפעולה initialize
 
                 dbCommand = new SQLiteConnection(Path());
-
-           // dbCommand = new SQLiteConnection(Path());
             try
             {
                 dbCommand.CreateTable<Customer>();

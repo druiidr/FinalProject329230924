@@ -46,11 +46,20 @@ namespace _329230924finalProject
             C2BTN = (FindViewById<Button>(Resource.Id.PianoC2BTN));
             D2BTN = (FindViewById<Button>(Resource.Id.PianoD2BTN));
            E2BTN = (FindViewById<Button>(Resource.Id.PianoE2BTN));
-            F2BTN = (FindViewById<Button>(Resource.Id.PianoF2BTN));
-       
+            F2BTN = (FindViewById<Button>(Resource.Id.PianoF2BTN));      
            G2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
             A2BTN = (FindViewById<Button>(Resource.Id.PianoA2BTN));
             B2BTN = (FindViewById<Button>(Resource.Id.PianoG2BTN));
+            Csh1BTN = FindViewById<Button>(Resource.Id.PianoCshrp1BTN);
+            Dsh1BTN = FindViewById<Button>(Resource.Id.PianoDshrp1BTN);
+            Fsh1BTN = (FindViewById<Button>(Resource.Id.PianoFshrp1BTN));
+            Gsh1BTN = (FindViewById<Button>(Resource.Id.PianoGshrp1BTN));
+            Ash1BTN = (FindViewById<Button>(Resource.Id.PianoAshrp1BTN));
+            Csh2BTN = (FindViewById<Button>(Resource.Id.PianoCshrp2BTN));
+            Dsh2BTN = (FindViewById<Button>(Resource.Id.PianoDshrp2BTN));
+            Fsh2BTN = (FindViewById<Button>(Resource.Id.PianoFshrp2BTN));
+            Gsh2BTN = (FindViewById<Button>(Resource.Id.PianoGshrp2BTN));
+            Ash2BTN = (FindViewById<Button>(Resource.Id.PianoAshrp2BTN));
             playedNotesTV = FindViewById<TextView>(Resource.Id.PianoPlayedNotesTV);
             SetComposition();
             
@@ -68,11 +77,22 @@ namespace _329230924finalProject
             G2BTN.SetOnClickListener(this);
             A2BTN.SetOnClickListener(this);
             B2BTN.SetOnClickListener(this);
+            Csh1BTN.SetOnClickListener(this);
+            Dsh1BTN.SetOnClickListener(this);
+            Fsh1BTN.SetOnClickListener(this);
+            Gsh1BTN.SetOnClickListener(this);
+            Ash1BTN.SetOnClickListener(this);
+            Csh2BTN.SetOnClickListener(this);
+            Dsh2BTN.SetOnClickListener(this);
+            Fsh2BTN.SetOnClickListener(this);
+            Gsh2BTN.SetOnClickListener(this);
+            Ash2BTN.SetOnClickListener(this);
+
             playpauseBTN.Click += PlaypauseBTN_Click;
         }
         public void SetComposition()
         {
-            //הצבת תוכן השיעור בהצגת התווים
+            //הצבת תוכן השיעור בתצוגת התווים
             try
             {
                 if (Helper.SharePrefrence1(this).GetString("NoteContent", null) != null)
@@ -153,6 +173,25 @@ namespace _329230924finalProject
                     playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoG1);
                     playingSoundMP.Start();
                     break;
+                case ("  A#"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.a1s);
+                    break;
+                case ("  C#"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.c1s);
+                    playingSoundMP.Start();
+                    break;
+                case ("  D#"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.d1s);
+                    playingSoundMP.Start();
+                    break;
+                case ("  F#"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.f1s);
+                    playingSoundMP.Start();
+                    break;
+                case ("  G#"):
+                    playingSoundMP = MediaPlayer.Create(this, Resource.Raw.g1s);
+                    playingSoundMP.Start();
+                    break;
                 default:
                     break;
 
@@ -212,16 +251,18 @@ namespace _329230924finalProject
         {
             //קביעת תוצאות השיעור
             ClearComposition();
-            try
-            {
-                Helper.dbCommand = new SQLiteConnection(Helper.Path());
-                string uName = Helper.SharePrefrence1(this).GetString("UName", null);
-                int noteCode = Helper.SharePrefrence1(this).GetInt("NoteCode", 0);
-
-                var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
-
-                if (allData.Count != 0)
+            if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+            { 
+                try
                 {
+                    Helper.dbCommand = new SQLiteConnection(Helper.Path());
+                    string uName = Helper.SharePrefrence1(this).GetString("UName", null);
+                    int noteCode = Helper.SharePrefrence1(this).GetInt("NoteCode", 0);
+
+                    var allData = Helper.dbCommand.Query<Excercise>("SELECT * FROM Excercise WHERE UName = ? AND NoteCode = ?", uName, noteCode);
+
+                    if (allData.Count != 0)
+                    {
                         var exercise = allData[0];
                         if (exercise != null)
                         {
@@ -252,11 +293,16 @@ namespace _329230924finalProject
                         // Displaying a message
                         Toast.MakeText(this, "Exercise logged", ToastLength.Short).Show();
                     }
-            }
-            catch (Exception ex)
+                }
+                catch (Exception ex)
+                {
+                    // Displaying a generic error message
+                    Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
+                }
+        }
+            else
             {
-                // Displaying a generic error message
-                Toast.MakeText(this, "An error occurred. Please try again later.", ToastLength.Short).Show();
+                Toast.MakeText(this, "Please log in to save your results!", ToastLength.Short).Show();
             }
         }
 
@@ -306,6 +352,17 @@ namespace _329230924finalProject
 
             {
                 //מעבר לדף עדכון פרטים
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
+            }
+            if (item.ItemId == Resource.Id.action_profile)
+
+            {
+                //מעבר לדף פרופיל
                 if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
 
                 {

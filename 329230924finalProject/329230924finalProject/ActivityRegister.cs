@@ -12,6 +12,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Plugin.Media;
+using Android.Widget;
+using Android.OS;
+using System;
 using Android.Graphics;
 using Android;
 
@@ -25,7 +28,7 @@ namespace _329230924finalProject
         Dialog d;
         EditText dlgCodeET;
         int verificationCode;
-        Button regBTN ,AgeInptBTN,upldBTN,dlgConfirmBTN;
+        Button regBTN ,AgeInptBTN,upldBTN,dlgConfirmBTN,phoneBTN;
         ImageView pfpIV;
         bool flag = true;
         EditText FnameInptET, LnameInptET, UnameInptET, passInptET, emailInptET, phoneInptET, confirmInptET;
@@ -34,7 +37,9 @@ namespace _329230924finalProject
        {
             Manifest.Permission.ReadExternalStorage,
             Manifest.Permission.WriteExternalStorage,
-            Manifest.Permission.Camera
+            Manifest.Permission.Camera,
+                Manifest.Permission.SendSms
+
         };
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -50,14 +55,26 @@ namespace _329230924finalProject
             passInptET = FindViewById<EditText>(Resource.Id.RegisterPassContentET);
             emailInptET = FindViewById<EditText>(Resource.Id.RegisterEmailContentET);
             phoneInptET = FindViewById<EditText>(Resource.Id.RegisterPhoneContentET);
+            phoneBTN = FindViewById<Button>(Resource.Id.RegisterphonecnfrmBTN);
             pfpIV = FindViewById<ImageView>(Resource.Id.RegisterpfpviewIV);
             upldBTN = FindViewById<Button>(Resource.Id.RegisterpfpSelectionBTN);
             confirmInptET = FindViewById<EditText>(Resource.Id.RegisterConPassContentET);
             verificationCode = rng.Next(1000, 9999);
             regBTN.Click += RegBTN_Click;
+            phoneBTN.Click += PhoneBTN_Click;
             AgeInptBTN.Click += AgeInptBTN_Click;
             upldBTN.Click += UpldBTN_Click;
         }
+
+        private void PhoneBTN_Click(object sender, EventArgs e)
+        {
+            //הפעלת אימות טלפון
+            if(Validate.ValidPhone(phoneInptET.Text))
+                   ConfirmPhone(phoneInptET.Text);
+            else
+                Toast.MakeText(this, "Enter a valid phone", ToastLength.Short).Show();
+        }
+
         async void UploadPhoto()
         {
             //העלאת תמונה מהמכשיר
@@ -85,23 +102,33 @@ namespace _329230924finalProject
         }
         public void ConfirmPhone(string phone )
         {
-         //שליחת סמס לאימות טלפון   s
-            var SmSer = SmsManager.Default;
-            SmSer.SendTextMessage(phone, null, $"try:{verificationCode}", null, null);
-            createLoginDialog();
-           
+                //שליחת סמס לאימות טלפון   
+                var SmSer = SmsManager.Default;
+            try
+            {
+                SmSer.SendTextMessage(phone, null, $"try:{verificationCode}", null, null);
+                createcnfrmDialog();
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
+                flag = false;
+            }
+
         }
-        public void createLoginDialog()
+        public void createcnfrmDialog()
         {
             //יצירת דיאלוג לאימות טלפון
             d = new Dialog(this);
-            d.SetContentView(Resource.Layout.PhonecnfrmLayout);
+            d.SetContentView(Resource.Layout.PhoneDialogLayout);
+
             d.SetTitle("cnfrm");
             d.SetCancelable(true);
-            dlgCodeET = d.FindViewById<EditText>(Resource.Id.phoneDialogBTN);
-            dlgConfirmBTN = d.FindViewById<Button>(Resource.Id.phoneDialogBTN);
-            dlgConfirmBTN.Click += DlgConfirmBTN_Click;
             d.Show();
+            dlgCodeET = d.FindViewById<EditText>(Resource.Id.PhoneDialogET);
+            dlgConfirmBTN = d.FindViewById<Button>(Resource.Id.PhoneDialogBTN);
+            dlgConfirmBTN.Click += DlgConfirmBTN_Click;
+
         }
 
         private void DlgConfirmBTN_Click(object sender, EventArgs e)
@@ -118,7 +145,7 @@ namespace _329230924finalProject
 
         private void UpldBTN_Click(object sender, EventArgs e)
         {
-            // טיפול בדף תמונה
+            // טיפול בתמונה
             UploadPhoto();
 
         }
@@ -163,10 +190,7 @@ namespace _329230924finalProject
                     flag = false;
                 Toast.MakeText(this, "phone number invalid", ToastLength.Long).Show();
             }
-            else
-            {
-                ConfirmPhone(phoneInptET.Text);
-            }
+
             if (!Validate.ValidMail(emailInptET.Text))
             {
                     flag = false;

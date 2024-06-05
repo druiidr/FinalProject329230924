@@ -48,7 +48,7 @@ namespace _329230924finalProject
 
         private void ShowCB_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
-            //הצגת ויסתרת סיסמא 
+            //הצגת והסתרת סיסמא 
             if (showCB.Checked)
                 passET.TransformationMethod = null;
             else
