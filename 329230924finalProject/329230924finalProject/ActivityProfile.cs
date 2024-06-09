@@ -140,5 +140,68 @@ namespace _329230924finalProject
             }
             catch { }
         }
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+
+        {//מייצר מניו
+
+            MenuInflater.Inflate(Resource.Menu.menuchophone, menu);
+            return true;
+
+        }
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+
+        {
+
+            if (item.ItemId == Resource.Id.action_Home)
+
+            {
+                //מעבר לדף בית
+                Intent intent = new Intent(this, typeof(ActivityLogin));
+                StartActivity(intent);
+            }
+            if (item.ItemId == Resource.Id.action_profile)
+
+            {
+                //מעבר לדף פרופיל
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
+            }
+
+            else if (item.ItemId == Resource.Id.action_log_out)
+
+            {
+                //התנתקות
+                var editor = Helper.SharePrefrence1(this).Edit();
+                editor.PutString("password", null);
+                editor.PutString("UName", null);
+                editor.PutString("FName", null);
+                editor.PutString("LName", null);
+                editor.PutString("DOB", null);
+                editor.PutString("email", null);
+                editor.PutInt("phone", 0);
+                editor.PutBoolean("doesPay", false);
+                editor.Commit();
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
+                return true;
+            }
+            if (item.ItemId == Resource.Id.action_update)
+
+            {
+                //מעבר לדף עדכון פרטים
+                Intent intent = new Intent(this, typeof(ActivityUpdate));
+                StartActivity(intent);
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+        public void menumaker()
+        {
+
+        }
     }
 }

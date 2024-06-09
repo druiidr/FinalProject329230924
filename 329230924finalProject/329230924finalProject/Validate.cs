@@ -37,6 +37,15 @@ namespace _329230924finalProject
         {
             return (x.Any(char.IsLetter));
         }
+        public static bool AgeRange(DateTime x)
+        {
+            // Get current DateTime
+            DateTime currentDate = DateTime.Now;
+
+            // Get DateTime representing 100 years ago
+            DateTime centuryAgo = currentDate.AddYears(-100);
+            return (x < currentDate && x > centuryAgo);
+        }
         public static bool SamePass(string p1,string p2)//בודק האם 2 מחרוזות שהוזנו זהות
         {
             if (p1.Length != p2.Length)

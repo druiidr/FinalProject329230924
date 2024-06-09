@@ -86,10 +86,10 @@ namespace _329230924finalProject
 
         {
 
-            if (item.ItemId == Resource.Id.action_login)
+            if (item.ItemId == Resource.Id.action_Home)
 
             {
-                //מעבר לדף כניסת משתמש
+                //מעבר לדף בית
                 Intent intent = new Intent(this, typeof(ActivityLogin));
                 StartActivity(intent);
             }

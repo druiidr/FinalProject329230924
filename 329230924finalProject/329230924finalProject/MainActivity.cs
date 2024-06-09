@@ -56,6 +56,16 @@ namespace _329230924finalProject
             Intent intent = new Intent(this, typeof(ActivityHome));
             StartActivity(intent);
         }
+        public void Quicklogin()
+        {
+            //כניסת משתמש אוטומטית במידה שהוא מחובר מראש
+            if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+            {
+                Toast.MakeText(this, "Account found. hello " + Helper.SharePrefrence1(this).GetString("FName", null), ToastLength.Long).Show();
+                Intent intent = new Intent(this, typeof(ActivityHome));
+                StartActivity(intent);
+            }
+        }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -73,16 +83,7 @@ namespace _329230924finalProject
             return true;
 
         }
-        public void Quicklogin()
-        {
-            //כניסת משתמש אוטומטית במידה שהוא מחובר מראש
-            if(Helper.SharePrefrence1(this).GetString("FName", null)!=null)
-            {
-                Toast.MakeText(this, "Account found. hello "+ Helper.SharePrefrence1(this).GetString("FName", null), ToastLength.Long).Show();
-                Intent intent = new Intent(this, typeof(ActivityHome));
-                StartActivity(intent);
-            }
-        }
+     
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
 
         { 
@@ -99,11 +100,11 @@ namespace _329230924finalProject
                 Intent intent = new Intent(this, typeof(ActivityProfile));
                 StartActivity(intent);
             }
-            if (item.ItemId == Resource.Id.action_login)
+            if (item.ItemId == Resource.Id.action_Home)
 
             {
-                //מעבר לדף כניסת משתמש
-                Intent intent = new Intent(this, typeof(ActivityLogin));
+                //מעבר לדף בית
+                Intent intent = new Intent(this, typeof(ActivityHome));
                 StartActivity(intent);
             }
 

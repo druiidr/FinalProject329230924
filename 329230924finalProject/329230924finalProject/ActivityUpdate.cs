@@ -24,9 +24,8 @@ namespace _329230924finalProject
         //הצהרה על משתנים
         Random rng = new Random();
     Button regBTN, AgeInptBTN, upldBTN;
-    ImageView pfpIV;
     TextView UnameInptTV;
-    EditText FnameInptET, LnameInptET, passInptET, emailInptET, phoneInptET, confirmInptET;
+    EditText FnameInptET, LnameInptET, passInptET, emailInptET, phoneInptET;
     int rowcount;
     protected override void OnCreate(Bundle savedInstanceState)
     {
@@ -41,19 +40,15 @@ namespace _329230924finalProject
         passInptET = FindViewById<EditText>(Resource.Id.UpdatePassContentET);
         emailInptET = FindViewById<EditText>(Resource.Id.UpdateEmailContentET);
         phoneInptET = FindViewById<EditText>(Resource.Id.UpdatePhoneContentET);
-        pfpIV = FindViewById<ImageView>(Resource.Id.UpdatepfpviewIV);
         upldBTN = FindViewById<Button>(Resource.Id.UpdatepfpSelectionBTN);
-        confirmInptET = FindViewById<EditText>(Resource.Id.UpdateConPassContentET);
             try
             {
                 FnameInptET.Text = Helper.SharePrefrence1(this).GetString("FName", null);
                LnameInptET.Text =  Helper.SharePrefrence1(this).GetString("LName", null);
                 UnameInptTV.Text =  Helper.SharePrefrence1(this).GetString("UName", null);
                 emailInptET.Text =  Helper.SharePrefrence1(this).GetString("email", null);
-                phoneInptET.Text = Helper.SharePrefrence1(this).GetString("phone", null);
+                phoneInptET.Text = Helper.SharePrefrence1(this).GetInt("phone", 0).ToString();
                 AgeInptBTN.Text = Helper.SharePrefrence1(this).GetString("DOB", null);
-                passInptET.Text = Helper.SharePrefrence1(this).GetString("password", null);
-                pfpIV.SetImageBitmap(Helper.Base64ToBitmap(Helper.SharePrefrence1(this).GetString("photo", null)));
 
             }
             catch
@@ -61,7 +56,7 @@ namespace _329230924finalProject
             { Toast.MakeText(this, "username must be the same", ToastLength.Short).Show(); }
         regBTN.Click += RegBTN_Click;
         AgeInptBTN.Click += AgeInptBTN_Click;
-        upldBTN.Click += UpldBTN_Click;
+
     }
 
     private void UpldBTN_Click(object sender, EventArgs e)
@@ -107,16 +102,10 @@ namespace _329230924finalProject
             flag = false;
             Toast.MakeText(this, "invalid mail", ToastLength.Long).Show();
         }
-        if (!Validate.ValidPass(passInptET.Text))
+        if (!Validate.SamePass(passInptET.Text, Helper.SharePrefrence1(this).GetString("password", null)))
         {
             flag = false;
-            Toast.MakeText(this, "password must be 6<x<20 charachters long, and contain both numbers and letters", ToastLength.Long).Show();
-        }
-        if (!Validate.SamePass(passInptET.Text, confirmInptET.Text))
-        {
-            flag = false;
-            Toast.MakeText(this, "different passwords", ToastLength.Long).Show();
-
+            Toast.MakeText(this, "please enter your password to impliment the changes", ToastLength.Long).Show();
         }
 
             if (flag)
@@ -131,10 +120,8 @@ namespace _329230924finalProject
                     dbcommand.Query<Customer>("UPDATE Customer SET FName = '" + FnameInptET.Text + "' WHERE Uname = '" + Helper.SharePrefrence1(this).GetString("Uname", null) + "'");
                     dbcommand.Query<Customer>("UPDATE Customer SET LName = '" + LnameInptET.Text + "' WHERE Uname = '" + Helper.SharePrefrence1(this).GetString("Uname", null) + "'");
                     dbcommand.Query<Customer>("UPDATE Customer SET DOB = '" + AgeInptBTN.Text + "' WHERE Uname = '" + Helper.SharePrefrence1(this).GetString("Uname", null) + "'");
-                    dbcommand.Query<Customer>("UPDATE Customer SET password = '" + passInptET.Text + "' WHERE Uname = '" + Helper.SharePrefrence1(this).GetString("Uname", null) + "'");
                     dbcommand.Query<Customer>("UPDATE Customer SET phone = '" + int.Parse(phoneInptET.Text) + "' WHERE Uname = '" + Helper.SharePrefrence1(this).GetString("Uname", null) + "'");
 
-                    editor.PutString("password", passInptET.Text);
                     editor.PutString("FName", FnameInptET.Text);
                     editor.PutString("LName", LnameInptET.Text);
                     editor.PutString("DOB", AgeInptBTN.Text);
@@ -150,6 +137,69 @@ namespace _329230924finalProject
 
                 { Toast.MakeText(this, "sql issue", ToastLength.Short).Show(); }
             }
+        }
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+
+        {//מייצר מניו
+
+            MenuInflater.Inflate(Resource.Menu.menuchophone, menu);
+            return true;
+
+        }
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+
+        {
+
+            if (item.ItemId == Resource.Id.action_Home)
+
+            {
+                //מעבר לדף בית
+                Intent intent = new Intent(this, typeof(ActivityLogin));
+                StartActivity(intent);
+            }
+            if (item.ItemId == Resource.Id.action_profile)
+
+            {
+                //מעבר לדף פרופיל
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
+            }
+
+            else if (item.ItemId == Resource.Id.action_log_out)
+
+            {
+                //התנתקות
+                var editor = Helper.SharePrefrence1(this).Edit();
+                editor.PutString("password", null);
+                editor.PutString("UName", null);
+                editor.PutString("FName", null);
+                editor.PutString("LName", null);
+                editor.PutString("DOB", null);
+                editor.PutString("email", null);
+                editor.PutInt("phone", 0);
+                editor.PutBoolean("doesPay", false);
+                editor.Commit();
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
+                return true;
+            }
+            if (item.ItemId == Resource.Id.action_update)
+
+            {
+                //מעבר לדף עדכון פרטים
+                Intent intent = new Intent(this, typeof(ActivityUpdate));
+                StartActivity(intent);
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+        public void menumaker()
+        {
+
         }
     }
 }

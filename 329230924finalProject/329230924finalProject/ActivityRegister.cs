@@ -26,6 +26,7 @@ namespace _329230924finalProject
         //הצהרה על משתנים
         Random rng = new Random();
         Dialog d;
+        DateTime bday;
         EditText dlgCodeET;
         int verificationCode;
         Button regBTN ,AgeInptBTN,upldBTN,dlgConfirmBTN,phoneBTN;
@@ -59,7 +60,7 @@ namespace _329230924finalProject
             pfpIV = FindViewById<ImageView>(Resource.Id.RegisterpfpviewIV);
             upldBTN = FindViewById<Button>(Resource.Id.RegisterpfpSelectionBTN);
             confirmInptET = FindViewById<EditText>(Resource.Id.RegisterConPassContentET);
-            verificationCode = rng.Next(1000, 9999);
+   
             regBTN.Click += RegBTN_Click;
             phoneBTN.Click += PhoneBTN_Click;
             AgeInptBTN.Click += AgeInptBTN_Click;
@@ -69,8 +70,11 @@ namespace _329230924finalProject
         private void PhoneBTN_Click(object sender, EventArgs e)
         {
             //הפעלת אימות טלפון
-            if(Validate.ValidPhone(phoneInptET.Text))
-                   ConfirmPhone(phoneInptET.Text);
+            if (Validate.ValidPhone(phoneInptET.Text))
+            {
+                ConfirmPhone(phoneInptET.Text);
+                verificationCode = rng.Next(1000, 9999);
+            }
             else
                 Toast.MakeText(this, "Enter a valid phone", ToastLength.Short).Show();
         }
@@ -104,15 +108,17 @@ namespace _329230924finalProject
         {
                 //שליחת סמס לאימות טלפון   
                 var SmSer = SmsManager.Default;
+            Toast.MakeText(this,verificationCode.ToString() , ToastLength.Short).Show();
+            createcnfrmDialog();
             try
             {
                 SmSer.SendTextMessage(phone, null, $"try:{verificationCode}", null, null);
-                createcnfrmDialog();
+
             }
             catch (Exception ex)
             {
-                Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
-                flag = false;
+               // Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
+        
             }
 
         }
@@ -134,7 +140,8 @@ namespace _329230924finalProject
         private void DlgConfirmBTN_Click(object sender, EventArgs e)
         {
             //אימות טלפון בתוך הדיאלוג
-            if (dlgCodeET.Text == rng.ToString())
+            dlgCodeET.Text = verificationCode.ToString();
+            if (dlgCodeET.Text == verificationCode.ToString())
             {
                 Toast.MakeText(this, "phone confirmed", ToastLength.Long).Show();
                 d.Dismiss();
@@ -160,8 +167,8 @@ namespace _329230924finalProject
         void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
         {
             //פתיחת דיאלוג בחרירת תאריך לידה
-
-            String str = e.Date.ToLongDateString();
+            string str = e.Date.ToLongDateString();
+            bday = e.Date;
         Toast.MakeText(this, str, ToastLength.Long).Show();
         AgeInptBTN.Text = str;
         }
@@ -207,6 +214,12 @@ namespace _329230924finalProject
                 Toast.MakeText(this, "different passwords", ToastLength.Long).Show();
 
             }
+            if (bday!=null&&!Validate.AgeRange(bday))
+            {
+                flag = false;
+                Toast.MakeText(this, "you weren't born today!", ToastLength.Long).Show();
+
+            }
 
             if (flag)
             {
@@ -250,6 +263,74 @@ namespace _329230924finalProject
                 }
 
             }
+            else
+            {
+                flag = true;
+              
+            }
+        }
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+
+        {//מייצר מניו
+
+            MenuInflater.Inflate(Resource.Menu.menuchophone, menu);
+            return true;
+
+        }
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+
+        {
+
+            if (item.ItemId == Resource.Id.action_Home)
+
+            {
+                //מעבר לדף בית
+                Intent intent = new Intent(this, typeof(ActivityLogin));
+                StartActivity(intent);
+            }
+            if (item.ItemId == Resource.Id.action_profile)
+
+            {
+                //מעבר לדף פרופיל
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
+            }
+
+            else if (item.ItemId == Resource.Id.action_log_out)
+
+            {
+                //התנתקות
+                var editor = Helper.SharePrefrence1(this).Edit();
+                editor.PutString("password", null);
+                editor.PutString("UName", null);
+                editor.PutString("FName", null);
+                editor.PutString("LName", null);
+                editor.PutString("DOB", null);
+                editor.PutString("email", null);
+                editor.PutInt("phone", 0);
+                editor.PutBoolean("doesPay", false);
+                editor.Commit();
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
+                return true;
+            }
+            if (item.ItemId == Resource.Id.action_update)
+
+            {
+                //מעבר לדף עדכון פרטים
+                Intent intent = new Intent(this, typeof(ActivityUpdate));
+                StartActivity(intent);
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+        public void menumaker()
+        {
+
         }
     }
 }

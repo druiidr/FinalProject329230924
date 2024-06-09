@@ -3258,6 +3258,9 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F080082
 			public const int unhearted = 2131230850;
 			
+			// aapt resource value: 0x7F080083
+			public const int zchuchit = 2131230851;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -3274,44 +3277,44 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F090071
 			public const int actions = 2131296369;
 			
-			// aapt resource value: 0x7F09005C
-			public const int action_bar = 2131296348;
-			
 			// aapt resource value: 0x7F09005D
-			public const int action_bar_activity_content = 2131296349;
+			public const int action_bar = 2131296349;
 			
 			// aapt resource value: 0x7F09005E
-			public const int action_bar_container = 2131296350;
+			public const int action_bar_activity_content = 2131296350;
 			
 			// aapt resource value: 0x7F09005F
-			public const int action_bar_root = 2131296351;
+			public const int action_bar_container = 2131296351;
 			
 			// aapt resource value: 0x7F090060
-			public const int action_bar_spinner = 2131296352;
+			public const int action_bar_root = 2131296352;
 			
 			// aapt resource value: 0x7F090061
-			public const int action_bar_subtitle = 2131296353;
+			public const int action_bar_spinner = 2131296353;
 			
 			// aapt resource value: 0x7F090062
-			public const int action_bar_title = 2131296354;
+			public const int action_bar_subtitle = 2131296354;
 			
 			// aapt resource value: 0x7F090063
-			public const int action_container = 2131296355;
+			public const int action_bar_title = 2131296355;
 			
 			// aapt resource value: 0x7F090064
-			public const int action_context_bar = 2131296356;
+			public const int action_container = 2131296356;
 			
 			// aapt resource value: 0x7F090065
-			public const int action_divider = 2131296357;
+			public const int action_context_bar = 2131296357;
 			
 			// aapt resource value: 0x7F090066
-			public const int action_image = 2131296358;
+			public const int action_divider = 2131296358;
 			
-			// aapt resource value: 0x7F090068
-			public const int action_login = 2131296360;
+			// aapt resource value: 0x7F09005C
+			public const int action_Home = 2131296348;
 			
 			// aapt resource value: 0x7F090067
-			public const int action_log_out = 2131296359;
+			public const int action_image = 2131296359;
+			
+			// aapt resource value: 0x7F090068
+			public const int action_log_out = 2131296360;
 			
 			// aapt resource value: 0x7F090069
 			public const int action_menu_divider = 2131296361;
@@ -3641,13 +3644,16 @@ namespace _329230924finalProject
 			public const int normal = 2131296449;
 			
 			// aapt resource value: 0x7F090015
-			public const int NotesShowDiffficultyCB = 2131296277;
-			
-			// aapt resource value: 0x7F090016
-			public const int NotesShowGenreCB = 2131296278;
+			public const int NotesShowListviewlv = 2131296277;
 			
 			// aapt resource value: 0x7F090017
-			public const int NotesShowListviewlv = 2131296279;
+			public const int NotesShowSearchBarET = 2131296279;
+			
+			// aapt resource value: 0x7F090016
+			public const int NotesShowSearchBTN = 2131296278;
+			
+			// aapt resource value: 0x7F090019
+			public const int NotewShowgenreSelectionSP = 2131296281;
 			
 			// aapt resource value: 0x7F090018
 			public const int NotewShowLevelSelectionSP = 2131296280;
@@ -3685,131 +3691,131 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900CC
 			public const int paymentExpDateYET = 2131296460;
 			
-			// aapt resource value: 0x7F090019
-			public const int PaymentSB = 2131296281;
-			
 			// aapt resource value: 0x7F09001A
-			public const int PaymentSubscriptionBTN = 2131296282;
+			public const int PaymentSB = 2131296282;
 			
 			// aapt resource value: 0x7F09001B
-			public const int PaymentSumTV = 2131296283;
+			public const int PaymentSubscriptionBTN = 2131296283;
 			
 			// aapt resource value: 0x7F09001C
-			public const int PhoneDialogBTN = 2131296284;
+			public const int PaymentSumTV = 2131296284;
 			
 			// aapt resource value: 0x7F09001D
-			public const int PhoneDialogET = 2131296285;
+			public const int PhoneDialogBTN = 2131296285;
 			
 			// aapt resource value: 0x7F09001E
-			public const int PianoA1BTN = 2131296286;
+			public const int PhoneDialogET = 2131296286;
 			
 			// aapt resource value: 0x7F09001F
-			public const int PianoA2BTN = 2131296287;
+			public const int PianoA1BTN = 2131296287;
 			
 			// aapt resource value: 0x7F090020
-			public const int PianoAshrp1BTN = 2131296288;
+			public const int PianoA2BTN = 2131296288;
 			
 			// aapt resource value: 0x7F090021
-			public const int PianoAshrp2BTN = 2131296289;
+			public const int PianoAshrp1BTN = 2131296289;
 			
 			// aapt resource value: 0x7F090022
-			public const int PianoB1BTN = 2131296290;
+			public const int PianoAshrp2BTN = 2131296290;
 			
 			// aapt resource value: 0x7F090023
-			public const int PianoB2BTN = 2131296291;
+			public const int PianoB1BTN = 2131296291;
 			
 			// aapt resource value: 0x7F090024
-			public const int PianoC1BTN = 2131296292;
+			public const int PianoB2BTN = 2131296292;
 			
 			// aapt resource value: 0x7F090025
-			public const int PianoC2BTN = 2131296293;
+			public const int PianoC1BTN = 2131296293;
 			
 			// aapt resource value: 0x7F090026
-			public const int PianoCshrp1BTN = 2131296294;
+			public const int PianoC2BTN = 2131296294;
 			
 			// aapt resource value: 0x7F090027
-			public const int PianoCshrp2BTN = 2131296295;
+			public const int PianoCshrp1BTN = 2131296295;
 			
 			// aapt resource value: 0x7F090028
-			public const int PianoD1BTN = 2131296296;
+			public const int PianoCshrp2BTN = 2131296296;
 			
 			// aapt resource value: 0x7F090029
-			public const int PianoD2BTN = 2131296297;
+			public const int PianoD1BTN = 2131296297;
 			
 			// aapt resource value: 0x7F09002A
-			public const int PianoDshrp1BTN = 2131296298;
+			public const int PianoD2BTN = 2131296298;
 			
 			// aapt resource value: 0x7F09002B
-			public const int PianoDshrp2BTN = 2131296299;
+			public const int PianoDshrp1BTN = 2131296299;
 			
 			// aapt resource value: 0x7F09002C
-			public const int PianoE1BTN = 2131296300;
+			public const int PianoDshrp2BTN = 2131296300;
 			
 			// aapt resource value: 0x7F09002D
-			public const int PianoE2BTN = 2131296301;
+			public const int PianoE1BTN = 2131296301;
 			
 			// aapt resource value: 0x7F09002E
-			public const int PianoF1BTN = 2131296302;
+			public const int PianoE2BTN = 2131296302;
 			
 			// aapt resource value: 0x7F09002F
-			public const int PianoF2BTN = 2131296303;
+			public const int PianoF1BTN = 2131296303;
 			
 			// aapt resource value: 0x7F090030
-			public const int PianoFshrp1BTN = 2131296304;
+			public const int PianoF2BTN = 2131296304;
 			
 			// aapt resource value: 0x7F090031
-			public const int PianoFshrp2BTN = 2131296305;
+			public const int PianoFshrp1BTN = 2131296305;
 			
 			// aapt resource value: 0x7F090032
-			public const int PianoG1BTN = 2131296306;
+			public const int PianoFshrp2BTN = 2131296306;
 			
 			// aapt resource value: 0x7F090033
-			public const int PianoG2BTN = 2131296307;
+			public const int PianoG1BTN = 2131296307;
 			
 			// aapt resource value: 0x7F090034
-			public const int PianoGshrp1BTN = 2131296308;
+			public const int PianoG2BTN = 2131296308;
 			
 			// aapt resource value: 0x7F090035
-			public const int PianoGshrp2BTN = 2131296309;
-			
-			// aapt resource value: 0x7F090037
-			public const int PianoPlayedNotesTV = 2131296311;
+			public const int PianoGshrp1BTN = 2131296309;
 			
 			// aapt resource value: 0x7F090036
-			public const int PianoPlayPauseBTN = 2131296310;
+			public const int PianoGshrp2BTN = 2131296310;
+			
+			// aapt resource value: 0x7F090038
+			public const int PianoPlayedNotesTV = 2131296312;
+			
+			// aapt resource value: 0x7F090037
+			public const int PianoPlayPauseBTN = 2131296311;
 			
 			// aapt resource value: 0x7F0900CD
 			public const int pin = 2131296461;
 			
-			// aapt resource value: 0x7F090038
-			public const int ProfileBirthdayTV = 2131296312;
-			
 			// aapt resource value: 0x7F090039
-			public const int ProfileDeleteBTN = 2131296313;
+			public const int ProfileBirthdayTV = 2131296313;
 			
 			// aapt resource value: 0x7F09003A
-			public const int ProfileFnameTV = 2131296314;
+			public const int ProfileDeleteBTN = 2131296314;
 			
 			// aapt resource value: 0x7F09003B
-			public const int ProfileListviewlv = 2131296315;
+			public const int ProfileFnameTV = 2131296315;
 			
 			// aapt resource value: 0x7F09003C
-			public const int ProfileLnameTV = 2131296316;
+			public const int ProfileListviewlv = 2131296316;
 			
 			// aapt resource value: 0x7F09003D
-			public const int ProfilePFPIV = 2131296317;
+			public const int ProfileLnameTV = 2131296317;
 			
 			// aapt resource value: 0x7F09003E
-			public const int ProfilePurchaseBTN = 2131296318;
+			public const int ProfilePFPIV = 2131296318;
 			
 			// aapt resource value: 0x7F09003F
-			public const int ProfilePurchaseTV = 2131296319;
+			public const int ProfilePurchaseBTN = 2131296319;
 			
 			// aapt resource value: 0x7F090040
-			public const int ProfileUnameTV = 2131296320;
+			public const int ProfilePurchaseTV = 2131296320;
 			
 			// aapt resource value: 0x7F090041
-			public const int ProfileUpdateBTN = 2131296321;
+			public const int ProfileUnameTV = 2131296321;
+			
+			// aapt resource value: 0x7F090042
+			public const int ProfileUpdateBTN = 2131296322;
 			
 			// aapt resource value: 0x7F0900CE
 			public const int progress_circular = 2131296462;
@@ -3820,47 +3826,47 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900D0
 			public const int radio = 2131296464;
 			
-			// aapt resource value: 0x7F090043
-			public const int RecordListviewMistakesTV = 2131296323;
-			
-			// aapt resource value: 0x7F090042
-			public const int RecordListViewNameTV = 2131296322;
-			
 			// aapt resource value: 0x7F090044
-			public const int RegisterConPassContentET = 2131296324;
+			public const int RecordListviewMistakesTV = 2131296324;
+			
+			// aapt resource value: 0x7F090043
+			public const int RecordListViewNameTV = 2131296323;
 			
 			// aapt resource value: 0x7F090045
-			public const int RegisterDateSelectionBTN = 2131296325;
+			public const int RegisterConPassContentET = 2131296325;
 			
 			// aapt resource value: 0x7F090046
-			public const int RegisterEmailContentET = 2131296326;
+			public const int RegisterDateSelectionBTN = 2131296326;
 			
 			// aapt resource value: 0x7F090047
-			public const int RegisterFNameContentET = 2131296327;
+			public const int RegisterEmailContentET = 2131296327;
 			
 			// aapt resource value: 0x7F090048
-			public const int RegisterLNameContentET = 2131296328;
+			public const int RegisterFNameContentET = 2131296328;
 			
 			// aapt resource value: 0x7F090049
-			public const int RegisterPassContentET = 2131296329;
-			
-			// aapt resource value: 0x7F09004D
-			public const int RegisterpfpSelectionBTN = 2131296333;
-			
-			// aapt resource value: 0x7F09004E
-			public const int RegisterpfpviewIV = 2131296334;
-			
-			// aapt resource value: 0x7F09004F
-			public const int RegisterphonecnfrmBTN = 2131296335;
+			public const int RegisterLNameContentET = 2131296329;
 			
 			// aapt resource value: 0x7F09004A
-			public const int RegisterPhoneContentET = 2131296330;
+			public const int RegisterPassContentET = 2131296330;
+			
+			// aapt resource value: 0x7F09004E
+			public const int RegisterpfpSelectionBTN = 2131296334;
+			
+			// aapt resource value: 0x7F09004F
+			public const int RegisterpfpviewIV = 2131296335;
+			
+			// aapt resource value: 0x7F090050
+			public const int RegisterphonecnfrmBTN = 2131296336;
 			
 			// aapt resource value: 0x7F09004B
-			public const int RegisterRegistrationBTN = 2131296331;
+			public const int RegisterPhoneContentET = 2131296331;
 			
 			// aapt resource value: 0x7F09004C
-			public const int RegisterUNameContentET = 2131296332;
+			public const int RegisterRegistrationBTN = 2131296332;
+			
+			// aapt resource value: 0x7F09004D
+			public const int RegisterUNameContentET = 2131296333;
 			
 			// aapt resource value: 0x7F0900D1
 			public const int right = 2131296465;
@@ -3934,8 +3940,8 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900E7
 			public const int select_dialog_listview = 2131296487;
 			
-			// aapt resource value: 0x7F090050
-			public const int SHIFT = 2131296336;
+			// aapt resource value: 0x7F090051
+			public const int SHIFT = 2131296337;
 			
 			// aapt resource value: 0x7F0900E9
 			public const int shortcut = 2131296489;
@@ -3991,8 +3997,8 @@ namespace _329230924finalProject
 			// aapt resource value: 0x7F0900FA
 			public const int submit_area = 2131296506;
 			
-			// aapt resource value: 0x7F090051
-			public const int SYM = 2131296337;
+			// aapt resource value: 0x7F090052
+			public const int SYM = 2131296338;
 			
 			// aapt resource value: 0x7F0900FB
 			public const int tabMode = 2131296507;
@@ -4077,9 +4083,6 @@ namespace _329230924finalProject
 			
 			// aapt resource value: 0x7F090116
 			public const int up = 2131296534;
-			
-			// aapt resource value: 0x7F090052
-			public const int UpdateConPassContentET = 2131296338;
 			
 			// aapt resource value: 0x7F090053
 			public const int UpdateDateSelectionBTN = 2131296339;

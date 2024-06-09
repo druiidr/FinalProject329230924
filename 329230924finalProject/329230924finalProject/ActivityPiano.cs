@@ -309,7 +309,6 @@ namespace _329230924finalProject
 
 
 
-
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
 
         {//מייצר מניו
@@ -321,13 +320,24 @@ namespace _329230924finalProject
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
 
         {
-           
-            if (item.ItemId == Resource.Id.action_login)
+
+            if (item.ItemId == Resource.Id.action_Home)
 
             {
-                //מעבר לדף כניסת משתמש
+                //מעבר לדף בית
                 Intent intent = new Intent(this, typeof(ActivityLogin));
                 StartActivity(intent);
+            }
+            if (item.ItemId == Resource.Id.action_profile)
+
+            {
+                //מעבר לדף פרופיל
+                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
+
+                {
+                    Intent intent = new Intent(this, typeof(ActivityProfile));
+                    StartActivity(intent);
+                }
             }
 
             else if (item.ItemId == Resource.Id.action_log_out)
@@ -352,23 +362,8 @@ namespace _329230924finalProject
 
             {
                 //מעבר לדף עדכון פרטים
-                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
-
-                {
-                    Intent intent = new Intent(this, typeof(ActivityProfile));
-                    StartActivity(intent);
-                }
-            }
-            if (item.ItemId == Resource.Id.action_profile)
-
-            {
-                //מעבר לדף פרופיל
-                if (Helper.SharePrefrence1(this).GetString("FName", null) != null)
-
-                {
-                    Intent intent = new Intent(this, typeof(ActivityProfile));
-                    StartActivity(intent);
-                }
+                Intent intent = new Intent(this, typeof(ActivityUpdate));
+                StartActivity(intent);
             }
 
             return base.OnOptionsItemSelected(item);
