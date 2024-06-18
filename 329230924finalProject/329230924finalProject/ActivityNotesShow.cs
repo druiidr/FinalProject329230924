@@ -21,7 +21,7 @@ namespace _329230924finalProject
         NotesAdapter notesAdapter;
 
         TextView contentTV;
-        List<string> levelLsS = new List<string> { "select level", "1", "2", "3", "4", "5" };
+        List<string> levelLsS = new List<string> { "select difficulty", "I'm too young to die", "Hey, not too rough", "Hurt me plenty", "Ultra Violence", "Nightmare" };
         List<string> genreLsS = new List<string> { "select genre", "rock", "pop", "classical", "kids", "misc" };
         SearchView searchBarSV;
         ListView lv;
@@ -30,18 +30,19 @@ namespace _329230924finalProject
         {
             //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
+            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.NotesShowLayout);
 
             Notes defaultNote1 = new Notes(1, "יונתן הקטן", "C,C,C,C,.", 1, "kids", false);
             Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 2, "pop", false);
             Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.", 2, "rock", false);
             Notes defaultNote4 = new Notes(4, "יונתן הקטן auc", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.", 5, "kids", false);
-            Notes defaultNote5 = new Notes(5, "test", "A,B,C,D,.", 3, "kids", true);
+            Notes defaultNote5 = new Notes(5, "test", "A,B,C,D,.", 3, "pop", true);
             Notes defaultNote6 = new Notes(6, "smoke on the water", "G,B,C,G,B,C,C,G,B,C,B,G,.", 3, "rock", false);
             Notes defaultNote7 = new Notes(7, "my way", "C,D,C,D,C,C,D,.", 4, "misc", false);
             Notes defaultNote8 = new Notes(8, "note progression", "C,D,E,F,G,A,B,.", 1, "misc", false);
-            Notes defaultNote9 = new Notes(9, "still dre", "C,E,A,C,E,A,C,E,A,C,E,A,.", 5,"classic", false);
-            Notes defaultNote10 = new Notes(10, "turkish march", "A,B,C,D,.", 4, "classic", true);
+            Notes defaultNote9 = new Notes(9, "still dre", "C,E,A,C,E,A,C,E,A,C,E,A,.", 5,"classical", false);
+            Notes defaultNote10 = new Notes(10, "turkish march", "A,B,C,D,.", 4, "classical", true);
             ArrayAdapter<string> adapterLevel = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, levelLsS);
             ArrayAdapter<string> adapterGenre = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, genreLsS);
             searchBarSV = FindViewById<SearchView>(Resource.Id.NotesShowSearchSV);

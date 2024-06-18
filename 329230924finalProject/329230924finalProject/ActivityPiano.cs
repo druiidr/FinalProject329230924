@@ -34,6 +34,7 @@ namespace _329230924finalProject
         {
             //Idמאתחל אובייקטים, משייך 
             base.OnCreate(savedInstanceState);
+            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.PianoLayout);
             playpauseBTN = FindViewById<Button>(Resource.Id.PianoPlayPauseBTN);
            C1BTN=FindViewById<Button>(Resource.Id.PianoC1BTN);

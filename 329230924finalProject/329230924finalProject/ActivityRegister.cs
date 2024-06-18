@@ -12,7 +12,15 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Plugin.Media;
+using  Android.Widget;
+using Android.App;
+using Android.OS;
+using Android.Support.V7.App;
+using Android.Runtime;
 using Android.Widget;
+using Android;
+using Plugin.Media;
+using Android.Graphics;
 using Android.OS;
 using System;
 using Android.Graphics;
@@ -45,8 +53,10 @@ namespace _329230924finalProject
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //Idמאתחל אובייקטים, משייך ל
-
+         
+         
             base.OnCreate(savedInstanceState);
+            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.RegisterLayout);
             regBTN = FindViewById<Button>(Resource.Id.RegisterRegistrationBTN);
             FnameInptET = FindViewById<EditText>(Resource.Id.RegisterFNameContentET);
@@ -82,8 +92,14 @@ namespace _329230924finalProject
         async void UploadPhoto()
         {
             //העלאת תמונה מהמכשיר
-            await CrossMedia.Current.Initialize();
-
+            try
+            {
+                await CrossMedia.Current.Initialize();
+            }
+            catch(Exception ex)
+            {
+                Toast.MakeText(this,ex.Message, ToastLength.Short).Show();
+            }
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
                 Toast.MakeText(this, "Upload not supported on this device", ToastLength.Short).Show();
@@ -94,15 +110,19 @@ namespace _329230924finalProject
             {
                 PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
                 CompressionQuality = 40
-
             });
 
-            // Convert file to byre array, to bitmap and set it to our ImageView
-
-            byte[] imageArray = System.IO.File.ReadAllBytes(file.Path);
-            Bitmap bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
-            pfpIV.SetImageBitmap(bitmap);
-
+            if (file != null)
+            {
+                // Convert file to byte array, bitmap, and set it to ImageView
+                byte[] imageArray = System.IO.File.ReadAllBytes(file.Path);
+                Android.Graphics.Bitmap bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
+                pfpIV.SetImageBitmap(bitmap);
+            }
+            else
+            {
+                Toast.MakeText(this, "No photo selected", ToastLength.Short).Show();
+            }
         }
 
         public void createcnfrmDialog()
@@ -136,6 +156,11 @@ namespace _329230924finalProject
         private void UpldBTN_Click(object sender, EventArgs e)
         {
             // טיפול בתמונה
+            if (CheckSelfPermission(Manifest.Permission.ReadExternalStorage) != Android.Content.PM.Permission.Granted ||
+   CheckSelfPermission(Manifest.Permission.WriteExternalStorage) != Android.Content.PM.Permission.Granted)
+            {
+                RequestPermissions(permissionGroup, 0);
+            }
             UploadPhoto();
 
         }

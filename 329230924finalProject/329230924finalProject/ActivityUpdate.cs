@@ -31,7 +31,8 @@ namespace _329230924finalProject
     {
             //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
-        SetContentView(Resource.Layout.UpdateLayout);
+            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
+            SetContentView(Resource.Layout.UpdateLayout);
         regBTN = FindViewById<Button>(Resource.Id.updateUpdatingBTN);
         FnameInptET = FindViewById<EditText>(Resource.Id.UpdateFNameContentET);
         LnameInptET = FindViewById<EditText>(Resource.Id.UpdateLNameContentET);

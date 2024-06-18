@@ -25,6 +25,7 @@ namespace _329230924finalProject
         {
             //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
+            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.PaymentLayout);
             payBTN=FindViewById<Button>(Resource.Id.PaymentSubscriptionBTN);
             cvvET = FindViewById<EditText>(Resource.Id.paymentCVVET);

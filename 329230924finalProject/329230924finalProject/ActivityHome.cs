@@ -23,6 +23,7 @@ namespace _329230924finalProject
             //Idמאתחל אובייקטים, משייך ל
 
             base.OnCreate(savedInstanceState);
+            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.HomeLayout);
             HomeLinLay = FindViewById<LinearLayout>(Resource.Id.HomeLO);
             welcomeTV = new TextView(this);

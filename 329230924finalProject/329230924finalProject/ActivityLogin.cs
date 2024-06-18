@@ -29,6 +29,7 @@ namespace _329230924finalProject
             //Idמאתחל אובייקטים, משייך ל
 
             base.OnCreate(savedInstanceState);
+            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.LoginLayout);
             // Create your application here
             
