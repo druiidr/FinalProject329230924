@@ -60,7 +60,6 @@ namespace _329230924finalProject
             pfpIV = FindViewById<ImageView>(Resource.Id.RegisterpfpviewIV);
             upldBTN = FindViewById<Button>(Resource.Id.RegisterpfpSelectionBTN);
             confirmInptET = FindViewById<EditText>(Resource.Id.RegisterConPassContentET);
-   
             regBTN.Click += RegBTN_Click;
             phoneBTN.Click += PhoneBTN_Click;
             AgeInptBTN.Click += AgeInptBTN_Click;
@@ -70,10 +69,11 @@ namespace _329230924finalProject
         private void PhoneBTN_Click(object sender, EventArgs e)
         {
             //הפעלת אימות טלפון
-            if (Validate.ValidPhone(phoneInptET.Text))
+            if (Validate.ValidMail(emailInptET.Text))
             {
-                ConfirmPhone(phoneInptET.Text);
-                verificationCode = rng.Next(1000, 9999);
+                verificationCode = rng.Next(1000, 10000);
+                Helper.SendEmail(this, emailInptET.Text,verificationCode.ToString());
+                createcnfrmDialog();
             }
             else
                 Toast.MakeText(this, "Enter a valid phone", ToastLength.Short).Show();
@@ -104,27 +104,10 @@ namespace _329230924finalProject
             pfpIV.SetImageBitmap(bitmap);
 
         }
-        public void ConfirmPhone(string phone )
-        {
-                //שליחת סמס לאימות טלפון   
-                var SmSer = SmsManager.Default;
-            Toast.MakeText(this,verificationCode.ToString() , ToastLength.Short).Show();
-            createcnfrmDialog();
-            try
-            {
-                SmSer.SendTextMessage(phone, null, $"try:{verificationCode}", null, null);
 
-            }
-            catch (Exception ex)
-            {
-               // Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
-        
-            }
-
-        }
         public void createcnfrmDialog()
         {
-            //יצירת דיאלוג לאימות טלפון
+            //יצירת דיאלוג לאימות מייל
             d = new Dialog(this);
             d.SetContentView(Resource.Layout.PhoneDialogLayout);
 
@@ -143,7 +126,7 @@ namespace _329230924finalProject
             dlgCodeET.Text = verificationCode.ToString();
             if (dlgCodeET.Text == verificationCode.ToString())
             {
-                Toast.MakeText(this, "phone confirmed", ToastLength.Long).Show();
+                Toast.MakeText(this, "email confirmed", ToastLength.Long).Show();
                 d.Dismiss();
             }
             else

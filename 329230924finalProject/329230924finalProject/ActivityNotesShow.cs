@@ -23,8 +23,7 @@ namespace _329230924finalProject
         TextView contentTV;
         List<string> levelLsS = new List<string> { "select level", "1", "2", "3", "4", "5" };
         List<string> genreLsS = new List<string> { "select genre", "rock", "pop", "classical", "kids", "misc" };
-        Button searchBTN;
-        EditText searchBarET;
+        SearchView searchBarSV;
         ListView lv;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -34,26 +33,29 @@ namespace _329230924finalProject
             SetContentView(Resource.Layout.NotesShowLayout);
 
             Notes defaultNote1 = new Notes(1, "יונתן הקטן", "C,C,C,C,.", 1, "kids", false);
-            Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 1, "pop", false);
+            Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 2, "pop", false);
             Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.", 2, "rock", false);
             Notes defaultNote4 = new Notes(4, "יונתן הקטן auc", "G,E,E,F,D,D,C,D,E,F,G,G,G,G,E,E,F,D,D,C,E,G,G,C,.", 5, "kids", false);
             Notes defaultNote5 = new Notes(5, "test", "A,B,C,D,.", 3, "kids", true);
+            Notes defaultNote6 = new Notes(6, "smoke on the water", "G,B,C,G,B,C,C,G,B,C,B,G,.", 3, "rock", false);
+            Notes defaultNote7 = new Notes(7, "my way", "C,D,C,D,C,C,D,.", 4, "misc", false);
+            Notes defaultNote8 = new Notes(8, "note progression", "C,D,E,F,G,A,B,.", 1, "misc", false);
+            Notes defaultNote9 = new Notes(9, "still dre", "C,E,A,C,E,A,C,E,A,C,E,A,.", 5,"classic", false);
+            Notes defaultNote10 = new Notes(10, "turkish march", "A,B,C,D,.", 4, "classic", true);
             ArrayAdapter<string> adapterLevel = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, levelLsS);
             ArrayAdapter<string> adapterGenre = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, genreLsS);
-            searchBarET = FindViewById<EditText>(Resource.Id.NotesShowSearchBarET);
-            searchBTN = FindViewById<Button>(Resource.Id.NotesShowSearchBTN);
+            searchBarSV = FindViewById<SearchView>(Resource.Id.NotesShowSearchSV);
             adapterLevel.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             adapterGenre.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             Spinner levelSpinner = FindViewById<Spinner>(Resource.Id.NotewShowLevelSelectionSP);
             Spinner genreSpinner = FindViewById<Spinner>(Resource.Id.NotewShowgenreSelectionSP);
-
+            searchBarSV.QueryTextChange += SearchBarSV_QueryTextChange;
             levelSpinner.Adapter = adapterLevel;
             genreSpinner.Adapter = adapterGenre;
 
             notesList = new List<Notes>();
             levelSpinner.ItemSelected += LevelSpinner_ItemSelected;
             genreSpinner.ItemSelected += GenreSpinner_ItemSelected;
-            searchBTN.Click += SearchBTN_Click;
             Helper.dbCommand = new SQLiteConnection(Helper.Path());
             try
             {
@@ -69,6 +71,11 @@ namespace _329230924finalProject
                 Helper.dbCommand.Insert(defaultNote3);
                 Helper.dbCommand.Insert(defaultNote4);
                 Helper.dbCommand.Insert(defaultNote5);
+                Helper.dbCommand.Insert(defaultNote6);
+                Helper.dbCommand.Insert(defaultNote7);
+                Helper.dbCommand.Insert(defaultNote8);
+                Helper.dbCommand.Insert(defaultNote9);
+                Helper.dbCommand.Insert(defaultNote10);
             }
 
 
@@ -79,18 +86,25 @@ namespace _329230924finalProject
             lv.OnItemClickListener = this;
         }
 
-        private void SearchBTN_Click(object sender, EventArgs e)
-        {//חיפוש שיעורים על פי שם
-            string searched=searchBarET.Text;
+        private void SearchBarSV_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
+        {//מבצע חיפוש שירים על פי הsearchbar
+            string searched =e.NewText; // Get the search text and trim any leading or trailing spaces
             try
             {
-                notesList = Helper.dbCommand.Query<Notes>("SELECT * FROM Notes WHERE PieceName Like %" +searched+"%");
+                // Construct the SQL query with proper string concatenation and single quotes around the search term
+                string query = "SELECT * FROM Notes WHERE PieceName LIKE '%" + searched + "%'";
+
+                // Execute the query using your database helper (assuming Helper.dbCommand is your database helper)
+                notesList = Helper.dbCommand.Query<Notes>(query);
+
+                // Create a new adapter with the updated notesList and set it to your ListView (lv)
                 notesAdapter = new NotesAdapter(this, notesList);
                 lv.Adapter = notesAdapter;
             }
             catch (Exception ex)
             {
-                Toast.MakeText(this, ex.ToString(), ToastLength.Short).Show();
+                // Handle any exceptions that occur during the query execution
+                Toast.MakeText(this, "Error: " + ex.Message, ToastLength.Short).Show();
             }
         }
 

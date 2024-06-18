@@ -8,19 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal" android:layout_marginTop="10dp">
-          <Button
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/zchuchit"
-             android:id="@+id/NotesShowSearchBTN"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="20dp"
-            android:hint="         search for a song!"
-            android:textColorHint="#aaa"
-            android:textColor="#fff"
-            android:id="@+id/NotesShowSearchBarET"
+         <SearchView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+            android:id="@+id/NotesShowSearchSV"/>
             />
         </LinearLayout>
     <LinearLayout

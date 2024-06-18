@@ -11,6 +11,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Net.Mail;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -91,7 +92,31 @@ namespace _329230924finalProject
                 byte[] imageAsBytes = Base64.Decode(base64String, Base64Flags.Default);
                 return BitmapFactory.DecodeByteArray(imageAsBytes, 0, imageAsBytes.Length);
             }
-      
+        public static void SendEmail(Activity context, string email, string message)
+        {//שולח מייל
+            string mailTo = email;
+            MailMessage objeto_mail = new MailMessage();
+            SmtpClient client = new SmtpClient();
+
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.Timeout = 20000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("YudBet4IroniA@gmail.com", "qhip immedcek jgus");//the details
+
+            //sending email and its password
+            objeto_mail.From = new MailAddress("YudBet4IroniA@gmail.com");//from
+            objeto_mail.To.Add(new MailAddress(mailTo));//to
+            client.EnableSsl = true;
+            objeto_mail.Subject = "Email confirmation";
+
+            objeto_mail.Body = message;
+            client.Send(objeto_mail);
+
+            Toast.MakeText(context, "Email sent", ToastLength.Long).Show();
+        }
+
 
 
 
