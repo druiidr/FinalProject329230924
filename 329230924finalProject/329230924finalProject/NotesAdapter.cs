@@ -50,7 +50,11 @@ namespace _329230924finalProject
             if (temp != null)
             {
                 PiecenameTV.Text = temp.PieceName;
-                ViewNotesTV.Text = "start lesson";
+                if (temp.IsPro)
+                    ViewNotesTV.Text = "pro lesson";
+                else
+                    ViewNotesTV.Text = "free lesson";
+
 
                 
             }

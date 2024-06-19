@@ -20,13 +20,12 @@ namespace _329230924finalProject
         Button BTNLogin,BTNRegister,BTNContinue;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-
-            SetTheme(Android.Resource.Style.ThemeNoTitleBar); 
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
             Quicklogin();
+            this.Title = "";
             //הגדרת כפתורים
             BTNLogin = FindViewById<Button>(Resource.Id.MainLoginBTN);
             BTNRegister = FindViewById<Button>(Resource.Id.MainRegisterBTN);

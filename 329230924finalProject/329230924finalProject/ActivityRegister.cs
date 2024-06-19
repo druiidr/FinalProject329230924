@@ -56,7 +56,7 @@ namespace _329230924finalProject
          
          
             base.OnCreate(savedInstanceState);
-            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
+            this.Title = "";
             SetContentView(Resource.Layout.RegisterLayout);
             regBTN = FindViewById<Button>(Resource.Id.RegisterRegistrationBTN);
             FnameInptET = FindViewById<EditText>(Resource.Id.RegisterFNameContentET);

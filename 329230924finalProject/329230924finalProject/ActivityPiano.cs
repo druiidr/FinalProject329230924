@@ -34,7 +34,6 @@ namespace _329230924finalProject
         {
             //Idמאתחל אובייקטים, משייך 
             base.OnCreate(savedInstanceState);
-            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.PianoLayout);
             playpauseBTN = FindViewById<Button>(Resource.Id.PianoPlayPauseBTN);
            C1BTN=FindViewById<Button>(Resource.Id.PianoC1BTN);
@@ -45,6 +44,7 @@ namespace _329230924finalProject
             A1BTN = (FindViewById<Button>(Resource.Id.PianoA1BTN));
             B1BTN = (FindViewById<Button>(Resource.Id.PianoB1BTN));
             C2BTN = (FindViewById<Button>(Resource.Id.PianoC2BTN));
+            this.Title = "";
             D2BTN = (FindViewById<Button>(Resource.Id.PianoD2BTN));
            E2BTN = (FindViewById<Button>(Resource.Id.PianoE2BTN));
             F2BTN = (FindViewById<Button>(Resource.Id.PianoF2BTN));      

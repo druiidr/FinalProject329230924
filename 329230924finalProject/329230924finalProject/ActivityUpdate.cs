@@ -31,7 +31,7 @@ namespace _329230924finalProject
     {
             //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
-            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
+            this.Title = "";
             SetContentView(Resource.Layout.UpdateLayout);
         regBTN = FindViewById<Button>(Resource.Id.updateUpdatingBTN);
         FnameInptET = FindViewById<EditText>(Resource.Id.UpdateFNameContentET);
@@ -48,7 +48,7 @@ namespace _329230924finalProject
                LnameInptET.Text =  Helper.SharePrefrence1(this).GetString("LName", null);
                 UnameInptTV.Text =  Helper.SharePrefrence1(this).GetString("UName", null);
                 emailInptET.Text =  Helper.SharePrefrence1(this).GetString("email", null);
-                phoneInptET.Text = Helper.SharePrefrence1(this).GetInt("phone", 0).ToString();
+                phoneInptET.Text ="0"+ Helper.SharePrefrence1(this).GetInt("phone", 0).ToString();
                 AgeInptBTN.Text = Helper.SharePrefrence1(this).GetString("DOB", null);
 
             }

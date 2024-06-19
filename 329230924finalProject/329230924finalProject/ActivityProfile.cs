@@ -26,10 +26,9 @@ namespace _329230924finalProject
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //Idמאתחל אובייקטים, משייך ל
-            SetTheme(Android.Resource.Style.ThemeNoTitleBar);
             SetContentView(Resource.Layout.ProfileLayout);
             base.OnCreate(savedInstanceState);
-
+            this.Title = "";
             pfpIV = FindViewById<ImageView>(Resource.Id.ProfilePFPIV);
             fnameTV = FindViewById<TextView>(Resource.Id.ProfileFnameTV);
             unameTV = FindViewById<TextView>(Resource.Id.ProfileUnameTV);

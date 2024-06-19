@@ -73,6 +73,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Excercise.cs" />
     <Compile Include="ExcerciseAdapter.cs" />
+    <Compile Include="FlightModeReciever.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Notes.cs" />
