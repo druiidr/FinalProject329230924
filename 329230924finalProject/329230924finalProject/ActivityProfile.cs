@@ -19,7 +19,7 @@ namespace _329230924finalProject
         ImageView pfpIV;
         ExcerciseAdapter excerciseAdapter;
         public static List<Excercise> excerciseList { get; set; }
-        TextView unameTV, fnameTV, lnameTV, bdayTV, winRateTV, lessoncountTV;
+        TextView unameTV, fnameTV, lnameTV, bdayTV;
         Button DeleteBTN, UpdateBTN, PurchaseBTN;
         ListView lv;
         TextView premiumTV;

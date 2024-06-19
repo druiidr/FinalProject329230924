@@ -20,7 +20,7 @@ namespace _329230924finalProject
         public static List<Notes> notesList { get; set; }
         NotesAdapter notesAdapter;
         bool isInAir = false;
-        FlightModeReceiver fmReceiver;      
+        FlightModeReceiver fmReceiver=new FlightModeReceiver();      
         TextView contentTV;
         List<string> levelLsS = new List<string> { "select difficulty", "VERY EASY", "EASY", "NORMAL", "HARD", "VERY HARD" };
         List<string> genreLsS = new List<string> { "select genre", "rock", "pop", "classical", "kids", "misc" };
@@ -53,7 +53,6 @@ namespace _329230924finalProject
             searchBarSV.QueryTextChange += SearchBarSV_QueryTextChange;
             levelSpinner.Adapter = adapterLevel;
             genreSpinner.Adapter = adapterGenre;
-            fmReceiver = new FlightModeReceiver();
             notesList = new List<Notes>();
             levelSpinner.ItemSelected += LevelSpinner_ItemSelected;
             genreSpinner.ItemSelected += GenreSpinner_ItemSelected;
