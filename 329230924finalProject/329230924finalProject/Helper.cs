@@ -94,27 +94,34 @@ namespace _329230924finalProject
             }
         public static void SendEmail(Activity context, string email, string message)
         {//שולח מייל
-            string mailTo = email;
-            MailMessage objeto_mail = new MailMessage();
-            SmtpClient client = new SmtpClient();
+            try
+            {
+                string mailTo = email;
+                MailMessage objeto_mail = new MailMessage();
+                SmtpClient client = new SmtpClient();
 
-            client.Port = 587;
-            client.Host = "smtp.gmail.com";
-            client.Timeout = 20000;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("YudBet4IroniA@gmail.com", "qhip immedcek jgus");//the details
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.Timeout = 20000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("YudBet4IroniA@gmail.com", "qhip immedcek jgus");//the details
 
-            //sending email and its password
-            objeto_mail.From = new MailAddress("YudBet4IroniA@gmail.com");//from
-            objeto_mail.To.Add(new MailAddress(mailTo));//to
-            client.EnableSsl = true;
-            objeto_mail.Subject = "Email confirmation";
+                //sending email and its password
+                objeto_mail.From = new MailAddress("YudBet4IroniA@gmail.com");//from
+                objeto_mail.To.Add(new MailAddress(mailTo));//to
+                client.EnableSsl = true;
+                objeto_mail.Subject = "Email confirmation";
 
-            objeto_mail.Body = message;
-            client.Send(objeto_mail);
+                objeto_mail.Body = message;
+                client.Send(objeto_mail);
 
-            Toast.MakeText(context, "Email sent", ToastLength.Long).Show();
+                Toast.MakeText(context, "Email sent", ToastLength.Long).Show();
+            }
+            catch
+            {
+                Toast.MakeText(context, "we are not able to send a confirmation mail at the moment. please try again later!", ToastLength.Long).Show();
+            }
         }
 
 
