@@ -43,7 +43,7 @@ namespace _329230924finalProject
         private void PayBTN_Click(object sender, EventArgs e)
         {
             //מבצע את הליך התשלום 
-            if(cvvET.Text!=""&&Validate.ContainLet(cvvET.Text)|| numET.Text != "" && Validate.ContainLet(numET.Text)|| expMET.Text != "" && Validate.ContainLet(expMET.Text)|| expYET.Text != "" && Validate.ContainLet(expYET.Text))
+            if(cvvET.Text!=""&&Validate.ContainLet(cvvET.Text)|| numET.Text != "" && Validate.ContainLet(numET.Text)|| expMET.Text != "" || Validate.ContainLet(expMET.Text)|| expYET.Text != "" || Validate.ContainLet(expYET.Text))
             { 
                 //מטפל בשגיאות בהזנת פרטי תשלום
                    Toast.MakeText(this, "please fill in your payment details properly!", ToastLength.Short).Show();

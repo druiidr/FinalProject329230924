@@ -12,19 +12,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Plugin.Media;
-using  Android.Widget;
-using Android.App;
-using Android.OS;
-using Android.Support.V7.App;
-using Android.Runtime;
-using Android.Widget;
 using Android;
-using Plugin.Media;
-using Android.Graphics;
-using Android.OS;
-using System;
-using Android.Graphics;
-using Android;
+
 
 namespace _329230924finalProject
 {
@@ -53,8 +42,8 @@ namespace _329230924finalProject
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //Idמאתחל אובייקטים, משייך ל
-         
-         
+            this.Title = "";
+
             base.OnCreate(savedInstanceState);
             this.Title = "";
             SetContentView(Resource.Layout.RegisterLayout);
@@ -142,7 +131,7 @@ namespace _329230924finalProject
 
         private void DlgConfirmBTN_Click(object sender, EventArgs e)
         {
-            //אימות טלפון בתוך הדיאלוג
+            //אימות מייל בתוך הדיאלוג
             dlgCodeET.Text = verificationCode.ToString();
             if (dlgCodeET.Text == verificationCode.ToString())
             {
@@ -157,12 +146,14 @@ namespace _329230924finalProject
         {
             // טיפול בתמונה
             if (CheckSelfPermission(Manifest.Permission.ReadExternalStorage) != Android.Content.PM.Permission.Granted ||
-   CheckSelfPermission(Manifest.Permission.WriteExternalStorage) != Android.Content.PM.Permission.Granted)
+          CheckSelfPermission(Manifest.Permission.WriteExternalStorage) != Android.Content.PM.Permission.Granted)
             {
+                // Request permissions
                 RequestPermissions(permissionGroup, 0);
             }
-            UploadPhoto();
 
+            // Call method to upload photo
+            UploadPhoto();
         }
 
         private void AgeInptBTN_Click(object sender, EventArgs e)

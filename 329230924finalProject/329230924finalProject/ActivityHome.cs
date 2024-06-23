@@ -21,7 +21,7 @@ namespace _329230924finalProject
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //Idמאתחל אובייקטים, משייך ל
-
+            this.Title = "";
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.HomeLayout);
             HomeLinLay = FindViewById<LinearLayout>(Resource.Id.HomeLO);

@@ -29,6 +29,7 @@ namespace _329230924finalProject
     int rowcount;
     protected override void OnCreate(Bundle savedInstanceState)
     {
+            this.Title = "";
             //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
             this.Title = "";

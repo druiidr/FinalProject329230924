@@ -17,7 +17,7 @@
         android:textSize="20dp"
         android:text="F"
         android:layout_marginLeft="30dp"
-        android:textColor="#119999"
+        android:textColor="#119933"
         android:id="@+id/ListviewNotesTV"/>
 
 </LinearLayout>

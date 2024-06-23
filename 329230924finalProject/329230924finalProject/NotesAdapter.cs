@@ -53,7 +53,7 @@ namespace _329230924finalProject
                 if (temp.IsPro)
                     ViewNotesTV.Text = "pro lesson";
                 else
-                    ViewNotesTV.Text = "free lesson";
+                    ViewNotesTV.Text = "";
 
 
                 

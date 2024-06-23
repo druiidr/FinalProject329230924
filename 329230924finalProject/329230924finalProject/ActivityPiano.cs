@@ -18,6 +18,7 @@ namespace _329230924finalProject
     [Activity(Label = "ActivityPiano")]
     public class ActivityPiano : AppCompatActivity, View.IOnClickListener
     {
+
         //הצהרה על משתנים
         AudioManager am;
        Button C1BTN, Csh1BTN, C2BTN, Csh2BTN, D1BTN, Dsh1BTN, D2BTN, Dsh2BTN, E1BTN, E2BTN, F1BTN, Fsh1BTN, F2BTN, Fsh2BTN, G1BTN, Gsh1BTN, G2BTN, Gsh2BTN, A1BTN, Ash1BTN, A2BTN, Ash2BTN, B1BTN, B2BTN;
@@ -34,6 +35,7 @@ namespace _329230924finalProject
         {
             //Idמאתחל אובייקטים, משייך 
             base.OnCreate(savedInstanceState);
+            this.Title = "";
             SetContentView(Resource.Layout.PianoLayout);
             playpauseBTN = FindViewById<Button>(Resource.Id.PianoPlayPauseBTN);
            C1BTN=FindViewById<Button>(Resource.Id.PianoC1BTN);
@@ -149,6 +151,7 @@ namespace _329230924finalProject
             {
                 case ("  A"):
                     playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoA1);
+                    playingSoundMP.Start();
                     break;
                 case ("  B"):
                     playingSoundMP = MediaPlayer.Create(this, Resource.Raw.pianoB1);
@@ -176,6 +179,7 @@ namespace _329230924finalProject
                     break;
                 case ("  A#"):
                     playingSoundMP = MediaPlayer.Create(this, Resource.Raw.a1s);
+                    playingSoundMP.Start();
                     break;
                 case ("  C#"):
                     playingSoundMP = MediaPlayer.Create(this, Resource.Raw.c1s);

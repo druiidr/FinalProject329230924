@@ -25,6 +25,7 @@ namespace _329230924finalProject
         TextView premiumTV;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            this.Title = "";
             //Idמאתחל אובייקטים, משייך ל
             SetContentView(Resource.Layout.ProfileLayout);
             base.OnCreate(savedInstanceState);

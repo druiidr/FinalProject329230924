@@ -32,7 +32,7 @@ namespace _329230924finalProject
             //Idמאתחל אובייקטים, משייך ל
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.NotesShowLayout);
-
+            this.Title = "";
             Notes defaultNote1 = new Notes(1, "יונתן הקטן", "C,C,C,C,.", 1, "kids", false);
             Notes defaultNote2 = new Notes(2, "ואיך שלא", "G,A,B,E,G,A,B,D,G,A,B,C,D,E,A,G,.", 2, "pop", false);
             Notes defaultNote3 = new Notes(3, "stairway to heaven", "A,C,E,A,B,E,C,B,C,E,C,C,f,D,A,D,E,C,A,C,E,C,A,.", 2, "rock", false);

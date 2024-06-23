@@ -23,7 +23,7 @@ namespace _329230924finalProject
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //Idמאתחל אובייקטים, משייך ל
-
+            this.Title = "";
             SetContentView(Resource.Layout.ForgotLayout);
             base.OnCreate(savedInstanceState);
             UnameET = FindViewById<EditText>(Resource.Id.ForgotUNameContentET);
